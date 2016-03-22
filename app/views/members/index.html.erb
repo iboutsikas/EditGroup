@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Members</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th>Administrative Title</th>
+      <th>Email</th>
+      <th>Admin</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @members.each do |member| %>
+      <tr>
+        <td><%= member.participant.title %></td>
+        <td><%= member.person.lastName %></td>
+        <td><%= member.person.firstName %></td>
+        <td><%= member.participant.administrative_title %></td>
+        <td><%= member.participant.email %></td>
+        <td><%= member.isAdmin %></td>
+        <td><%= link_to 'Show', member %></td>
+        <td><%= link_to 'Edit', edit_member_path(member) %></td>
+        <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Member', new_member_path %>

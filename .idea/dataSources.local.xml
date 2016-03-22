@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails EDITGroupWebsite: development" uuid="47c1a955-8c72-41ec-b23f-6b846dc139ba">
+      <auth-required>false</auth-required>
+      <first-sync>true</first-sync>
+    </data-source>
+    <data-source name="Rails EDITGroupWebsite: test" uuid="c178a14f-d831-4e4a-9377-55a37e2ad097" />
+  </component>
+</project>

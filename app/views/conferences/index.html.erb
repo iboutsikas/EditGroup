@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Conferences</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>City</th>
+      <th>Publisher</th>
+      <th>Location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @conferences.each do |conference| %>
+      <tr>
+        <td><%= conference.name %></td>
+        <td><%= conference.city %></td>
+        <td><%= conference.publisher %></td>
+        <td><%= conference.location %></td>
+        <td><%= link_to 'Show', conference %></td>
+        <td><%= link_to 'Edit', edit_conference_path(conference) %></td>
+        <td><%= link_to 'Destroy', conference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Conference', new_publication_conference_path %>

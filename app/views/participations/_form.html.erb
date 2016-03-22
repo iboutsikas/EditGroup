@@ -1,0 +1,16 @@
+<%= simple_form_for([@project,@participation]) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.simple_fields_for :person do |p| %>
+        <%= render 'people/person_fields', au: p %>
+    <% end %>
+    <%= f.simple_fields_for :participant do |part| %>
+        <%= render 'participants/participant_fields', part: part %>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

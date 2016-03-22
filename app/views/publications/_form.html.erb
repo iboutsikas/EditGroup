@@ -1,0 +1,21 @@
+<%= simple_form_for(@publication) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :date_time %>
+    <%= f.input :pages %>
+    <%= f.input :abstract %>
+
+    <%= f.fields_for :conference do |c|%>
+      <%= c.input :name %>
+      <%= c.input :city %>
+      <%= c.input :publisher %>
+      <%= c.input :location %>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

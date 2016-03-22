@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @project.title %>
+</p>
+
+<p>
+  <strong>Motto:</strong>
+  <%= @project.motto %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+
+<p>
+  <strong>Date started:</strong>
+  <%= @project.date_started %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @project.website %>
+</p>
+
+<p>
+  <strong>Video:</strong>
+  <%= @project.video %>
+</p>
+
+<h3>Project Participants</h3>
+
+<table>
+  <thead>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Administrative title</th>
+    <th>Email</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @project.participations.each do |participation| %>
+      <tr>
+        <td><%= participation.person.firstName %></td>
+        <td><%= participation.person.lastName %></td>
+        <td><%= participation.administrative_title %></td>
+        <td><%= participation.email %></td>
+        <td><%= link_to 'Show', project_participation_path(@project,participation),action: :index %></td>
+        <td><%= link_to 'Edit', edit_project_participation_path(@project,participation) %></td>
+        <td><%= link_to 'Destroy', project_participation_path(@project,participation), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Add Project Participant', new_project_participation_path(@project) %><br>
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

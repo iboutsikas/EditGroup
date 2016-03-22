@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Administrative title:</strong>
+  <%= @participation.administrative_title %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @participation.email %>
+</p>
+
+<%= link_to 'Edit', edit_project_participation_path(@project,@participation) %> |
+<%= link_to 'Back', project_participation_path %>

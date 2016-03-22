@@ -1,0 +1,21 @@
+<%= simple_form_for(@member) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.fields_for :person do |p| %>
+      <%= p.input :firstName %>
+      <%= p.input :lastName %>
+    <% end %>
+    <%= f.fields_for :participant do |p| %>
+      <%= p.input :title %>
+      <%= p.input :administrative_title %>
+      <%= p.input :email %>
+    <% end %>
+
+    <%= f.input :isAdmin %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

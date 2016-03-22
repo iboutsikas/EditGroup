@@ -1,0 +1,20 @@
+<%= simple_form_for(@project) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :motto %>
+    <%= f.input :description %>
+    <%= f.input :date_started %>
+    <%= f.input :website %>
+    <%= f.input :video %>
+  </div>
+
+    <%# link_to_add_association 'add project participant', f, :project_participants, partial: 'project_participants/project_participant_fields',
+                                'data-association-insertion-node' => "#project-project_participants ol",
+                                'data-association-insertion-method' => "append" %>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
