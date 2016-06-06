@@ -1,0 +1,20 @@
+.affix {
+  top: 0;
+  width: 100%
+}
+
+#header-image {
+  max-height: 150px;
+}
+
+#navigation {
+  border-radius: 0px !important;
+}
+
+#brand span {
+  color: #ffd500;
+}
+
+#brand:hover span {
+  color: #FAE88E;
+}

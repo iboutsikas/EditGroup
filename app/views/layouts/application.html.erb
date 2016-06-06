@@ -10,9 +10,7 @@
 <body>
 
 <% if !devise_controller? %>
-  <div id="push_content_down">
     <%= render 'home/header' %>
-  </div>
 <% end %>
 
 <% flash.each do |name, msg| %>

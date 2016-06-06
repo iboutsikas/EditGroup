@@ -15,7 +15,7 @@ pickle-email-*.html
 
 ### Misc ###
 .DS_Store
-._.Ds_Store
+._.DS_Store
 .idea
 
 # TODO Comment out these rules if you are OK with secrets being uploaded to the repo

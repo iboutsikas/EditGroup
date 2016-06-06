@@ -22,3 +22,4 @@
 //= require select2
 //= require jquery.remotipart
 //= require modernizr
+//= require header
