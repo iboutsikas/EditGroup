@@ -5,6 +5,8 @@
 @import "select2";
 @import "select2-bootstrap";
 @import "header.css";
+@import "home";
+@import "members";
 
 //Layout
 #logged_in_label {
@@ -15,36 +17,6 @@
   text-align: center;
 }
 
-.image_thumbnail {
-  width: 60px;
-  height: 60px;
-  font-size: 60px;
-}
-
-//Index
-#hr_up {
-  margin-top: -2px;
-}
-
-//About page
-#about_h1 {
-  color: white;
-}
-
-#video_background {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -100;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-  background-size: cover;
-}
-
-div#bs-example-navbar-collapse-1 {
-  background: black;
+body {
+  background-color: #EDE6C2;
 }

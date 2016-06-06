@@ -17,8 +17,9 @@
     <%= content_tag(:div, msg, class: "alert alert-info", id: "flash_notification") %>
 <% end %>
 
-<%= yield %>
-
+<div class="container" id="yield-container">
+  <%= yield %>
+</div>
 
 </body>
 </html>

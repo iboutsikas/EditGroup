@@ -1,11 +1,13 @@
-.affix {
+#navigation.affix {
   top: 0;
-  width: 100%
+  width: 100%;
+  z-index: 15;
 }
 
-#header-image {
+/*#header-image {
   max-height: 150px;
-}
+  width:100%;
+}*/
 
 #navigation {
   border-radius: 0px !important;
