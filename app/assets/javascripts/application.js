@@ -15,11 +15,6 @@
 //= require jquery_ujs
 //= require jquery.turbolinks
 //= require turbolinks
-//= require cocoon
 //= require underscore
-//= require json2
-//= require judge
-//= require select2
-//= require jquery.remotipart
 //= require modernizr
 //= require header
