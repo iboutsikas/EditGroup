@@ -159,4 +159,13 @@ NewsEvent.create(date: Date.today, description: "Oh No Sun!", title: "Crazy Weat
 
 NewsEvent.create(date: Date.today, description: "Person publishes Publication", title: "New Publication by Person", content: "Publication was create by person and it was journal")
 
+
+# Website Templates
+WebsiteTemplate.create(website_name: "Facebook", logo: "facebook-logo.jpg")
+
+WebsiteTemplate.create(website_name: "LinkedIn", logo: "linkedin-logo.jpg")
+
+WebsiteTemplate.create(website_name: "Generic Website")
+
+# Preferences
 Preference.create(description: "citation_style", value: "ieee")
