@@ -1,0 +1,8 @@
+<%= j.input :title, label: "Journal Title", validate: true, error: false %>
+<span class='help-block client_side_error' id="<%= "#{j.object_name}[title]" %>"></span>
+
+<%= j.input :volume, validate: true, error: false %>
+<span class='help-block client_side_error' id="<%= "#{j.object_name}[volume]" %>"></span>
+
+<%= j.input :issue, validate: true, error: false %>
+<span class='help-block client_side_error' id="<%= "#{j.object_name}[issue]" %>"></span>

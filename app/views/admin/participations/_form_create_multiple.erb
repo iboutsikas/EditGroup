@@ -1,0 +1,9 @@
+<%= simple_form_for([:admin,@project], url: admin_project_create_multiple_path,remote: true) do |f| %>
+
+    <%= render partial: 'admin/dashboard/errors',locals: {resource: @project} %>
+
+    <div class="form-inputs">
+      <%= link_to_add_association 'add person', f, :participants, partial: 'admin/dashboard/participant_fields_multiple',render_options: { locals: {au: f} } %>
+    </div>
+
+<% end %>

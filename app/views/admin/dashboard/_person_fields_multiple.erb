@@ -1,0 +1,11 @@
+<div class="nested-fields">
+  <%= f.simple_fields_for @person do |au| %>
+    <%= au.input :firstName, validate: true, error: false %>
+    <span class='help-block client_side_error' id="<%= "#{f.object_name}[person][firstName]" %>"></span> <!--id='error_text_person_firstName'-->
+
+    <%= au.input :lastName, validate: true, error: false %>
+    <span class='help-block client_side_error' id="<%= "#{f.object_name}[person][lastName]" %>"></span> <!--id='error_text_person_lastName'-->
+
+    <%= link_to_remove_association "remove", au %>
+  <% end %>
+</div>

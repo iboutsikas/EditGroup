@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EDITGroupWebsite</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if !devise_controller? %>
+  <div id="push_content_down">
+    <%= render 'home/header' %>
+  </div>
+<% end %>
+
+<% flash.each do |name, msg| %>
+    <%= content_tag(:div, msg, class: "alert alert-info", id: "flash_notification") %>
+<% end %>
+
+<%= yield %>
+
+
+</body>
+</html>

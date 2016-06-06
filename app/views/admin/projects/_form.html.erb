@@ -1,0 +1,26 @@
+<%= simple_form_for([:admin,@project], remote: true) do |f| %>
+
+  <%= render partial: 'admin/dashboard/errors',locals: {resource: @project} %>
+
+  <div class="form-inputs">
+    <%= f.input :title, validate: true, error: false %>
+    <span class='help-block client_side_error' id="<%= "#{f.object_name}[title]" %>"></span>
+
+    <%= f.input :motto, validate: true, error: false %>
+    <span class='help-block client_side_error' id="<%= "#{f.object_name}[motto]" %>"></span>
+
+    <%= f.input :description, validate: true, error: false %>
+    <span class='help-block client_side_error' id="<%= "#{f.object_name}[description]" %>"></span>
+    <%= f.input :date_started %>
+    <%= f.input :website %>
+    <span class='help-block client_side_error' id="<%= "#{f.object_name}[website]" %>"></span>
+    <%= f.input :video %>
+  </div>
+
+  <%# render partial: 'participant_fields', locals: {f: f} %>
+
+  <!--div>
+    <%# link_to_add_association 'add participant', f, :participants, partial: 'participant_fields',render_options: { locals: {f: f} } %>
+  </div-->
+
+<% end %>

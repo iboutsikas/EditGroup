@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Title:</strong>
+  <%= @member.participant.title %>
+</p>
+<p>
+  <strong>First Name:</strong>
+  <%= @member.person.firstName %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+  <%= @member.person.lastName %>
+</p>
+<p>
+  <strong>Administrative Title:</strong>
+  <%= @member.participant.administrative_title %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @member.participant.email %>
+</p>
+<p>
+  <strong>Isadmin:</strong>
+  <%= @member.isAdmin %>
+</p>
+
+<h2>Personal Websites</h2>
+
+  <% @websites.each do |w| %>
+  <p>
+    <strong> <%= w.website_name %>: </strong>
+    <%= w.url %>
+  </p>
+  <% end %>
+
+<%= link_to 'Back', members_path %>

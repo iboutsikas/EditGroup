@@ -1,0 +1,9 @@
+<div class="nested-fields">
+      <%= f.association :website_template, label_method: :website_name,value_method: :id, prompt: "Choose website type", validate: true, error: false %>
+      <span class='help-block client_side_error' id="<%= "#{f.object_name}[website_template_id]" %>"></span>
+
+      <%= f.input :url, label: 'URL', validate: true, error: false %>
+      <span class='help-block client_side_error' id="<%= "#{f.object_name}[url]" %>"></span>
+
+      <%= link_to_remove_association "remove website", f %>
+</div>

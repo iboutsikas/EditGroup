@@ -1,0 +1,15 @@
+<%= simple_form_for([:admin,@member,@personal_website], remote: true) do |f| %>
+
+    <%= render partial: 'admin/dashboard/errors',locals: {resource: @personal_website} %>
+
+    <div class="form-inputs">
+      <%= f.association :website_template, collection: @available_templates, label_method: :website_name, value_method: :id,
+                        prompt: "Choose website type", validate: true, error: false %>
+      <span class='help-block client_side_error' id="<%= "#{f.object_name}[website_template_id]" %>"></span>
+
+      <%= f.input :url, label: 'URL', validate: true, error: false %>
+      <span class='help-block client_side_error' id="<%= "#{f.object_name}[url]" %>"></span>
+
+    </div>
+
+<% end %>

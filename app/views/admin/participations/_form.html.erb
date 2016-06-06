@@ -1,0 +1,16 @@
+<%= simple_form_for([:admin,@project,@participation], remote: true) do |f| %>
+
+  <%= render partial: 'admin/dashboard/errors',locals: {resource: @participation} %>
+
+  <div class="form-inputs">
+    <%= f.simple_fields_for @participant do |part| %>
+
+        <%= part.simple_fields_for @participant.person do |p| %>
+            <%= render 'admin/dashboard/person_fields', p: p %>
+        <% end %>
+
+        <%= render 'admin/dashboard/participant_fields', part: part %>
+    <% end %>
+  </div>
+
+<% end %>

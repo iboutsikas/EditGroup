@@ -1,0 +1,15 @@
+<%= simple_form_for([:admin,@website_template], remote: true, html: { multipart: true }) do |f| %>
+    <%= render partial: 'admin/dashboard/errors',locals: {resource: @website_template} %>
+
+    <div class="form-inputs">
+      <%= f.input :website_name, label: 'Website Name', validate: true, error: false %>
+      <span class='help-block client_side_error' id="<%= "#{f.object_name}[website_name]" %>"></span>
+
+      <h4>Upload your Avatar</h4>
+
+      <%= image_tag(@website_template.logo.url, style: "width: 60px; height: 60px") if @website_template.logo?%>
+
+      <%= f.file_field :logo %>
+      <span class='help-block client_side_error' id="<%= "#{f.object_name}[avatar]" %>"></span>
+    </div>
+<% end %>

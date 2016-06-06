@@ -1,0 +1,58 @@
+@import "admin/buttons_creative";
+@import "admin/datatables.min";
+@import "datatables_custom";
+@import "custom";
+@import "pnotify.custom.min";
+
+#all_content {
+  height: 557px;
+}
+
+.client_side_error {
+  color: #a94442;
+  display: block;
+}
+
+.modal .modal-body {
+  max-height: 450px;
+  overflow-y: auto;
+}
+
+.modal-alert {
+  text-align: center;
+}
+
+.modal-alert .modal-header {
+  border-bottom: none;
+  text-align: justify;
+}
+
+.modal-alert .modal-body {
+  font-size: 15px;
+}
+
+.modal-alert .modal-footer {
+  border-top: none;
+}
+
+#person_select2 {
+  display: none;
+}
+
+.website_logo {
+  padding-top: 2px;
+}
+
+.avatar {
+  padding-top: 3px;
+}
+
+.avatar_side_menu {
+  width: 20px;
+  height: 20px;
+}
+
+.allNewButtons {
+  margin-top: 12px;
+  float: right;
+}

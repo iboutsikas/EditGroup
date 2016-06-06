@@ -1,0 +1,146 @@
+////////////////////
+// DATATABLES CSS //
+////////////////////
+.table {
+  text-align: center;
+  table-layout: fixed;
+  visibility: hidden;
+}
+
+// When table finished loading add this class
+// to make it visible
+.tableVisible {
+  visibility: visible;
+}
+
+div.table-responsive {
+  height: 100%;
+  width: 100%;
+
+}
+
+// Contain the long text and make the cell scrollable
+table.table-bordered.dataTable tbody td div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Center the Header text
+table.table-bordered.dataTable th {
+  text-align: center;
+}
+
+.dataTables_wrapper .dataTables_processing {
+  top: 40%;
+  left: 50%;
+  width: 30%;
+  height: 130px;
+  margin-left: -20%;
+  margin-top: -25px;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 1.5em;
+  background: none;
+  border: none;
+}
+
+// Datatables Buttons
+a.editButton, a.editLoginButton, a.deleteButton, a.cancelInvitationButton, a.resendButton  {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  line-height: 34px;
+}
+
+// Participants Button
+a.participantsButton, a.authorsButton, a.websitesButton  {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  line-height: 34px;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 14px;
+  background: transparent;
+}
+
+a.participantsButton :hover, a.authorsButton :hover, a.websitesButton :hover {
+  background: #E1E0E6;
+}
+
+// Avatar Column Header
+table.table-bordered.dataTable th.avatarColumnHeader {
+  width: 42px;
+}
+
+// IsMember Column Header
+table.table-bordered.dataTable th.isMemberColumnHeader {
+  width: 55px;
+}
+
+// Edit Column Header
+table.table-bordered.dataTable th.editColumnHeader {
+  width: 50px;
+  border-color: transparent;
+}
+
+table.table-bordered.dataTable th.deleteColumnHeader {
+  width: 65px;
+  border-color: transparent;
+}
+
+
+// Delete button for remove from project
+table.table-bordered.dataTable th.removeFromProjectColumnHeader {
+  width: 190px;
+  border-color: transparent;
+}
+
+// Delete Button Header for remove from Publication
+table.table-bordered.dataTable th.removeFromPublicationHeader {
+  width: 220px;
+  border-color: transparent;
+}
+
+// Participants Column Header
+table.table-bordered.dataTable th.participantsColumnHeader {
+  width: 105px;
+}
+
+// Edit Login Information Column Header
+table.table-bordered.dataTable th.editLoginColumnHeader {
+  width: 120px;
+  border-color: transparent;
+}
+
+// Cancel Invitation Column Header
+table.table-bordered.dataTable th.cancelInvitationColumnHeader {
+  width: 125px;
+  border-color: transparent;
+}
+
+table.table-bordered.dataTable th.authorsColumnHeader {
+  width: 150px;
+}
+
+// Avatar Column Cell
+table.table-bordered.dataTable tbody td.avatarColumn {
+  margin: 0;
+  padding: 0;
+}
+
+// Cancel Invitation Cell
+table.table-bordered.dataTable tbody td.buttonColumn {
+  padding: 0;
+}
+
+table.table-bordered.dataTable tbody td.isMemberColumn {
+  padding-bottom: 0;
+}
+
+table.table-bordered.dataTable .isMember i {
+  color: #B1AF48;
+}

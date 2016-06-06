@@ -1,0 +1,29 @@
+<div class="nested-fields">
+  <%= f.simple_fields_for @participant do |part| %>
+
+    <div class="nested-fields">
+    <%= f.simple_fields_for @participant.person do |au| %>
+
+          <%= au.input :firstName, validate: true, error: false %>
+          <span class='help-block client_side_error' id="<%= "#{f.object_name}[person][firstName]" %>"></span>
+
+          <%= au.input :lastName, validate: true, error: false %>
+          <span class='help-block client_side_error' id="<%= "#{f.object_name}[person][lastName]" %>"></span>
+
+    <% end %>
+    </div>
+
+    <%= part.input :administrative_title, validate: true, error: false %>
+    <span class='help-block client_side_error' id="<%= "#{part.object_name}[administrative_title]" %>"></span>
+
+    <%= part.input :title, validate: true, error: false %>
+    <span class='help-block client_side_error' id="<%= "#{part.object_name}[title]" %>"></span>
+
+    <%= part.input :email, validate: true, error: false %>
+    <span class='help-block client_side_error' id="<%= "#{part.object_name}[email]" %>"></span>
+
+
+    <%= link_to_remove_association "remove", part %>
+    
+  <% end %>
+</div>

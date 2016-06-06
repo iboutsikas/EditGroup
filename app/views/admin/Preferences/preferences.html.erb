@@ -1,0 +1,20 @@
+<h1>Site Preferences</h1>
+
+<div class="x_panel" id="all_content">
+  <h2>Citation Style <small style="margin-left: 10px">Choose the citation style for the publications</small></h2>
+
+  <hr>
+
+    <%= simple_form_for(@citation_style, url: admin_preferences_update_path, remote: true) do |f| %>
+      <%= f.input :id, as: :hidden %>
+      <div class="row">
+        <div class="col-md-2">
+          Style:
+        </div>
+
+        <div class="col-md-2">
+          <%= select_tag :value, options_for_select(@styles, all_styles[@citation_style.value]), id: "citations_select2", style: "width: 100%;", label: "Style" %>
+        </div>
+      </div>
+    <% end %>
+</div>

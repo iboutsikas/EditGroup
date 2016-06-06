@@ -1,0 +1,11 @@
+<%= simple_form_for([:admin,@publication, @author],remote: true) do |f| %>
+
+    <%= render partial: 'admin/dashboard/errors',locals: {resource: @publication} %>
+
+    <div class="form-inputs">
+      <%= f.simple_fields_for :person do |p| %>
+        <% render  'admin/dashboard/person_fields', p: p %>
+      <% end %>
+    </div>
+
+<% end %>

@@ -1,0 +1,8 @@
+<%= c.input :name, validate: true, error: false, label: "Conference Name" %>
+<span class='help-block client_side_error' id="<%= "#{c.object_name}[name]" %>"></span>
+
+<%= c.input :publisher, validate: true, error: false %>
+<span class='help-block client_side_error' id="<%= "#{c.object_name}[publisher]" %>"></span>
+
+<%= c.input :location, validate: true, error: false %>
+<span class='help-block client_side_error' id="<%= "#{c.object_name}[location]" %>"></span>

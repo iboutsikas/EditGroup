@@ -1,0 +1,79 @@
+<!--
+<h2><%# t 'devise.invitations.edit.header' %></h2>
+
+<%# simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put } do |f| %>
+  <%# devise_error_messages! %>
+  <%# f.hidden_field :invitation_token %>
+
+  <%# f.input :password %>
+  <%# f.input :password_confirmation %>
+
+  <%# f.button :submit, t("devise.invitations.edit.submit_button") %>
+<%# end %>
+-->
+
+<%= javascript_tag 'invitations' %>
+
+<div class="container">
+  <div class="row">
+      <div class="center-block set_up_account_form" style="max-width: 450px" >
+
+        <h1>Welcome! Please set up you account</h1>
+        <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put } do |f| %>
+
+            <%= render partial: 'admin/dashboard/errors',locals: {resource: @member} %>
+
+            <div class="form-inputs">
+
+              <%= f.hidden_field :invitation_token %>
+
+              <%= f.simple_fields_for :person do |p| %>
+                  <%= render 'admin/dashboard/person_fields', p: p %>
+              <% end %>
+
+              <%= f.simple_fields_for :participant do |part| %>
+                  <%= render 'admin/dashboard/participant_fields', part: part %>
+              <% end %>
+
+              <%= f.input :bio, validate: true, error: false %>
+              <span class='help-block client_side_error' id="<%= "#{f.object_name}[bio]" %>"></span>
+
+              <h4>Upload your Avatar</h4>
+
+              <%= content_tag(:div, @member.avatar? ? image_tag(@member.avatar.url, class:"image_thumbnail") : fa_icon("user", class:"image_thumbnail") ) %>
+              <%= f.file_field :avatar %>
+
+              <h4>Personal Websites</h4>
+
+              <%= f.fields_for :personal_websites do |w| %>
+                  <%= w.association :website_template, label_method: :website_name,value_method: :id, prompt: "Choose website type", validate: true, error: false %>
+                  <span class='help-block client_side_error' id="<%= "#{w.object_name}[website_template_id]" %>"></span>
+
+                  <%= w.input :url, label: 'URL', validate: true, error: false %>
+                  <span class='help-block client_side_error' id="<%= "#{w.object_name}[url]" %>"></span>
+
+              <% end %>
+
+              <div>
+                <%= link_to_add_association 'add website', f, :personal_websites, partial: 'admin/dashboard/personal_website_fields',render_options: { locals: {f: f} } %>
+              </div>
+
+              <h4>Authentication</h4>
+
+              <%= f.input :email, required: true, error: false %>
+              <span class='help-block client_side_error' id="<%= "#{f.object_name}[email]" %>"></span>
+
+              <%= f.input :password, required: true, validate: true, error: false, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+              <span class='help-block client_side_error' id="<%= "#{f.object_name}[password]" %>"></span>
+
+              <%= f.input :password_confirmation, required: true, validate: true,error: false %>
+              <span class='help-block client_side_error' id="<%= "#{f.object_name}[password_confirmation]" %>"></span>
+
+              <%= f.button :submit, "Submit" %>
+
+            </div>
+        <% end %>
+
+        </div>
+      </div>
+</div>

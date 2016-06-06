@@ -1,0 +1,131 @@
+<div class="col-md-3 left_col">
+  <div class="left_col scroll-view">
+
+    <div class="navbar nav_title" style="border: 0;">
+      <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>EDIT Group </span></a>
+    </div>
+    <div class="clearfix"></div>
+
+    <!-- menu prile quick info -->
+    <div class="profile">
+      <div class="profile_pic">
+        <% if current_member.avatar? %>
+          <%= image_tag current_member.avatar.url, class: "img-circle profile_img" %>
+        <% else %>
+            <div class="img-circle profile_img"><i class="fa fa-user" aria-hidden="true" style="font-size: 45px; padding-left: 5px"></i></div>
+        <% end %>
+
+      </div>
+      <div class="profile_info" style="margin-bottom: 30px">
+        <span>Welcome,</span>
+        <h2> <%= "#{current_member.firstName} #{current_member.lastName}" %> </h2>
+      </div>
+    </div>
+    <!-- /menu prile quick info -->
+
+    <br/>
+
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+      <div class="menu_section">
+        <h3></h3>
+        <ul class="nav side-menu">
+          <li><a><i class="fa fa-bar-chart-o"></i> Charts </a></li>
+          <li>
+            <%= link_to admin_news_events_path do %>
+              <i class="fa fa-newspaper-o"></i> News
+            <% end %>
+          </li>
+          <li>
+            <a><i class="fa fa-users"></i> Members <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu" style="display: none">
+              <li>
+                <%= link_to admin_members_path do %>
+                    <i class="fa fa-users fa-fw"></i> All Members <span class="fa"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_members_invites_index_path do %>
+                    <i class="fa fa-envelope-square fa-fw" aria-hidden="true"></i> Invitations<span class="fa"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_website_templates_path do %>
+                    <i class="fa fa-cloud fa-fw" aria-hidden="true"></i> Website Types<span class="fa"></span>
+                <% end %>
+              </li>
+            </ul>
+
+          </li>
+            <li>
+              <%= link_to admin_projects_path do %>
+                  <i class="fa fa-circle-thin fa-fw"></i> Projects <span class="fa"></span>
+              <% end %>
+            </li>
+          <li>
+            <a><i class="fa fa-book"></i> Publications <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu" style="display: none">
+              <li>
+                <%= link_to  admin_publications_path do %>
+                  All Publications
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_conferences_path do %>
+                    Conferences
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_journals_path do %>
+                  Journals
+                <% end %>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <%= link_to admin_preferences_path do %>
+                <i class="fa fa-cog" aria-hidden="true"></i> Site Preferences
+            <% end %>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Back to main site -->
+
+      <div class="menu_section" style="bottom: 1px; left: 1px; ">
+        <h3>Back to Main Site</h3>
+        <ul class="nav side-menu">
+          <li>
+            <%= link_to root_path do %>
+                <i class="fa fa-home"></i> Home <span class="fa"></span>
+            <% end %>
+          </li>
+          <li><a><i class="fa fa-file"></i> Pages <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu" style="display: none">
+              <li> <%= link_to "About", about_path %>
+              </li>
+              <li><%= link_to "Members", members_path %>
+              </li>
+              <li><%= link_to "Projects", projects_path %>
+              </li>
+              <li><%= link_to "Publications", publications_path %>
+              </li>
+              <li><%= link_to "News-Events", news_path %>
+              </li>
+              <li><%= link_to "Contact Us", contact_us_path %>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <%= link_to destroy_member_session_path, method: :delete do %>
+              <i class="fa  fa-sign-out"></i> Log Out <span class="fa"></span>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- /sidebar menu -->
+  </div>
+</div>
+

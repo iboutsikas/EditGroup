@@ -1,0 +1,16 @@
+<%= simple_form_for([:admin,@member], url: member_invitation_path , remote: true) do |f| %>
+
+    <%= render partial: 'admin/dashboard/errors',locals: {resource: @member} %>
+
+    <%= f.simple_fields_for :person do |p| %>
+        <%= render 'admin/dashboard/person_fields', p: p %>
+    <% end %>
+
+    <%= f.input :email, required: true, validate: true, error: false %>
+    <span class='help-block client_side_error' id="<%= "#{f.object_name}[email]" %>"></span>
+
+    <h4>Administrator?</h4>
+
+    <%= f.input :isAdmin, label:"Admin?", validate: true, error: false %>
+    <span class='help-block client_side_error' id='error_text_isAdmin'></span>
+<% end %>

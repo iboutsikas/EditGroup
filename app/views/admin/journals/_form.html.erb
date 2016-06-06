@@ -1,0 +1,14 @@
+<%= simple_form_for([:admin,@journal], remote: true) do |f| %>
+
+  <%= render partial: 'admin/dashboard/errors',locals: {resource: @journal} %>
+
+  <div class="form-inputs">
+
+    <%= f.fields_for :publication do |p|%>
+        <%= render 'admin/dashboard/publication_fields', p: p %>
+    <% end %>
+
+    <%= render 'admin/dashboard/journal_fields', j: f %>
+  </div>
+
+<% end %>

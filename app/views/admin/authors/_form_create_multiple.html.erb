@@ -1,0 +1,10 @@
+<%= simple_form_for([:admin,@publication], url: admin_publication_create_multiple_path,remote: true) do |f| %>
+
+    <%= render partial: 'admin/dashboard/errors',locals: {resource: @publication} %>
+
+    <div class="form-inputs">
+      <%= link_to_add_association 'add person', f, :people, partial: 'admin/dashboard/person_fields_multiple',render_options: { locals: {au: f} } %>
+
+    </div>
+
+<% end %>

@@ -1,0 +1,16 @@
+<%= simple_form_for([:admin, @conference], remote: true) do |f| %>
+
+  <%= render partial: 'admin/dashboard/errors',locals: {resource: @conference} %>
+
+  <div class="form-inputs">
+
+    <%= f.fields_for :publication do |c|%>
+        <%= render 'admin/dashboard/publication_fields', p: c %>
+    <% end %>
+
+
+   <%= render 'admin/dashboard/conference_fields', c: f %>
+
+  </div>
+
+<% end %>

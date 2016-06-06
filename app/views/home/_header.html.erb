@@ -1,0 +1,61 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Navbar -->
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <!--logo-->
+      <a class="navbar-brand" href="#"><%= image_tag('logo_sample.png') %>
+      </a>
+
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "Members", members_path %></li>
+        <li><%= link_to "Projects", projects_path %></li>
+        <li><%= link_to "Publications", publications_path %></li>
+        <li><%= link_to "News-Events", news_path %></li>
+        <li><%= link_to "Contact Us", contact_us_path %></li>
+        <li>
+          <% if member_signed_in? %>
+            <%= link_to "Logout", destroy_member_session_path, method: :delete %>
+          <% else %>
+            <%= link_to "Login", new_member_session_path %>
+          <% end %>
+        </li>
+        <li>
+
+        </li>
+      </ul>
+      <!--search-->
+
+      <form class="navbar-form navbar-right" role="search">
+        <% if member_signed_in? %>
+            <%= link_to "Logged in as: #{current_member.firstName} #{current_member.lastName}", root_path, id:"logged_in_label" %>
+        <%  end %>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

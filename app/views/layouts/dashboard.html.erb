@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EDITGroupWebsite</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'admin/dashboard' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'admin'%>
+  <%= csrf_meta_tags %>
+</head>
+<body class="nav-md">
+
+  <% flash.each do |name, msg| %>
+    <!--div class="alert alert-success" id="flash_notification">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+    </div-->
+    <script>
+      showNotification(type = "notice",title = "skata",text = "<%= msg %>");
+    </script>
+  <% end %>
+
+  <div class="container body">
+    <div class="main_container">
+
+      <%= render 'side_menu'%>
+      <%= render 'header' %>
+
+      <div class="right_col" role="main">
+        <div class="">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12"  id="content_without_footer">
+                <%= yield %>
+            </div>
+          </div>
+          <%= render 'footer' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

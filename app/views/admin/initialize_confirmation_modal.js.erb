@@ -1,0 +1,15 @@
+
+<% if modal_type == "remove_publication" %>
+
+  $("#confirmation_modal .modal-body").html("By deleting the memeber, this publication will not belong to any members. Do you also want to remove the entire publication from the system?");
+  var buttons = "<a data-remote='true' rel='nofollow' data-method='delete' class='btn btn-danger' href='/admin/publications/<%= publication_id %>/authors/<%= author_id %>'>Remove Only Member</a> <a rel='nofollow' data-method='post' class='btn btn-danger' href='/admin/publications/<%= publication_id %>/authors/delete_publication' style='float: left'>Remove Entire Publication</a>";
+
+<% elsif modal_type == "remove_author" %>
+
+  $("#confirmation_modal .modal-body").html("Are you sure you want to remove this Author?");
+  var buttons = "<a data-remote='true' rel='nofollow' data-method='delete' class='btn btn-danger' href='/admin/publications/<%= publication_id %>/authors/<%= author_id %>'>Remove Author</a> ";
+
+<% end %>
+
+$("#confirmation_modal #modal_confirmation_buttons").html(buttons);
+showConfirmationModal();

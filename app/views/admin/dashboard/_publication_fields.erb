@@ -1,0 +1,13 @@
+<%= p.input :title, validate: true, error: false, input_html: { id: "publication_title" }, label: "Publication Title" %>
+<span class='help-block client_side_error' id="<%= "#{p.object_name}[title]" %>"></span>
+
+<%= p.input :date, validate: true, error: false, input_html: { id: "publication" }, label: "Publication Date" %>
+<span class='help-block client_side_error' id="<%= "#{p.object_name}[date]" %>"></span>
+
+<%= p.input :pages, validate: true, error: false, input_html: { id: "publication_pages" } %>
+<span class='help-block client_side_error' id="<%= "#{p.object_name}[pages]" %>"></span>
+
+<%= p.input :abstract, validate: true, error: false, input_html: { id: "publication_abstract" } %>
+<span class='help-block client_side_error' id="<%= "#{p.object_name}[abstract]" %>"></span>
+
+<%= p.input :doi, error: false, input_html: { id: "publication_doi" }, label: "DOI" %>

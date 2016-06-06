@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-md-10">
+    <h1>Website Types</h1>
+  </div>
+  <div class="col-md-2">
+    <div class="allNewButtons">
+      <div>
+        <%= link_to ("<i class='fa fa-plus'></i> New Website Type").html_safe, new_admin_website_template_path,
+                    remote: true, class: "btn btn-success", id: "newBtn", onclick: 'newButtonPressed("Website Type")'  %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="x_panel" id="all_content">
+
+
+
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered dt-responsive nowrap" id="website_templates-table" data-source="<%= admin_website_templates_path(format: :json) %>"
+           data-default_sort_column="1" data-default_sort_direction="asc">
+      <thead>
+      <tr>
+        <th data-orderable="false" class="avatarColumnHeader">Logo</th>
+        <th>Website Name</th>
+        <th data-orderable="false" class="editColumnHeader"></th>
+        <th data-orderable="false" class="deleteColumnHeader"></th>
+      </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="website_template" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel"></h4>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="saveModalBtn">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

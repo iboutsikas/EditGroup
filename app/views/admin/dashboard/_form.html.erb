@@ -1,0 +1,19 @@
+<%= simple_form_for([:admin,@project], remote: true) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :motto %>
+    <%= f.input :description %>
+    <%= f.input :date_started %>
+    <%= f.input :website %>
+    <%= f.input :video %>
+  </div>
+
+  <%= render partial: 'participant_fields', locals: {f: f} %>
+
+  <div>
+    <%= link_to_add_association 'add participant', f, :participants, partial: 'participant_fields',render_options: { locals: {f: f} } %>
+  </div>
+
+<% end %>
