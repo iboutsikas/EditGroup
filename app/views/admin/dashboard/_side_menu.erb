@@ -2,7 +2,7 @@
   <div class="left_col scroll-view">
 
     <div class="navbar nav_title" style="border: 0;">
-      <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>EDIT Group </span></a>
+      <%= link_to "<i class='fa fa-paw'></i> <span>EDIT Group </span>".html_safe, admin_path, class: 'site_title' %>
     </div>
     <div class="clearfix"></div>
 
@@ -29,14 +29,28 @@
     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
       <div class="menu_section">
-        <h3></h3>
+        <h3>Administator</h3>
         <ul class="nav side-menu">
-          <li><a><i class="fa fa-bar-chart-o"></i> Charts </a></li>
+          <li>
+            <a> <i class="fa fa-bar-chart-o"></i> Charts <span class="fa fa-chevron-down"></span> </a>
+            <ul class="nav child_menu" style="display: none">
+              <li>
+                <!-- LINK HERE THANOS  -->
+                <a>Charts Data</a>
+              </li>
+              <li>
+                <!-- HERE TOO THANOS  -->
+                <a> Charts Website</a>
+              </li>
+            </ul>
+          </li>
+
           <li>
             <%= link_to admin_news_events_path do %>
               <i class="fa fa-newspaper-o"></i> News
             <% end %>
           </li>
+
           <li>
             <a><i class="fa fa-users"></i> Members <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu" style="display: none">
@@ -58,11 +72,13 @@
             </ul>
 
           </li>
-            <li>
-              <%= link_to admin_projects_path do %>
-                  <i class="fa fa-circle-thin fa-fw"></i> Projects <span class="fa"></span>
-              <% end %>
-            </li>
+
+          <li>
+            <%= link_to admin_projects_path do %>
+                <i class="fa fa-circle-thin fa-fw"></i> Projects <span class="fa"></span>
+            <% end %>
+          </li>
+
           <li>
             <a><i class="fa fa-book"></i> Publications <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu" style="display: none">
@@ -83,11 +99,13 @@
               </li>
             </ul>
           </li>
+
           <li>
             <%= link_to admin_preferences_path do %>
                 <i class="fa fa-cog" aria-hidden="true"></i> Site Preferences
             <% end %>
           </li>
+
         </ul>
       </div>
 
@@ -128,4 +146,3 @@
     <!-- /sidebar menu -->
   </div>
 </div>
-

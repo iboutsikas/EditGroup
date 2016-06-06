@@ -116,6 +116,12 @@ table.table-bordered.dataTable th.editLoginColumnHeader {
   border-color: transparent;
 }
 
+// Resend Invitation Column Header
+table.table-bordered.dataTable th.resendColumnHeader {
+  width: 125px;
+  border-color: transparent;
+}
+
 // Cancel Invitation Column Header
 table.table-bordered.dataTable th.cancelInvitationColumnHeader {
   width: 125px;
@@ -141,6 +147,14 @@ table.table-bordered.dataTable tbody td.isMemberColumn {
   padding-bottom: 0;
 }
 
-table.table-bordered.dataTable .isMember i {
-  color: #B1AF48;
+table.table-bordered.dataTable th.rowNumberHeader {
+  width: 20px;
+}
+
+table.table-bordered.dataTable th.publicationDateHeader {
+  width: 80px;
+}
+
+table.table-bordered.dataTable th.publicationTypeHeader {
+  width: 60px;
 }

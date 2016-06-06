@@ -226,7 +226,8 @@
       out_class: "fadeOut"
     type: type
     title: title
-    text: text)
+    text: text
+    delay: 3000)
   return
 
 @showConfirmationModal = () ->

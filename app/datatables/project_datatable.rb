@@ -28,6 +28,7 @@ class ProjectDatatable < AjaxDatatablesRails::Base
       [
         # comma separated list of the values for each cell of a table row
         # example: record.attribute,
+        "",
         safe_show(record.title),
         safe_show(record.motto),
         safe_show(record.description),
@@ -41,7 +42,7 @@ class ProjectDatatable < AjaxDatatablesRails::Base
                 class:"btn btn-info btn-xs editButton", onclick: 'editButtonPressed("Project")'),
 
         link_to(("<i class='fa fa-trash-o'></i> Delete").html_safe, admin_project_path(record), method: :delete,
-                remote: true, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs deleteButton" )
+                remote: true, data: { confirm: 'Are you sure you want to delete this project?' }, class: "btn btn-danger btn-xs deleteButton" )
       ]
     end
   end

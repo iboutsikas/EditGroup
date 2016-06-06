@@ -18,7 +18,7 @@ module Admin::DashboardHelper
   end
 
   def isMember_show(author)
-    content_tag(:div, author.isMember? ? ("<i class='fa fa-star' style='font-size: 20px'><p style='display: none'>a</p></i>").html_safe : "", class: "isMember")
+    content_tag(:div, author.isMember? ? ("<i class='fa fa-users' style='font-size: 20px'><p style='display: none'>a</p></i>").html_safe : "", class: "isMember")
   end
 
   # Methods for showing Invitation Status in datatables

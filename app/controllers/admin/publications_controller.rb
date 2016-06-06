@@ -76,7 +76,7 @@ class Admin::PublicationsController < Admin::DashboardController
     @publication.destroy
 
     respond_to do |format|
-      format.js { render js: "redraw_table();
+      format.js { render js: "hide_and_redraw();
                               showNotification(type = 'error', title = 'Publication Deleted!', text = 'Deleted #{@publication.title}' );"  }
     end
   end

@@ -33,6 +33,7 @@ class ParticipationDatatable < AjaxDatatablesRails::Base
       [
           # comma separated list of the values for each cell of a table row
           # example: record.attribute,
+          "",
           safe_show(record.participant.title),
           safe_show(record.person.firstName),
           safe_show(record.person.lastName),
@@ -42,7 +43,7 @@ class ParticipationDatatable < AjaxDatatablesRails::Base
                   remote: true,  class:"btn btn-info btn-xs editButton", onclick: 'editButtonPressed("Participant")' ),
 
           link_to(("<i class='fa fa-trash-o'></i> Remove From this Project").html_safe, admin_project_participation_path(project,record),
-                  remote: true, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs deleteButton" )
+                  remote: true, method: :delete, data: { confirm: 'Are you sure yo want to delete this project participant?' }, class: "btn btn-danger btn-xs deleteButton" )
       ]
     end
   end

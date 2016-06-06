@@ -4,7 +4,7 @@ $ ->
   default_sort_direction = $(".table").data "default_sort_direction"
 
   # Initialize datatable
-  $("table").DataTable
+  tabled = $("table").DataTable
     oLanguage:
       sProcessing: "<div class='animated pulse'><i class='fa fa-database fa-2x' aria-hidden='true'></i><p>Loading..</p></div>"
     processing: true
@@ -31,6 +31,8 @@ $ ->
       $("table td .cancelInvitationButton").parent().addClass("buttonColumn")
       $("table td .website_logo").parent().addClass("buttonColumn")
       $("table td .isMember").parent().addClass("isMemberColumn")
+    rowCallback: ( row, data, index ) ->
+      $(row).children().first().html(index + 1)
     fnInitComplete: (settings, json) ->
       $("table").addClass("tableVisible animated fadeIn")
 

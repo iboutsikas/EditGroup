@@ -32,6 +32,7 @@ class MemberDatatable < AjaxDatatablesRails::Base
   def data
     records.map do |record|
       [
+        "",
         avatar_show(record, image_style="width: 25px; height: 25px; padding-top: 0px;", default_image_style="font-size: 28.9px", div_class="avatar"),
         safe_show(record.participant.title),
         safe_show(record.person.firstName),
@@ -47,9 +48,9 @@ class MemberDatatable < AjaxDatatablesRails::Base
                 remote: true, class:"btn btn-warning btn-xs editLoginButton", onclick: 'editButtonPressed("Member")'),
 
         link_to_if(record == current_member, ("<i class='fa fa-trash-o'></i> Delete").html_safe, "#", method: :delete,
-                   remote: true, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs deleteButton disabled" ) {
+                   remote: true, data: { confirm: 'Are you sure you want to delete yourself? dont.' }, class: "btn btn-danger btn-xs deleteButton disabled" ) {
           link_to(("<i class='fa fa-trash-o'></i> Delete").html_safe, admin_member_path(record), method: :delete,
-                  remote: true, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs deleteButton" ) }
+                  remote: true, data: { confirm: 'Are you sure ? you want to delete this member' }, class: "btn btn-danger btn-xs deleteButton" ) }
       ]
     end
   end

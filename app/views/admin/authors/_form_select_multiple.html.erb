@@ -7,7 +7,7 @@
       <%# hidden_field_tag :authenticity_token, form_authenticity_token %>
       <%= f.input :publication_id, as: :hidden %>
 
-      <%= select_tag :people, options_from_collection_for_select(@people, :id, "full_name"), id: "select2_box",
+      <%= select_tag :people, options_from_collection_for_select(@people, :id, "full_name_for_select2"), id: "select2_box",
                      include_blank: true, style: "width: 100%;", html_options: {multiple: true} %>
     </div>
 

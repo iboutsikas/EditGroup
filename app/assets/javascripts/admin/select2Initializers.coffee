@@ -19,6 +19,7 @@ $ ->
 
       # inialize select2
       $('#select2_box').select2
+        templateResult: withImages
         allowClear: true
         theme: 'bootstrap'
         multiple: true
@@ -43,3 +44,12 @@ $ ->
   # always last or search doesn't work in select2
   $.fn.modal.Constructor::enforceFocus = ->
     return
+
+  withImages = (thing) ->
+    console.log thing
+    if thing.text.charAt(0) == "~"
+     newText = thing.text.substring 1
+     return $('<span></span>').append($('<i class="fa fa-users"></i>')).append(" " + newText);
+
+    else
+      return thing.text

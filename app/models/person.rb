@@ -12,9 +12,16 @@ class Person < ActiveRecord::Base
     self.firstName + " " + self.lastName
   end
 
+  def full_name_for_select2
+    if self.isMember?
+      "~" + self.firstName + " " + self.lastName
+    else
+      full_name
+    end
+  end
+
   def isMember?
-    @member = Member.find_by_sql(["select person_id from members where person_id = ?", self.id])
-    !@member.empty?
+    !self.member.nil?
   end
 
 end

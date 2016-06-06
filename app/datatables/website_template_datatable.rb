@@ -23,12 +23,13 @@ class WebsiteTemplateDatatable < AjaxDatatablesRails::Base
   def data
     records.map do |record|
       [
+          "",
           logo_show(record, image_style="width: 29px; height: 29px;", default_image_style="font-size: 28.9px", div_class="website_logo"),
           safe_show(record.website_name),
           link_to(("<i class='fa fa-pencil'></i> Edit").html_safe, edit_admin_website_template_path(record), remote: true,
                   class:"btn btn-info btn-xs editButton", onclick: 'editButtonPressed("Website Template")' ),
           link_to(("<i class='fa fa-trash-o'></i> Delete").html_safe, admin_website_template_path(record), remote: true,
-                  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs deleteButton" )
+                  method: :delete, data: { confirm: 'Are you sure you want to delete this website type? ' }, class: "btn btn-danger btn-xs deleteButton" )
       ]
     end
   end

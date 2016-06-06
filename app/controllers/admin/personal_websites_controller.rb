@@ -72,7 +72,7 @@ class Admin::PersonalWebsitesController < Admin::DashboardController
   def destroy
     @personal_website.destroy
     respond_to do |format|
-      format.js { render js: "redraw_table();
+      format.js { render js: "hide_and_redraw();
                               showNotification(type = 'error', title = 'Personal Website Deleted!', text = 'Deleted #{@personal_website.website_template.website_name}' );"  }
     end
   end

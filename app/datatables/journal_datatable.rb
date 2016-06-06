@@ -33,8 +33,9 @@ class JournalDatatable < AjaxDatatablesRails::Base
       [
           # comma separated list of the values for each cell of a table row
           # example: record.attribute,
+          "",
           safe_show(record.publication.title),
-          safe_show(record.publication.date),
+          safe_show(record.publication.date.strftime("%B %Y")),
           safe_show(record.title),
           safe_show(record.volume),
           safe_show(record.issue),
@@ -43,7 +44,7 @@ class JournalDatatable < AjaxDatatablesRails::Base
           link_to(("<i class='fa fa-pencil'></i> Edit").html_safe, edit_admin_journal_path(record), remote: true,
                   class:"btn btn-info btn-xs editButton", onclick: 'editButtonPressed("Journal")'),
           link_to(("<i class='fa fa-trash-o'></i> Delete").html_safe, admin_publication_path(record.publication),
-                  method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs deleteButton" )
+                  method: :delete, remote: true, data: { confirm: 'Are you sure you want to delete this journal?' }, class: "btn btn-danger btn-xs deleteButton" )
       ]
     end
   end

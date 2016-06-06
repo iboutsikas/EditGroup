@@ -63,7 +63,7 @@ class Admin::NewsEventsController < Admin::DashboardController
   def destroy
     @news_event.destroy
     respond_to do |format|
-      format.js { render js: "redraw_table();
+      format.js { render js: "hide_and_redraw();
                               showNotification(type = 'error', title = 'News-Event Deleted!', text = 'Deleted #{@news_event.title}' );"  }
     end
   end

@@ -28,13 +28,14 @@ class NewsEventDatatable < AjaxDatatablesRails::Base
       [
           # comma separated list of the values for each cell of a table row
           # example: record.attribute,
+          "",
           safe_show(record.date),
           safe_show(record.title),
           safe_show(record.description),
           link_to(("<i class='fa fa-pencil'></i> Edit").html_safe, edit_admin_news_event_path(record), remote: true,
                   class:"btn btn-info btn-xs editButton", onclick: 'editButtonPressed("News-Events")'),
           link_to(("<i class='fa fa-trash-o'></i> Delete").html_safe, admin_news_event_path(record), method: :delete,
-                  remote: true, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs deleteButton" )
+                  remote: true, data: { confirm: 'Are you sure you want to delete this news/event?' }, class: "btn btn-danger btn-xs deleteButton" )
       ]
     end
   end

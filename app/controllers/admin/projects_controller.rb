@@ -65,7 +65,7 @@ class Admin::ProjectsController < Admin::DashboardController
     @project.destroy
 
     respond_to do |format|
-      format.js { render js: "redraw_table();
+      format.js { render js: "hide_and_redraw();
                               showNotification(type = 'error', title = 'Project Deleted!', text = 'Deleted #{@project.title}' );"  }
     end
   end

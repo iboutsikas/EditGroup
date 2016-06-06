@@ -28,6 +28,7 @@ class AuthorDatatable < AjaxDatatablesRails::Base
       [
           # comma separated list of the values for each cell of a table row
           # example: record.attribute,
+          "",
           isMember_show(record.person),
           safe_show(record.person.lastName),
           safe_show(record.person.firstName),
@@ -52,7 +53,7 @@ class AuthorDatatable < AjaxDatatablesRails::Base
 
   def get_raw_records
     # insert query here
-    Author.includes(:person).references(:person).where("publication_id = ?", publication.id)
+    Author.includes(:person).references(:person).includes(:participant).references(:participant).includes(:member).references(:member).where("publication_id = ?", publication.id)
   end
 
   # ==== Insert 'presenter'-like methods below if necessary

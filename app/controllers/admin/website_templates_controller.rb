@@ -58,7 +58,7 @@ class Admin::WebsiteTemplatesController < Admin::DashboardController
   def destroy
     @website_template.destroy
     respond_to do |format|
-      format.js { render js: "redraw_table();
+      format.js { render js: "hide_and_redraw();
                               showNotification(type = 'error', title = 'Website Type Deleted!', text = 'Deleted #{@website_template.website_name}' );"  }
     end
   end

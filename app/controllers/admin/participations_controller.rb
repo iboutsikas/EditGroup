@@ -114,7 +114,7 @@ class Admin::ParticipationsController < Admin::DashboardController
   def destroy
     @participation.destroy
     respond_to do |format|
-      format.js { render js: "redraw_table();
+      format.js { render js: "hide_and_redraw();
                               showNotification(type = 'error', title = 'Project Participant Removed!',
                               text = 'Removed #{@participation.person.full_name} from project #{@project.title}' );"  }
     end

@@ -35,6 +35,7 @@ class InviteStatusDatatable < AjaxDatatablesRails::Base
       [
           # comma separated list of the values for each cell of a table row
           # example: record.attribute,
+          "",
           safe_show(record.person.full_name),
           safe_show(record.email),
           record.isAdmin,
@@ -48,7 +49,7 @@ class InviteStatusDatatable < AjaxDatatablesRails::Base
           link_to_if(record.invitation_pending?, ("<i class='fa fa-trash-o'></i> Cancel Invitation").html_safe, admin_member_path(record), method: :delete,
                      remote: true, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs cancelInvitationButton" ) {
             link_to(("<i class='fa fa-trash-o'></i> Cancel Invitation").html_safe, "#", method: :delete,
-                    remote: true, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs cancelInvitationButton disabled" ) } ,
+                    remote: true, data: { confirm: 'Are you sure you want to cancel this invitation?' }, class: "btn btn-danger btn-xs cancelInvitationButton disabled" ) } ,
       ]
     end
   end

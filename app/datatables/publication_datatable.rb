@@ -27,8 +27,9 @@ class PublicationDatatable < AjaxDatatablesRails::Base
       [
           # comma separated list of the values for each cell of a table row
           # example: record.attribute,
+          "",
           safe_show(record.title),
-          safe_show(record.date),
+          safe_show(record.date.strftime("%B %Y")),
           safe_show(record.type),
           link_to(("<i class='fa fa-users'></i> Add/Remove Authors").html_safe, admin_publication_authors_path(record),
                   class: "btn btn-default btn-xs authorsButton"),
@@ -37,7 +38,7 @@ class PublicationDatatable < AjaxDatatablesRails::Base
                   class:"btn btn-info btn-xs editButton", onclick: 'editButtonPressed("Publication")'),
 
           link_to(("<i class='fa fa-trash-o'></i> Delete").html_safe, admin_publication_path(record), method: :delete,
-                  remote: true, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs deleteButton" )
+                  remote: true, data: { confirm: 'Are you sure you want to delete this publication?' }, class: "btn btn-danger btn-xs deleteButton" )
       ]
     end
   end
