@@ -1,30 +1,9 @@
 <div class="row col-md-offset-2 col-md-8">
-    <h1>The Group</h1>
+    <h1 class="highlight-0">The Group</h1>
     <p>
       The constant changes in societys needs, the global demands for knowledge and especially the rapid advancements of Information and Communication Technologies (ICT) are changing educations structures, cultures and processes. Here, at CITY College, the International Faculty of the University of Sheffield, we are committed to providing high quality education and strive to be internationally recognised for academic excellence, driven by pure and applied research. In our constant effort to improve the educational quality, the utilisation of technology is one of our strategic objectives since it provides innovative alternatives to teach, learn, communicate, and share knowledge.
     </p>
     <p>
       The EDucational InformaTics - EDIT is a multidisciplinary research group of CITY College and is directed by the Department of Computer Science. In collaboration with the South-East European Research Centre (SEERC), EDIT engages in academically rigorous and socially meaningful research focused on applications of information and communication technologies and instructional design for any educational environment. Our goal is to investigate innovative methods that facilitate teaching and foster learning and meet learners' growing needs, as well as, social and technological changes of the 21st century.
     </p>
-</div>
-
-<div class="row">
-  <div class="row col-md-offset-2 col-md-4">
-    <h3>Recent news</h3>
-    <ul id="recent-news">
-      <% @RecentNews.each do |item| %>
-        <%= render "home/partials/newsListPartial", newsItem: item  %>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="row col-md-4">
-    <h3>Recent publications</h3>
-    <ul id="recent-publications">
-      <% @RecentPublications.each do |item| %>
-        <%= render "home/partials/publicationListPartial", publication: item  %>
-      <% end %>
-    </ul>
-  </div>
-
 </div>

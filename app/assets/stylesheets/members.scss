@@ -1,3 +1,27 @@
-#member-avatar-thumb {
-  max-width: 50px;
+@import "bootstrap/mixins";
+
+.member-display {
+  @extend .row;
+  @extend .col-md-12;
+
+  .member-list-image {
+    @extend .col-md-1;
+    padding: 0px;
+    #member-avatar-thumb {
+      //max-width: 150px;
+      margin: 0 auto;
+    }
+  }
+
+  .member-list-content {
+    @extend .col-md-10;
+    h3 {
+      margin-top: 0px;
+      border-bottom: 2px solid $color-secondary-2-1;
+    }
+  }
+
+  .member-list-websites {
+    @extend .col-md-1;
+  }
 }

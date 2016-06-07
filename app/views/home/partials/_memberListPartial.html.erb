@@ -1,10 +1,10 @@
-<div class="col-md-1">
+<div class="member-list-image">
   <%= image_tag(member.avatar.url, class: "img-responsive", id: "member-avatar-thumb")%>
 </div>
-<div class="col-md-10">
+<div class="member-list-content">
   <h3><%= member.participant.title + member.full_name %></h3>
   <p><%= member.bio.truncate(300, omission: '...') %></p>
 </div>
-<div class="col-md-1">
+<div class="member-list-websites">
 
 </div>

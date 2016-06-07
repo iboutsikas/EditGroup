@@ -10,9 +10,16 @@
   font-size: calculateRem($size);
 }
 
+@function text-contrast($background-color) {
+  @if lightness($background-color) <  50% {
+    @return lighten($background-color, 70%);
+  } @else {
+    @return darken($background-color, 90%);
+  }
+}
+
 // border radius
 
 @mixin border-radius($radius:.25em) {
   border-radius: $radius;
 }
-

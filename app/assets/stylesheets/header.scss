@@ -1,20 +1,39 @@
 @import "partials/variables";
+@import "partials/mixins";
+$nav-color : $color-secondary-1-3;
 #navigation {
   border-radius: 0px !important;
+  background-color: $nav-color;
+  border-color: darken($nav-color, 10%);
   &.affix {
     top: 0px;
     width: 100%;
     z-index: 15;
   }
+
+  li {
+    a {
+      color: text-contrast($nav-color);
+
+      &:hover {
+        background-color: $color-secondary-1-1;
+        color: text-contrast($color-secondary-1-1);
+      }
+    }
+  }
 }
 
 #brand {
+  color: text-contrast($nav-color);
+  font-size: 1.8em;
+  font-weight: bold;
   span {
-    color: $main-color;
+    color: $color-primary-0;
   }
   &:hover {
+    color: $color-primary-1;
     span{
-      color: $accent-color-1;
+      color: $color-primary-1;
     }
   }
 }
