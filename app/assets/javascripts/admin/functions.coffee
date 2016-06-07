@@ -36,7 +36,8 @@
     invalid: (element, messages) ->
       # fail silently if judge validation doen't work for email
       if elem.name == "member[email]"
-        return true if messages[0] == "Judge validation for Member#email not allowed"
+        message = messages[0]
+        return true if message == "Judge validation for Member#email not allowed" || message == "has already been taken"
 
       element.style.border = '1px solid #a94442'
       $("label[for='#{element.id}']").css('color','#a94442')
@@ -139,10 +140,11 @@
 #
 ###
 @bind_modal_submit_default =  () ->
-  $("#saveModalBtn").unbind()
+  saveModalBtn = $("#saveModalBtn")
+  saveModalBtn.unbind()
   $('.modal').first().off('keypress')
 
-  $("#saveModalBtn").click ->
+  saveModalBtn.click ->
     if validateForm('form')
       formSubmit()
     else
@@ -151,7 +153,7 @@
   $('.modal').first().keypress (e) ->
     if e.which == 13
       e.preventDefault()
-      $("#saveModalBtn").trigger 'click'
+      saveModalBtn.trigger 'click' if !saveModalBtn.is(":disabled")
 
 ###*
 # Bind the modal button in order to handle the special case of selecting multiple
@@ -231,15 +233,31 @@
     delay: 3000)
   return
 
+###*
+# Show confirmation modal.
+###
 @showConfirmationModal = () ->
   $('#confirmation_modal').modal 'show'
 
+###*
+# When a delete button required confirmation, this function will intercept it,
+# make a copy of the button, put it on the confirmation modal and show it.
+# The button created will no require confirmation.
+#
+# @params {string} element : a delete button that requires confirmation. Has two
+#                             data attributes, the message to be displayed on the modal
+#                             and the text to be put on the button.
+#
+###
 @confirmation_delete = (element) ->
   message = element.data('confirm')
-  button_text = element.data('confirm-button')
 
+  # if no message exists, continue the action normally
   return true unless message
 
+  button_text = element.data('confirm-button')
+
+  # clones the button, removes the confirmation, and addes new text
   button = element.clone()
     .removeAttr('class')
     .removeAttr('data-confirm')
@@ -250,6 +268,12 @@
   $('#confirmation_modal #modal_confirmation_buttons').html button
   $("#confirmation_modal").modal 'show'
 
+###*
+# Sumbits the form via js that changes the priority in authors/participants.
+#
+# @params {html_element} form : a form html element that contains a priority input
+#
+###
 @changePriority = (form) ->
   $.ajax
     url: form.action
