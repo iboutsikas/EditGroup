@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       post 'create_from_db', to: 'authors#create_from_db'
       patch 'create_multiple', to: 'authors#create_multiple'
       post 'authors/delete_publication', to: 'authors#delete_publication'
+      #patch 'authors/:id/edit_priority', to: 'authors#edit_priority'
       resources :authors, except: :create
     end
 

@@ -1,4 +1,4 @@
-<%= simple_form_for([:admin,@website_template], remote: true, html: { multipart: true }) do |f| %>
+<%= simple_form_for([:admin,@website_template], remote: true, html: { multipart: true, id: "form_main" }) do |f| %>
     <%= render partial: 'admin/dashboard/errors',locals: {resource: @website_template} %>
 
     <div class="form-inputs">

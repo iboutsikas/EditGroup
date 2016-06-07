@@ -182,7 +182,8 @@
 #
 ###
 @formSubmit = () ->
-  $('form').submit()
+  #$('form').submit()
+  $('#form_main').submit()
 
 ###*
 # Submit the form. First select the select2 component and get
@@ -248,3 +249,14 @@
   $('#confirmation_modal .modal-body').html(message)
   $('#confirmation_modal #modal_confirmation_buttons').html button
   $("#confirmation_modal").modal 'show'
+
+@changePriority = (form) ->
+  $.ajax
+    url: form.action
+    headers:
+      Accept: 'text/javascript; charset=utf-8'
+      'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+    type: 'PATCH'
+    dataType: 'script'
+    data:
+      "#{form.dataset.form_type}": "priority": form.priority.value
