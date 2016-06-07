@@ -14,4 +14,7 @@ class PublicationsController < ApplicationController
     @publication = Publication.find(params[:id])
   end
 
+  def dummy
+
+  end
 end
