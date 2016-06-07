@@ -31,8 +31,8 @@ class ConferenceDatatable < AjaxDatatablesRails::Base
           # example: record.attribute,
           "",
           safe_show(record.publication.title),
-          safe_show(record.publication.date.strftime("%B %Y")),
           safe_show(record.name),
+          safe_show(record.publication.date.strftime("%B %Y")),
           link_to(("<i class='fa fa-users'></i> Add/Remove Authors").html_safe, admin_publication_authors_path(record.publication),
                   class: "btn btn-default btn-xs authorsButton"),
 

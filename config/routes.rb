@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     get 'members/invite', to: 'members#invite'
     post 'members/:id/resend_invitation', to: 'members#resend_invitation', as: 'member/resend_invitation'
 
+    get 'member/destroy_check_for_publications', to: 'members#destroy_check_for_publications'
+    delete 'member/:id/destroy_with_publications', to: 'members#destroy_with_publications'
     resources :members do
       post 'personal_websites.json/datatables', to: 'personal_websites#index'
       resources :personal_websites

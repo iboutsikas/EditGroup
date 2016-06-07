@@ -35,6 +35,11 @@ class Member < ActiveRecord::Base
     self.participant.person.full_name
   end
 
+  def publications_to_delete
+    ####### RETURNIGN ALL PUBLIATIONS CHANGE
+    Publication.find_by_sql(["select * from publications, authors, members where publications.id = authors.publication_id and authors.person_id = members.person_id and authors.person_id = ?", self.person_id])
+  end
+
   def resend_invitation(sender)
     if self.invitation_accepted_at.nil?
       Member.invite!({email: self.email}, sender)
