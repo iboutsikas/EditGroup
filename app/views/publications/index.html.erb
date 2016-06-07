@@ -1,0 +1,5 @@
+<section id="cd-timeline" class="cd-container">
+  <% @publications.each do |publication| %>
+  <%= render "publications/partials/timelinePartial", publication: publication %>
+  <% end %>
+</section>
