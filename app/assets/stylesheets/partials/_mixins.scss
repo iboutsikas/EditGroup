@@ -23,3 +23,25 @@
 @mixin border-radius($radius:.25em) {
   border-radius: $radius;
 }
+
+//fonts
+@font-face {
+  font-family: 'Blake';
+  src:url('Blake.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Blake-Bold';
+  src:url('BlakeBd.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Blake-Lite';
+  src:url('BlakeLt.ttf');
+  font-weight: normal;
+  font-style: normal;
+}

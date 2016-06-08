@@ -1,11 +1,13 @@
-#recent-news {
-  list-style-type: none;
-  padding-left: 0px;
-  margin-left: 0px;  
+.home-main-content {
+  @extend .col-md-8;
 }
 
-#recent-publications{
-  list-style-type: none;
-  padding-left: 0px;
-  margin-left: 0px;
+.home-carousel {
+  @extend .col-md-4;
+}
+
+h1.home-heading {
+  display: block;
+  text-align: center;
+  border-bottom: 1px solid $color-secondary-1;
 }

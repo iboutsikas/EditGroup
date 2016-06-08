@@ -4,30 +4,26 @@
   <!-- Navbar -->
   <nav class="navbar navbar-inverse" id="navigation" data-spy="affix">
     <div class="container"><!-- Overall Container -->
-
-
       <div class="navbar-header"> <!-- Brand and Collapsed Button -->
-        <a class="navbar-brand" id ="brand" href="/"><span>ED</span>IT</a>
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-      </div>
+      </div><!--navbar-header -->
 
+        <div class="navbar-collapse collapse"> <!-- Navigation links, collapsible -->
+          <ul class="nav navbar-nav">
+            <li<% if(request.fullpath == root_path)%> class="active" <%end%>><%=link_to "HOME", root_path %></li>
+            <li<% if(request.fullpath == members_path)%> class="active" <%end%>><%=link_to "MEMBERS", members_path %></li>
+            <li<% if(request.fullpath == news_path)%> class="active" <%end%>><%=link_to "NEWS", news_path %></li>
+            <li<% if(request.fullpath == projects_path)%> class="active" <%end%>><%=link_to "PROJECTS", projects_path %></li>
+            <li<% if(request.fullpath == publications_path)%> class="active" <%end%>><%=link_to "PUBLICATIONS", publications_path %></li>
+            <li<% if(request.fullpath == about_path)%> class="active" <%end%>><%=link_to "ABOUT", about_path %></li>
+            <li<% if(request.fullpath == contact_us_path)%> class="active" <%end%>><%=link_to "CONTACT US", contact_us_path %></li>
+          </ul>
+        </div> <!--navbar-collapse -->
 
-      <div class="navbar-collapse collapse"> <!-- Navigation links, collapsible -->
-        <ul class="nav navbar-nav navbar-right">
-          <li><%=link_to "HOME", root_path %></li>
-          <li><%=link_to "MEMBERS", members_path %></li>
-          <li><%=link_to "PROJECTS", projects_path %></li>
-          <li><%=link_to "NEWS", news_path %></li>
-          <li><%=link_to "PUBLICATIONS", publications_path %></li>
-          <li><%=link_to "ABOUT", about_path %></li>
-          <li><%=link_to "CONTACT US", contact_us_path %></li>
-        </ul>
-      </div>
-
-    </div>
+    </div><!--container-->
   </nav>
 </header>

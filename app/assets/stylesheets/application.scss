@@ -9,23 +9,40 @@
 @import "members";
 @import "publications";
 
+* {
+  font-family: $global-font;
+}
+
 //Layout
 #flash_notification {
   text-align: center;
 }
 
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+header {
+
+}
+
 #yield-container {
-  background-color: white;
-  color: text-contrast(white);
   margin-top: -18px;
+  flex: 1;
+}
+
+#footer {
+  background-color: $color-primary;
+  color: text-contrast($color-primary);
+  .footer-content {
+    @extend .container;
+  }
 }
 
 p, h1, h2, h3, h4, h5, h6, span, a {
   &.highlight-0 {
-    color: $color-secondary-2-4;
+    color: $color-secondary-2;
   }
-}
-
-body {
-  background-color: $color-primary-3;
 }

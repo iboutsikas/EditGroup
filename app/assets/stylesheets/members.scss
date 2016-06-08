@@ -3,9 +3,6 @@
 .member-row {
 
   .member-card {
-    &::after {
-      clear:both;
-    }
     //@extend .col-md-2;
     float: left;
     max-width: 30%;
@@ -26,13 +23,10 @@
       padding: 0px;
       margin: 0px;
       width: 100%;
-      border-bottom: 2px solid $color-secondary-2-3;
+      border-bottom: 2px solid $color-secondary-2;
     }
 
-    .member-websites {
-      &::after {
-        @extend .clearfix;
-      }
+    .member-websites {      
       .website-logo {
         @extend .img-responsive;
         max-width: 30px;
