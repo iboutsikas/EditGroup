@@ -37,12 +37,12 @@ Conference.create(name: "trelo conference", publisher: "kapoios", location: "The
 
 	#Authors
 author_person1 = Person.create(firstName: "Trelos", lastName: "Authoranthrwpos")
-author1 = Author.create(publication_id: conference1.id, person_id: author_person1.id)
+author1 = Author.create(publication_id: conference1.id, person_id: author_person1.id, priority: 10)
 
 author_person2 = Person.create(firstName: "Trelos", lastName: "Authoranthrwpos")
-author2 = Author.create(publication_id: conference1.id, person_id: author_person2.id)
+author2 = Author.create(publication_id: conference1.id, person_id: author_person2.id, priority: 10)
 
-author3 = Author.create(publication_id: conference1.id, person_id: person2.id)
+author3 = Author.create(publication_id: conference1.id, person_id: person2.id, priority: 10)
 
 conference1.authors << author1
 conference1.authors << author2
@@ -56,12 +56,12 @@ Conference.create(name: "don't you conference me", publisher: "yeah", location: 
 
 	#Authors
 author_person1 = Person.create(firstName: "George", lastName: "Michael")
-author1 = Author.create(publication_id: conference1.id, person_id: author_person1.id)
+author1 = Author.create(publication_id: conference1.id, person_id: author_person1.id, priority: 10)
 
 author_person2 = Person.create(firstName: "Super", lastName: "Masterguy")
-author2 = Author.create(publication_id: conference1.id, person_id: author_person2.id)
+author2 = Author.create(publication_id: conference1.id, person_id: author_person2.id, priority: 10)
 
-author3 = Author.create(publication_id: conference1.id, person_id: person1.id)
+author3 = Author.create(publication_id: conference1.id, person_id: person1.id, priority: 10)
 
 conference2.authors << author1
 conference2.authors << author2
@@ -75,12 +75,12 @@ Conference.create(name: "Druids Conference", publisher: "kapoios", location: "Fo
 
 	#Authors
 author_person1 = Person.create(firstName: "Boula", lastName: "Simiti")
-author1 = Author.create(publication_id: conference1.id, person_id: author_person1.id)
+author1 = Author.create(publication_id: conference1.id, person_id: author_person1.id, priority: 10)
 
 author_person2 = Person.create(firstName: "Velo", lastName: "Ciraptor")
-author2 = Author.create(publication_id: conference1.id, person_id: author_person2.id)
+author2 = Author.create(publication_id: conference1.id, person_id: author_person2.id, priority: 10)
 
-author3 = Author.create(publication_id: conference1.id, person_id: person2.id)
+author3 = Author.create(publication_id: conference1.id, person_id: person2.id, priority: 10)
 
 conference3.authors << author1
 conference3.authors << author2
@@ -94,12 +94,12 @@ Journal.create(title: "This is good Journal", volume: 3, issue: 6, publication_i
 
 	#Authors
 author_person1 = Person.create(firstName: "Loukanikos", lastName: "De La Loukan")
-author1 = Author.create(publication_id: conference1.id, person_id: author_person1.id)
+author1 = Author.create(publication_id: conference1.id, person_id: author_person1.id, priority: 10)
 
 author_person2 = Person.create(firstName: "Rizoto", lastName: "McJackDaniels")
-author2 = Author.create(publication_id: conference1.id, person_id: author_person2.id)
+author2 = Author.create(publication_id: conference1.id, person_id: author_person2.id, priority: 10)
 
-author3 = Author.create(publication_id: conference1.id, person_id: person3.id)
+author3 = Author.create(publication_id: conference1.id, person_id: person3.id, priority: 10)
 
 journal1.authors << author1
 journal1.authors << author2
@@ -113,12 +113,12 @@ Journal.create(title: "Journalicious", volume: 3, issue: 6, publication_id: jour
 
 	#Authors
 author_person1 = Person.create(firstName: "Leonidas", lastName: "Memousia")
-author1 = Author.create(publication_id: conference1.id, person_id: author_person1.id)
+author1 = Author.create(publication_id: conference1.id, person_id: author_person1.id, priority: 10)
 
 author_person2 = Person.create(firstName: "Jack", lastName: "Sailormoon")
-author2 = Author.create(publication_id: conference1.id, person_id: author_person2.id)
+author2 = Author.create(publication_id: conference1.id, person_id: author_person2.id, priority: 10)
 
-author3 = Author.create(publication_id: conference1.id, person_id: person3.id)
+author3 = Author.create(publication_id: conference1.id, person_id: person3.id, priority: 10)
 
 journal2.authors << author1
 journal2.authors << author2
@@ -132,12 +132,12 @@ Journal.create(title: "Journal or not you are my son", volume: 3, issue: 6, publ
 
 	#Authors
 author_person1 = Person.create(firstName: "Lovely", lastName: "Katsika")
-author1 = Author.create(publication_id: conference1.id, person_id: author_person1.id)
+author1 = Author.create(publication_id: conference1.id, person_id: author_person1.id, priority: 10)
 
 author_person2 = Person.create(firstName: "Action", lastName: "Man")
-author2 = Author.create(publication_id: conference1.id, person_id: author_person2.id)
+author2 = Author.create(publication_id: conference1.id, person_id: author_person2.id, priority: 10, priority: 10)
 
-author3 = Author.create(publication_id: conference1.id, person_id: person1.id)
+author3 = Author.create(publication_id: conference1.id, person_id: person1.id, priority: 10)
 
 journal3.authors << author1
 journal3.authors << author2

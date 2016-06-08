@@ -15,7 +15,8 @@
   var buttons = $("<a data-remote='true' rel='nofollow' data-method='delete' class='btn btn-danger' href='/admin/members/<%= member_id %>'>Remove Only Member</a> <a data-remote='true' rel='nofollow' data-method='delete' class='btn btn-danger' href='/admin/member/<%= member_id %>/destroy_with_publications'>Remove Member and Publications</a>");
 
 <% elsif modal_type == "member_remove" %>
-
+  $("#confirmation_modal .modal-body").html("Are you sure you want to remove this Member?");
+  var buttons = $("<a data-remote='true' rel='nofollow' data-method='delete' class='btn btn-danger' href='/admin/members/<%= member_id %>'>Remove Member</a>");
 <% end %>
 
 $("#confirmation_modal #modal_confirmation_buttons").html(buttons);
