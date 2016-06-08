@@ -31,6 +31,7 @@ table.table-bordered.dataTable th {
   text-align: center;
 }
 
+// Loading spinner styling
 .dataTables_wrapper .dataTables_processing {
   top: 40%;
   left: 50%;
@@ -43,6 +44,11 @@ table.table-bordered.dataTable th {
   font-size: 1.5em;
   background: none;
   border: none;
+}
+
+
+.invisible {
+    display: none;
 }
 
 // Datatables Buttons
@@ -157,4 +163,12 @@ table.table-bordered.dataTable th.publicationDateHeader {
 
 table.table-bordered.dataTable th.publicationTypeHeader {
   width: 60px;
+}
+
+table.table-bordered.dataTable th.journalVolumeIssueHeader {
+  width: 40px;
+}
+
+table.table-bordered.dataTable th.priorityColumnHeader {
+  width: 40px;
 }

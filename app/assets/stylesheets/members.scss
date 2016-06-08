@@ -1,27 +1,44 @@
 @import "bootstrap/mixins";
 
-.member-display {
-  @extend .row;
-  @extend .col-md-12;
+.member-row {
 
-  .member-list-image {
-    @extend .col-md-1;
+  .member-card {
+    &::after {
+      clear:both;
+    }
+    //@extend .col-md-2;
+    float: left;
+    max-width: 30%;
     padding: 0px;
-    #member-avatar-thumb {
-      //max-width: 150px;
-      margin: 0 auto;
-    }
-  }
+    margin: 15px;
+    border-radius: 1px;
+    -webkit-box-shadow: 0px 3px 8px 4px rgba(204,204,204,1);
+    -moz-box-shadow: 0px 3px 8px 4px rgba(204,204,204,1);
+    box-shadow: 0px 3px 8px 4px rgba(204,204,204,1);
 
-  .member-list-content {
-    @extend .col-md-10;
-    h3 {
-      margin-top: 0px;
-      border-bottom: 2px solid $color-secondary-2-1;
-    }
-  }
 
-  .member-list-websites {
-    @extend .col-md-1;
+    .member-image {
+      @extend .img-responsive;
+      width: 100%;
+    }
+
+    .member-name {
+      padding: 0px;
+      margin: 0px;
+      width: 100%;
+      border-bottom: 2px solid $color-secondary-2-3;
+    }
+
+    .member-websites {
+      &::after {
+        @extend .clearfix;
+      }
+      .website-logo {
+        @extend .img-responsive;
+        max-width: 30px;
+        margin: 10px;
+        float: left;
+      }
+    }
   }
 }

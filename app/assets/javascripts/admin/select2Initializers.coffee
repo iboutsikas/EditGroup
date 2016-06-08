@@ -46,7 +46,6 @@ $ ->
     return
 
   withImages = (thing) ->
-    console.log thing
     if thing.text.charAt(0) == "~"
      newText = thing.text.substring 1
      return $('<span></span>').append($('<i class="fa fa-users"></i>')).append(" " + newText);

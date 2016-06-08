@@ -9,6 +9,13 @@
   $("#confirmation_modal .modal-body").html("Are you sure you want to remove this Author?");
   var buttons = "<a data-remote='true' rel='nofollow' data-method='delete' class='btn btn-danger' href='/admin/publications/<%= publication_id %>/authors/<%= author_id %>'>Remove Author</a> ";
 
+<% elsif modal_type == "member_remove_publications" %>
+
+  $("#confirmation_modal .modal-body").html("Are you sure you want to remove this Member? <p>By deleting <%= member_name %> the following publications will belong to no other members: <%= raw publications_string_array %> <p>Do you want to delete them too?");
+  var buttons = $("<a data-remote='true' rel='nofollow' data-method='delete' class='btn btn-danger' href='/admin/members/<%= member_id %>'>Remove Only Member</a> <a data-remote='true' rel='nofollow' data-method='delete' class='btn btn-danger' href='/admin/member/<%= member_id %>/destroy_with_publications'>Remove Member and Publications</a>");
+
+<% elsif modal_type == "member_remove" %>
+
 <% end %>
 
 $("#confirmation_modal #modal_confirmation_buttons").html(buttons);

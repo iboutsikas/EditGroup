@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160530092606) do
+ActiveRecord::Schema.define(version: 20160607124725) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "person_id"
     t.string   "publication_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "priority"
   end
 
   create_table "conferences", force: :cascade do |t|

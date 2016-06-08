@@ -1,4 +1,4 @@
-<%= simple_form_for([:admin,@project], url: admin_projects_create_participants_path(id: @project.id),remote: true) do |f| %>
+<%= simple_form_for([:admin,@project], url: admin_projects_create_participants_path(id: @project.id),remote: true, html: { id: "form_main" }) do |f| %>
 
     <%= render partial: 'admin/dashboard/errors',locals: {resource: @project} %>
 

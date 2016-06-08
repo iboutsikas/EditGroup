@@ -1,5 +1,5 @@
 <p>Choose some people from the database to include in this project:</p>
-<%= simple_form_for([:admin,@project,@participation], url: admin_project_create_from_db_path, remote: true) do |f| %>
+<%= simple_form_for([:admin,@project,@participation], url: admin_project_create_from_db_path, remote: true, html: { id: "form_main" }) do |f| %>
 
     <%= render partial: 'admin/dashboard/errors',locals: {resource: @participation} %>
 
