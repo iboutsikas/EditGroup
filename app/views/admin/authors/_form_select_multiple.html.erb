@@ -1,5 +1,5 @@
 <p>Choose some authors from the database to include in this publication:</p>
-<%= simple_form_for([:admin,@publication,@author], url: admin_publication_create_from_db_path, remote: true) do |f| %>
+<%= simple_form_for([:admin,@publication,@author], url: admin_publication_create_from_db_path, remote: true, html: { id: "form_main" }) do |f| %>
 
     <%= render partial: 'admin/dashboard/errors',locals: {resource: @author} %>
 

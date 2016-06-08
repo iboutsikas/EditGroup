@@ -1,6 +1,7 @@
 class Participant < ActiveRecord::Base
   belongs_to :person, inverse_of: :participant, dependent: :destroy
   has_many :participations, dependent: :destroy
+  has_many :projects, through: :participations
   has_one :member
 
   accepts_nested_attributes_for :person

@@ -34,11 +34,13 @@ class ParticipationDatatable < AjaxDatatablesRails::Base
           # comma separated list of the values for each cell of a table row
           # example: record.attribute,
           "",
+          isMember_show(record.person),
           safe_show(record.participant.title),
           safe_show(record.person.firstName),
           safe_show(record.person.lastName),
           safe_show(record.participant.administrative_title),
           safe_show(record.participant.email),
+          priority_show(record.priority, "participation","participations/#{record.id}", token),
           link_to(("<i class='fa fa-pencil'></i> Edit").html_safe, edit_admin_project_participation_path(project,record),
                   remote: true,  class:"btn btn-info btn-xs editButton", onclick: 'editButtonPressed("Participant")' ),
 
@@ -50,6 +52,10 @@ class ParticipationDatatable < AjaxDatatablesRails::Base
 
   def project
     @project = options[:project]
+  end
+
+  def token
+    @token = options[:token]
   end
 
   def get_raw_records

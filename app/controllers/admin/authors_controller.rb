@@ -1,11 +1,13 @@
+require 'pry'
+
 class Admin::AuthorsController < Admin::DashboardController
   before_action :set_publication
-  before_action :set_author, only: [:edit, :update, :destroy]
+  before_action :set_author, only: [:edit, :update, :destroy, :edit_priority]
 
   def index
     respond_to do |format|
       format.html
-      format.json { render json: AuthorDatatable.new(view_context,{ publication: @publication }) }
+      format.json { render json: AuthorDatatable.new(view_context,{ publication: @publication, token: form_authenticity_token }) }
     end
   end
 
@@ -35,6 +37,9 @@ class Admin::AuthorsController < Admin::DashboardController
     end
   end
 
+  def edit_priority
+    logger.info "edit priority"
+  end
 
   def create_multiple
     number_of_people = params[:publication][:people_attributes].size
@@ -127,7 +132,7 @@ class Admin::AuthorsController < Admin::DashboardController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def author_params
-    params.require(:author).permit(:person_id, :publication_id,
+    params.require(:author).permit(:person_id, :publication_id,:priority,
       person_attributes: [:id, :firstName, :lastName],
       people_attributes: [ person:[:id, :firstName, :lastName, :_destroy]])
   end

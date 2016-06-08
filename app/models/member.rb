@@ -11,6 +11,13 @@ class Member < ActiveRecord::Base
   has_many :personal_websites, dependent: :destroy
   has_many :website_templates, through: :personal_websites
 
+  has_many :authors, through: :person
+  has_many :publications, through: :authors
+  has_many :journals, through: :publications
+  has_many :conferences, through: :publications
+  has_many :participations, through: :participant
+  has_many :projects, through: :participations
+
   accepts_nested_attributes_for :participant
   accepts_nested_attributes_for :person
   accepts_nested_attributes_for :personal_websites, allow_destroy: true
@@ -33,6 +40,11 @@ class Member < ActiveRecord::Base
 
   def full_name
     self.participant.person.full_name
+  end
+
+  def publications_to_delete
+    ####### RETURNIGN ALL PUBLIATIONS CHANGE
+    Publication.find_by_sql(["select * from publications, authors, members where publications.id = authors.publication_id and authors.person_id = members.person_id and authors.person_id = ?", self.person_id])
   end
 
   def resend_invitation(sender)
