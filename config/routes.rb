@@ -76,9 +76,9 @@ Rails.application.routes.draw do
 
   get 'about', to: 'home#about'
 
-  get 'contact_us', to: 'home#contact'
+  resources :publications, only:[:index,:show]
 
-  get 'publications', to: 'home#publications'
+  get 'contact_us', to: 'home#contact'
 
   get 'news', to: 'home#newsevents'
 

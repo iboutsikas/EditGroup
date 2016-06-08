@@ -1,0 +1,47 @@
+// rem fallback - credits: http://zerosixthree.se/
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+@function text-contrast($background-color) {
+  @if lightness($background-color) <  50% {
+    @return lighten($background-color, 70%);
+  } @else {
+    @return darken($background-color, 90%);
+  }
+}
+
+// border radius
+
+@mixin border-radius($radius:.25em) {
+  border-radius: $radius;
+}
+
+//fonts
+@font-face {
+  font-family: 'Blake';
+  src:url('Blake.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Blake-Bold';
+  src:url('BlakeBd.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Blake-Lite';
+  src:url('BlakeLt.ttf');
+  font-weight: normal;
+  font-style: normal;
+}

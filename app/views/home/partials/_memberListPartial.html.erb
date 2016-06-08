@@ -1,10 +1,13 @@
-<div class="col-md-1">
-  <%= image_tag(member.avatar.url, class: "img-responsive", id: "member-avatar-thumb")%>
-</div>
-<div class="col-md-10">
-  <h3><%= member.participant.title + member.full_name %></h3>
-  <p><%= member.bio.truncate(300, omission: '...') %></p>
-</div>
-<div class="col-md-1">
-
+<div class="member-card">
+  <%= image_tag(member.avatar.url, class: "member-image") %>
+  <h4 class="member-name">
+    <%= member.participant.title + member.full_name%>
+  </h4>
+  <div class="member-websites">
+    <% member.personal_websites.each do |website| %>
+      <%= link_to website.url, title: website.website_name do %>
+        <%= image_tag("F_icon", class: "website-logo") %>
+      <% end %>
+    <% end %>
+  </div>  
 </div>

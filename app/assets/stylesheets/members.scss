@@ -1,0 +1,38 @@
+@import "bootstrap/mixins";
+
+.member-row {
+
+  .member-card {
+    //@extend .col-md-2;
+    float: left;
+    max-width: 30%;
+    padding: 0px;
+    margin: 15px;
+    border-radius: 1px;
+    -webkit-box-shadow: 0px 3px 8px 4px rgba(204,204,204,1);
+    -moz-box-shadow: 0px 3px 8px 4px rgba(204,204,204,1);
+    box-shadow: 0px 3px 8px 4px rgba(204,204,204,1);
+
+
+    .member-image {
+      @extend .img-responsive;
+      width: 100%;
+    }
+
+    .member-name {
+      padding: 0px;
+      margin: 0px;
+      width: 100%;
+      border-bottom: 2px solid $color-secondary-2;
+    }
+
+    .member-websites {      
+      .website-logo {
+        @extend .img-responsive;
+        max-width: 30px;
+        margin: 10px;
+        float: left;
+      }
+    }
+  }
+}
