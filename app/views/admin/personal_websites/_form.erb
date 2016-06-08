@@ -3,8 +3,8 @@
     <%= render partial: 'admin/dashboard/errors',locals: {resource: @personal_website} %>
 
     <div class="form-inputs">
-      <%= f.association :website_template, collection: @available_templates, label_method: :website_name, value_method: :id,
-                        prompt: "Choose website type", validate: true, error: false %>
+      <%= f.association :website_template, collection: @available_templates, as: :select, label_method: :website_name, value_method: :id,
+                        prompt: "Choose website type", validate: true, error: false, id: "select2_box" %>
       <span class='help-block client_side_error' id="<%= "#{f.object_name}[website_template_id]" %>"></span>
 
       <%= f.input :url, label: 'URL', validate: true, error: false %>
