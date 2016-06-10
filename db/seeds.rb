@@ -3,7 +3,7 @@ person = Person.create(firstName: "admin", lastName: "admin")
 
 participant  = Participant.create(email: "public@email.com", title: "Mr.", administrative_title: "Lecturer", person_id: person.id)
 
-Member.create(isAdmin: true, person_id: person.id,participant_id: participant.id, bio: "bio", avatar: "", email: "admin@admin.com", password: "asdfasdf")
+Member.create(isAdmin: true, person_id: person.id,participant_id: participant.id, bio: "bio", avatar: "", email: "admin@admin.com", password: "asdfasdf", isStudent: false)
 
 
 # Create Members
@@ -12,21 +12,21 @@ person1 = Person.create(firstName: "John", lastName: "GeorgiosPapandreou")
 
 participant1  = Participant.create(email: "dkdkss@email.com", title: "Mr.", administrative_title: "Lecturer", person_id: person1.id)
 
-Member.create(isAdmin: false, person_id: person1.id, participant_id: participant1.id, bio: "bio", avatar: "", email: "member1@member1.com", password: "asdfasdf")
+Member.create(isAdmin: false, person_id: person1.id, participant_id: participant1.id, bio: "bio", avatar: "", email: "member1@member1.com", password: "asdfasdf", isStudent: false)
 
 # Member 2
 person2 = Person.create(firstName: "Mixalakis", lastName: "Killer")
 
 participant2  = Participant.create(email: "dsdsfdd@email.com", title: "Mr.", administrative_title: "Lecturer", person_id: person2.id)
 
-Member.create(isAdmin: false, person_id: person2.id, participant_id: participant2.id, bio: "bio", avatar: "", email: "member2@member2.com", password: "asdfasdf")
+Member.create(isAdmin: false, person_id: person2.id, participant_id: participant2.id, bio: "bio", avatar: "", email: "member2@member2.com", password: "asdfasdf", isStudent: false)
 
 # Member 3
 person3 = Person.create(firstName: "John", lastName: "GeorgiosPapandreou")
 
 participant3  = Participant.create(email: "dkdkss@email.com", title: "DR.", administrative_title: "Professor", person_id: person3.id)
 
-Member.create(isAdmin: false, person_id: person3.id, participant_id: participant3.id, bio: "bio", avatar: "", email: "member3@member3.com", password: "asdfasdf")
+Member.create(isAdmin: false, person_id: person3.id, participant_id: participant3.id, bio: "bio", avatar: "", email: "member3@member3.com", password: "asdfasdf", isStudent: false)
 
 # Create Publications
 # Conferences
@@ -169,3 +169,4 @@ WebsiteTemplate.create(website_name: "Generic Website")
 
 # Preferences
 Preference.create(description: "citation_style", value: "ieee")
+Preference.create(description: "publication_display", value: "default")
