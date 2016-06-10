@@ -14,6 +14,10 @@
     <%= f.input :isStudent, label: "Student Member?", as: :radio_buttons, error: false %>
     <span class='help-block client_side_error' id='error_text_isStudent'></span>
 
+    <%= f.input :member_from, as: :date, start_year: 1990, end_year: Date.today.year + 10, discard_day: true, discard_month: true, error: false %>
+
+    <%= f.input :member_to, as: :date, start_year: 1990, end_year: Date.today.year + 10, discard_day: true, discard_month: true,error: false %>
+
     <h4>Administrator?</h4>
 
     <%= f.input :isAdmin, label:"Admin?", validate: true, error: false %>

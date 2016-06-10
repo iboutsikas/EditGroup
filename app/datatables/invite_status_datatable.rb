@@ -39,6 +39,7 @@ class InviteStatusDatatable < AjaxDatatablesRails::Base
           safe_show(record.person.full_name),
           safe_show(record.email),
           record.isAdmin,
+          record.isStudent,
           invitation_sent_to_string(record),
           invitation_accepted_to_string(record),
           invitation_status_to_string(record),
