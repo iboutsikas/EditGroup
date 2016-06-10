@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-  
+
   end
 
   def about
@@ -29,6 +29,7 @@ class HomeController < ApplicationController
   end
 
   def newsevents
+    @news = NewsEvent.all.group_by(&:date)
   end
 
   def contact
