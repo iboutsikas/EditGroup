@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get 'members/invites_index', to: 'members#invites_index'
     get 'members/invite', to: 'members#invite'
     post 'members/:id/resend_invitation', to: 'members#resend_invitation', as: 'member/resend_invitation'
+    get 'members/student_members_index', to: 'members#student_members_index'
 
     get 'member/destroy_check_for_publications', to: 'members#destroy_check_for_publications'
     delete 'member/:id/destroy_with_publications', to: 'members#destroy_with_publications'
@@ -63,6 +64,7 @@ Rails.application.routes.draw do
     post 'projects.json/datatables', to: 'projects#index'
     post 'participants.json/datatables', to: 'participants#index'
     post 'members.json/datatables', to: 'members#index'
+    post 'members/student_members_index.json/datatables', to: 'members#student_members_index'
     post 'members/invites_index.json/datatables', to: 'members#invites_index'
     post 'news_events.json/datatables', to: 'news_events#index'
     post 'publications.json/datatables', to: 'publications#index'

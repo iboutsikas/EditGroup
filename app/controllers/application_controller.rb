@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # Only add some parameters
-    devise_parameter_sanitizer.for(:invite).concat [:isAdmin,:invited_by_type,person_attributes:[:firstName,:lastName]]
+    devise_parameter_sanitizer.for(:invite).concat [:isAdmin, :isStudent, :invited_by_type,person_attributes:[:firstName,:lastName]]
 
     devise_parameter_sanitizer.for(:accept_invitation).concat [:bio, :avatar, :email, :password, :password_confirmation, :participant_id, :person_id,
                                                                participant_attributes:[:id,:title,:administrative_title,:email],

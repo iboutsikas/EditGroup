@@ -1325,7 +1325,7 @@ ul.msg_list li a .message {
 .dropdown-menu.msg_list span {
   white-space: normal;
 }
-.dropdown-menu {
+/*.dropdown-menu {
   border: medium none;
   border-radius: 3px;
   box-shadow: 0 0 3px;
@@ -1351,7 +1351,7 @@ ul.msg_list li a .message {
   right: 6%;
   position: absolute;
   top: -6px;
-}
+}*/
 .dropdown-menu>li>a {
   color: #5A738E;
 }

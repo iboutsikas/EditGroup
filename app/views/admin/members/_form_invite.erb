@@ -9,6 +9,11 @@
     <%= f.input :email, required: true, validate: true, error: false %>
     <span class='help-block client_side_error' id="<%= "#{f.object_name}[email]" %>"></span>
 
+    <h4>Student Member?</h4>
+
+    <%= f.input :isStudent, label: "Student Member?", as: :radio_buttons, error: false %>
+    <span class='help-block client_side_error' id='error_text_isStudent'></span>
+
     <h4>Administrator?</h4>
 
     <%= f.input :isAdmin, label:"Admin?", validate: true, error: false %>

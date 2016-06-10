@@ -56,7 +56,12 @@
             <ul class="nav child_menu" style="display: none">
               <li>
                 <%= link_to admin_members_path do %>
-                    <i class="fa fa-users fa-fw"></i> All Members <span class="fa"></span>
+                    <i class="fa fa-users fa-fw"></i> Main Members <span class="fa"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_members_student_members_index_path do %>
+                    <i class="fa fa-users fa-fw"></i> Student Members <span class="fa"></span>
                 <% end %>
               </li>
               <li>

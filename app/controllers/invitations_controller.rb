@@ -1,5 +1,3 @@
-require 'pry'
-
 class InvitationsController < Devise::InvitationsController
 
   def edit
