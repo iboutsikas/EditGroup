@@ -18,6 +18,24 @@ $nav-color : $color-primary;
       float: none;
       display: inline-block;
     }
+
+    .dropdown {
+      &.open > a {
+          background-color: $color-primary-dark;
+      }
+      .dropdown-menu {
+
+        li {
+          width: 100%;
+          a {
+            color: text-contrast(white);
+            &:hover {
+              color: text-contrast($nav-color);
+            }
+          }
+        }
+      }
+    }
   }
   li {
     a {
