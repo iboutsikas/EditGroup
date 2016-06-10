@@ -1,2 +1,8 @@
-<h1>Home#news-events</h1>
-<p>Find me in app/views/home/news-events.html.erb</p>
+<% @news.each do |date, newsForYear| %>
+  <h1><%= date.year %></h1>
+  <% newsForYear.each do |newsItem| %>
+    <div class="row">
+      <%= render "home/partials/newsPartial", item: newsItem %>
+    </div>
+  <% end %>
+<% end %>
