@@ -1,9 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    # @RecentNews = NewsEvent.order(created_at: :desc).take(5)
-    @RecentNews = NewsEvent.all
-    @RecentPublications = Publication.order(created_at: :desc).take(5)
+  
   end
 
   def about
