@@ -1,6 +1,6 @@
 <h2>Change your password</h2>
 
-<%= simple_form_for([:admin,@member], remote: true, html: { method: :put }) do |f| %>
+<%= simple_form_for([:admin,@member], remote: true, html: { method: :put, id: "form_main" }) do |f| %>
 
   <%= f.input :reset_password_token, as: :hidden %>
   <%= f.full_error :reset_password_token %>

@@ -26,7 +26,7 @@ class Publication < ActiveRecord::Base
   end
 
   def return_authors_only_in_this_publication
-    
+
   end
 
   def type
@@ -39,7 +39,11 @@ class Publication < ActiveRecord::Base
 
   def cite(style)
     array = []
-    self.authors.each do |au|
+    # sort the authors by priority
+    authors_sorted = self.authors.sort { |a,b| a.priority <=> b.priority }
+
+    # format the authors in the appropriate style
+    authors_sorted.each do |au|
       array << "#{au.person.lastName}, #{au.person.firstName}"
     end
     authors = array.join(" and ")

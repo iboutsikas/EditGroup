@@ -32,6 +32,7 @@ class AuthorDatatable < AjaxDatatablesRails::Base
           isMember_show(record.person),
           safe_show(record.person.lastName),
           safe_show(record.person.firstName),
+          priority_show(record.priority, "author","authors/#{record.id}", token),
           link_to(("<i class='fa fa-pencil'></i> Edit").html_safe, edit_admin_publication_author_path(publication,record),
                   remote: true,  class:"btn btn-info btn-xs editButton", onclick: 'editButtonPressed("Author")' ),
           link_to_if(record.person.isMember?,
@@ -49,6 +50,10 @@ class AuthorDatatable < AjaxDatatablesRails::Base
 
   def publication
     @publication = options[:publication]
+  end
+
+  def token
+    @authenticity_token = options[:token]
   end
 
   def get_raw_records

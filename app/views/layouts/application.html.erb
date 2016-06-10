@@ -21,5 +21,9 @@
   <%= yield %>
 </div>
 
+
+<% if !devise_controller? %>
+    <%= render 'home/footer' %>
+<% end %>
 </body>
 </html>

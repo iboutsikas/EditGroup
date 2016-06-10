@@ -1,5 +1,3 @@
-require 'pry'
-
 class Admin::PreferencesController < Admin::DashboardController
 
   before_action :set_preference, only: [:update]
@@ -10,17 +8,25 @@ class Admin::PreferencesController < Admin::DashboardController
     @citation_style = Preference.find_by_description('citation_style')
     @styles = all_styles.values
 
+    @show_timeline = Preference.find_by_description('show_timeline')
+    @timeline_values = ["true", "false"]
+
     respond_to do |format|
       format.html
     end
   end
 
   def update
-    @new_value = all_styles.key(params[:value])
+    case @preference.description
+    when "citation_style"
+      @new_value = all_styles.key(params[:value])
+    else
+      @new_value = params[:value]
+    end
 
     respond_to do |format|
       if @preference.update(value: @new_value)
-        format.js { render js: "showNotification('success', 'Citation Style Changed', 'Now using #{params[:value]}');" }
+        format.js { render js: "showNotification('success', 'Preferences Updated', 'Now using #{@new_value}');" }
       else
         format.js { render js: "showNotification('error', 'Error!, 'An error has occured while editing the citation style.);" }
       end
@@ -35,6 +41,6 @@ class Admin::PreferencesController < Admin::DashboardController
   end
 
   def preference_params
-    params.require(:preference).permit(:id, :citation_style)
+    params.require(:preference).permit(:id, :value,:citation_style)
   end
 end

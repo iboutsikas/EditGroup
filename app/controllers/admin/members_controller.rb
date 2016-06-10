@@ -2,7 +2,7 @@ require 'json'
 require 'pry'
 
 class Admin::MembersController < Admin::DashboardController
-  before_action :set_member, only: [:show, :edit, :update, :destroy, :change_password, :resend_invitation]
+  before_action :set_member, only: [:show, :edit, :update, :destroy, :change_password, :resend_invitation, :destroy_check_for_publications]
 
   def index
     respond_to do |format|
@@ -105,15 +105,45 @@ class Admin::MembersController < Admin::DashboardController
     end
   end
 
-  def destroy
-    @member.destroy
+  def destroy_check_for_publications
+    # RIGHT NOW IT IS RETURNING ALL THE PUBLICATIONS FOR THE MEMBER. FIX
+    @publications = @member.publications_to_delete
 
-    # destroy all publications that the only member is the deleted member
-    
 
     respond_to do |format|
-      format.js { render js: "redraw_table();
+      if ( @publications.any? )
+        @publications_string = @publications.map { |p| "<li>" + p.title + "</li>" }.join(" ")
+        format.js { render "admin/initialize_confirmation_modal",
+          locals: { modal_type: "member_remove_publications", member_id: @member.id, publications_string_array: @publications_string, member_name: @member.full_name } }
+      else
+        format.js { render "admin/initialize_confirmation_modal",
+          locals: { modal_type: "member_remove", member_id: @member.id } }
+      end
+    end
+  end
+
+  def destroy_with_publications
+    binding.pry
+    logger.info "destroy with publications"
+    @publications = @member.publications_to_delete
+
+    @publications.each { |p| p.destroy }
+
+    @member.destroy
+
+    respond_to do |format|
+      format.js { render js: "hide_and_redraw();
                               showNotification(type = 'error', title = 'Member Deleted!', text = 'Deleted #{@member.full_name}' );"  }
+    end
+  end
+
+  def destroy
+    full_name = @member.full_name
+    @member.destroy
+
+    respond_to do |format|
+      format.js { render js: "hide_and_redraw();
+                              showNotification(type = 'error', title = 'Member Deleted!', text = 'Deleted #{full_name}' );"  }
     end
   end
 

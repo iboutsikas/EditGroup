@@ -1,11 +1,14 @@
 <h1>Site Preferences</h1>
 
 <div class="x_panel" id="all_content">
-  <h2>Citation Style <small style="margin-left: 10px">Choose the citation style for the publications</small></h2>
 
-  <hr>
+  <div class="preference_div">
+    <h2>Citation Style <small style="margin-left: 10px">Choose the citation style for the publications</small></h2>
+
+    <hr>
 
     <%= simple_form_for(@citation_style, url: admin_preferences_update_path, remote: true) do |f| %>
+      <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token"/>
       <%= f.input :id, as: :hidden %>
       <div class="row">
         <div class="col-md-2">
@@ -13,8 +16,32 @@
         </div>
 
         <div class="col-md-2">
-          <%= select_tag :value, options_for_select(@styles, all_styles[@citation_style.value]), id: "citations_select2", style: "width: 100%;", label: "Style" %>
+          <%= select_tag :value, options_for_select(@styles, all_styles[@citation_style.value]), class: "citations_select2", style: "width: 100%;", label: "Style" %>
         </div>
       </div>
     <% end %>
+
+  </div>
+
+  <div class="preference_div">
+
+    <h2>Show Timeline In Publications <small style="margin-left: 10px">Choose how publications will appear in the main site</small></h2>
+
+    <hr>
+
+    <%= simple_form_for(@show_timeline, url: admin_preferences_update_path, remote: true) do |f| %>
+      <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token"/>
+      <%= f.input :id, as: :hidden %>
+      <div class="row">
+        <div class="col-md-2">
+          Show Publications as timeline:
+        </div>
+
+        <div class="col-md-2">
+          <%= select_tag :value, options_for_select(@timeline_values, @show_timeline.value), class: "citations_select2", style: "width: 100%;", label: "Style" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
 </div>

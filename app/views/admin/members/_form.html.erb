@@ -2,7 +2,7 @@
 
     <h2>Change your password</h2>
 
-    <%= simple_form_for([:admin,@member],remote: true) do |f| %>
+    <%= simple_form_for([:admin,@member],remote: true, html: { id: "form_main" }) do |f| %>
 
         <%= render partial: 'admin/dashboard/errors',locals: {resource: @member} %>
 
@@ -24,7 +24,7 @@
 
 <% elsif @edit %>
 
-    <%= simple_form_for([:admin,@member], remote: true, html: { multipart: true }) do |f| %>
+    <%= simple_form_for([:admin,@member], remote: true, html: { multipart: true, id: "form_main" } ) do |f| %>
 
         <%= render partial: 'admin/dashboard/errors',locals: {resource: @member} %>
 
@@ -58,7 +58,7 @@
 
 <% else %>
 
-  <%= simple_form_for([:admin,@member], remote: true, html: { multipart: true }) do |f| %>
+  <%= simple_form_for([:admin,@member], remote: true, html: { multipart: true, id: "form_main" }) do |f| %>
 
       <%= render partial: 'admin/dashboard/errors',locals: {resource: @member} %>
 

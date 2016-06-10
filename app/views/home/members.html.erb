@@ -1,9 +1,27 @@
 <div class="page-header">
-  <h1>Research Group Members</h1>
+  <h1 class="highlight-0">Research Group Members</h1>
 </div>
-
-<% @members.each do |member| %>
-  <div class="row col-md-12 memberPartial">
-    <%= render "home/partials/memberListPartial", member: member %>
+<h1>Staff Members</h1>
+<% rows = (@members.count / 3).to_i + 1 %>
+<% rows.times do |y| %>
+  <div class="member-row">
+    <% 3.times do |x| %>
+      <% index = y * 3 + x %>
+      <% if (index < @members.count) %>
+        <%= render "home/partials/memberListPartial", member: @members.at(index) %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
+<h1>Student Members</h1>
+<% rows = (@members.count / 3).to_i + 1 %>
+<% rows.times do |y| %>
+  <div class="member-row">
+    <% 3.times do |x| %>
+      <% index = y * 3 + x %>
+      <% if (index < @members.count) %>
+        <%= render "home/partials/memberListPartial", member: @members.at(index) %>
+      <% end %>
+    <% end %>
   </div>
 <% end %>

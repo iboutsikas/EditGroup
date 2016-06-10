@@ -1,7 +1,7 @@
 @import "admin/buttons_creative";
+@import "custom";
 @import "admin/datatables.min";
 @import "datatables_custom";
-@import "custom";
 @import "pnotify.custom.min";
 @import "animate.min";
 @import "select2";
@@ -58,4 +58,12 @@
 .allNewButtons {
   margin-top: 12px;
   float: right;
+}
+
+li.collapsable:hover {
+  cursor: pointer;
+}
+
+.preference_div {
+  margin-bottom: 10%;
 }

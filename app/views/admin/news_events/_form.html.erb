@@ -1,4 +1,4 @@
-<%= simple_form_for([:admin,@news_event], remote: true) do |f| %>
+<%= simple_form_for([:admin,@news_event], remote: true, html: { id: "form_main" }) do |f| %>
   <%= render partial: 'admin/dashboard/errors',locals: {resource: @news_event} %>
 
   <div class="form-inputs">

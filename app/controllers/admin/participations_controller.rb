@@ -1,3 +1,5 @@
+require 'pry'
+
 class Admin::ParticipationsController < Admin::DashboardController
   before_action :set_project
   before_action :set_participation, only: [:show, :edit, :update, :destroy]
@@ -6,7 +8,7 @@ class Admin::ParticipationsController < Admin::DashboardController
   def index
     respond_to do |format|
       format.html
-      format.json { render json: ParticipationDatatable.new(view_context,{ project: @project }) }
+      format.json { render json: ParticipationDatatable.new(view_context,{ project: @project, token: form_authenticity_token }) }
     end
   end
 
@@ -99,8 +101,16 @@ class Admin::ParticipationsController < Admin::DashboardController
   # PATCH/PUT /participations/1.json
   def update
     respond_to do |format|
-      if @participation.participant.update( params[:participation][:participant].except(:person).permit(:title, :administrative_title, :email) ) &&
+
+      if participation_params[:priority]
+
+        @participation.update(participation_params)
+        format.js { render js: "hide_and_redraw();
+                                showNotification(type = 'info', title = 'Edit Successful', text = 'Edited #{@participation.person.full_name}' );" }
+
+      elsif @participation.participant.update( params[:participation][:participant].except(:person).permit(:title, :administrative_title, :email,:priority) ) &&
           @participation.participant.person.update( params[:participation][:participant][:person].permit(:firstName,:lastName) )
+
         format.js { render js: "hide_and_redraw();
                                 showNotification(type = 'info', title = 'Edit Successful', text = 'Edited #{@participation.person.full_name}' );" }
       else
@@ -134,6 +144,6 @@ class Admin::ParticipationsController < Admin::DashboardController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def participation_params
-      params.require(:participation).permit(:title,:administrative_title, :email, participants_attributes: [:id,:title, :administrative_title, :email, person_attributes:[:firstName, :lastName] ] )
+      params.require(:participation).permit(:title,:administrative_title, :email, :priority,participants_attributes: [:id,:title, :administrative_title, :email, person_attributes:[:firstName, :lastName] ] )
     end
 end

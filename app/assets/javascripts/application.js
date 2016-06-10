@@ -18,3 +18,4 @@
 //= require underscore
 //= require modernizr
 //= require header
+//= require publications

@@ -49,7 +49,10 @@ gem 'judge-simple_form', '~> 1.0'
 gem 'select2-rails', '~> 4.0', '>= 4.0.1.1'
 
 gem 'carrierwave', '~> 0.11.0'
+
 gem 'remotipart', '~> 1.2', '>= 1.2.1'
+
+gem 'bourbon', '~> 4.2', '>= 4.2.7'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -83,4 +86,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
