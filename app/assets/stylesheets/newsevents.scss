@@ -1,0 +1,24 @@
+.news-item {
+  @extend .panel;
+  @extend .panel-default;
+
+  border-radius: 0 !important;
+  -webkit-box-shadow: 0px 5px 10px 4px rgba(204,204,204,1);
+  -moz-box-shadow: 0px 5px 10px 4px rgba(204,204,204,1);
+  box-shadow: 0px 5px 10px 4px rgba(204,204,204,1);
+
+  .news-item-heading {
+    @extend .panel-heading;
+
+    // background-color: $color-secondary-1;
+    border-radius: 0 !important;
+    h3 {
+      @extend .panel-title;
+      // color: text-contrast($color-secondary-1);
+    }
+  }
+
+  .news-item-body {
+    @extend .panel-body;
+  }
+}
