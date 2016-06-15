@@ -1,1 +1,3 @@
-i am the default
+<% @publications.each do |publication| %>
+  <%= render "publications/partials/publicationListPartial", publication: publication %>
+<% end %>

@@ -6,54 +6,49 @@
 
 @import 'partials/layout'; // responsive grid and media queries
 
-// /* --------------------------------
-//
-// Primary style
-//
-// -------------------------------- */
-//
-// html * {
-// 	-webkit-font-smoothing: antialiased;
-// 	-moz-osx-font-smoothing: grayscale;
-// }
-//
-// *, *:after, *:before {
-// 	@include box-sizing(border-box);
-// }
-//
-// body {
-// 	font: {
-// 		size: 100%;
-// 		family: $primary-font; // variables inside partials > _variables.scss
-// 	}
-// 	color: $main-text;
-// 	background-color: $background;
-// }
-//
-// a {
-// 	color: $link;
-// 	text-decoration: none;
-// 	font-family: $secondary-font;
-// }
-//
-// img {
-// 	max-width: 100%;
-// }
-//
-// h1, h2 {
-// 	font-family: $secondary-font;
-// 	font-weight: bold;
-// }
+/*
+		DEFAULT STARTS HERE
+*/
+.default-publication {
+	@extend .row;
+	margin-bottom: 5px;
+	padding-top: 2%;
+	padding-bottom: 3%;
+	&:not(:last-child) {
+		border-bottom: 1px solid $color-secondary-1;
+	}
 
-/* --------------------------------
+	.default-publication-image {
+		@extend .col-md-1;
+		@extend .hidden-sm;
+		@extend .hidden-xs;
+		img {
+			@extend .img-responsive;
+			border-radius: 25%;
+			// -webkit-box-shadow: 2px 3px 8px -1px rgba(204, 204, 204, 1);
+			// -moz-box-shadow: 2px 3px 8px -1px rgba(204, 204, 204, 1);
+			// box-shadow: 2px 3px 8px -1px rgba(204, 204, 204, 1);
+			-webkit-box-shadow: 4px 5px 3px -1px rgba(204,204,204,1);
+			-moz-box-shadow: 4px 5px 3px -1px rgba(204,204,204,1);
+			box-shadow: 4px 5px 3px -1px rgba(204,204,204,1);
+			//background-color:#e8e8e8;
+		}
+	}
 
-Modules - reusable parts of our design
+	.default-publication-content {
+		@extend .col-md-11;
+	}
+}
 
--------------------------------- */
 
-.publications-timeline-container { /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
+
+
+/*
+		TIMELINE START HERE
+*/
+.publications-timeline-container {
 	width: 90%;
-	max-width: $L; // breakpoints inside partials > _layout.scss
+	max-width: $L;
 	margin: 0 auto;
 
 	&::after { /* clearfix */
@@ -63,32 +58,6 @@ Modules - reusable parts of our design
 	}
 }
 
-/* --------------------------------
-
-Main components
-
--------------------------------- */
-
-// header {
-// 	height: 200px;
-// 	line-height: 200px;
-// 	text-align: center;
-// 	background: $color-1;
-//
-// 	h1 {
-// 		color: $color-3;
-// 		@include font-size(18px);
-// 	}
-//
-// 	@include MQ(L) {
-// 		height: 300px;
-// 		line-height: 300px;
-//
-// 		h1 {
-// 			@include font-size(24px);
-// 		}
-// 	}
-// }
 
 #publications-timeline {
 	position: relative;

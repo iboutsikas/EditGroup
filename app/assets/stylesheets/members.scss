@@ -16,51 +16,67 @@
   @extend .row;
 
   .member-card {
-    @extend .col-md-2;
+    @extend .col-md-3;
     @extend .col-sm-6;
     @extend .col-xs-8;
-    //@extend .col-md-offset-0;
+    @extend .col-md-offset-0;
     @extend .col-sm-offset-3;
     @extend .col-xs-offset-2;
-    padding: 0px;
-    margin-bottom: 10px;
+    padding: 10px;
+    // margin-bottom: 10px;
     border-radius: 1px;
     text-align: center;
-    -webkit-box-shadow: 0px 3px 8px 4px rgba(204,204,204,1);
-    -moz-box-shadow: 0px 3px 8px 4px rgba(204,204,204,1);
-    box-shadow: 0px 3px 8px 4px rgba(204,204,204,1);
 
-    &:first-child {
-      @extend .col-md-offset-1;
-    }
 
-    &:not(:first-child) {
-      @extend .col-md-offset-2;
-    }
+    // &:first-child {
+    //   @extend .col-md-offset-1;
+    // }
+    //
+    // &:not(:first-child) {
+    //   @extend .col-md-offset-2;
+    // }
 
     .member-image {
       @extend .img-responsive;
       width: 100%;
+      margin-bottom: 4px;
+      -moz-box-shadow: 0px 4px 11px rgba(204, 204, 204, 1);
+      -webkit-box-shadow: 0px 4px 11px rgba(204, 204, 204, 1);
+      box-shadow: 0px 4px 11px rgba(204, 204, 204, 1);
     }
 
     .member-name {
       padding: 0px;
       margin: 0px;
       width: 100%;
+      font-size: calculateRem(18px);
     }
 
     .member-position {
       padding: 0px;
       margin: 0px;
       width: 100%;
+      font-size: calculateRem(14px);
     }
 
     .member-websites {
+      text-align: center;
+
+      a {
+        font-size: calculateRem(24px);
+        color: $color-secondary-1;
+        text-align: center;
+        vertical-align: middle;
+      }
+      a:hover {
+        text-decoration: none;
+      }
       .website-logo {
         @extend .img-responsive;
+        display: inline-block;
         max-width: 20px;
         margin: 2px 5px;
-        float: left;
+        //float: left;
       }
     }
   }//card

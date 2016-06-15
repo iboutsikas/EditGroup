@@ -6,25 +6,27 @@ $nav-color : $color-primary;
   border-radius: 0px !important;
   background-color: $nav-color;
   border-color: darken($nav-color, 10%);
+
   &.affix {
     top: 0px;
     width: 100%;
     z-index: 15;
   }
+  & >.container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .navbar-collapse {
+    padding-left: 0;
+    padding-right: 0;
+  }
   .navbar-nav {
     width: 100%;
-    text-align: center;
-    li {
-      float: none;
-      display: inline-block;
-    }
-
     .dropdown {
       &.open > a {
           background-color: $color-primary-dark;
       }
       .dropdown-menu {
-
         li {
           width: 100%;
           a {

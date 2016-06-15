@@ -1,0 +1,16 @@
+<div class="default-publication">
+  <div class="default-publication-image">
+    <% if publication.journal %>
+      <%= image_tag("report") %>
+    <% elsif publication.conference %>
+      <%= image_tag("conference") %>
+    <% else %>
+      <h1>shit's going down</h1>
+    <% end %>
+  </div>
+  <div class="default-publication-content">
+    <p>
+      <%= publication.cite(@citation) %>
+    </p>
+  </div>
+</div>
