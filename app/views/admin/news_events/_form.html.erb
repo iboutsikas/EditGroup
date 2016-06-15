@@ -2,7 +2,7 @@
   <%= render partial: 'admin/dashboard/errors',locals: {resource: @news_event} %>
 
   <div class="form-inputs">
-    <%= f.input :date, error: false %>
+    <%= f.input :date, as: :date, start_year: 2001, end_year: Date.today.year + 10, error: false %>
     <span class='help-block client_side_error' id="<%= "#{f.object_name}[date]" %>"></span>
 
     <%= f.input :title, validate: true, error: false %>

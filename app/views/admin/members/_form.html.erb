@@ -56,6 +56,66 @@
 
     <% end %>
 
+<% elsif @student_member %>
+
+  <%= simple_form_for([:admin,@member], remote: true, html: { multipart: true, id: "form_main" }) do |f| %>
+
+    <%= render partial: 'admin/dashboard/errors',locals: {resource: @member} %>
+
+    <div class="form-inputs">
+
+      <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+
+      <%= f.input :member_from, as: :date, start_year: 1990, end_year: Date.today.year + 10, discard_day: true, discard_month: true, error: false %>
+
+      <%= f.input :member_to, as: :date, start_year: 1990, end_year: Date.today.year + 10, discard_day: true, discard_month: true,error: false %>
+
+      <%= f.simple_fields_for :person do |p| %>
+          <%= render 'admin/dashboard/person_fields', p: p %>
+      <% end %>
+
+      <%= f.simple_fields_for :participant do |part| %>
+          <%= render 'admin/dashboard/participant_fields', part: part %>
+      <% end %>
+
+      <%= f.input :bio, validate: true, error: false %>
+      <span class='help-block client_side_error' id="<%= "#{f.object_name}[bio]" %>"></span>
+
+      <h4>Upload your Avatar</h4>
+
+      <%= f.file_field :avatar %>
+
+      <h4>Personal Websites</h4>
+
+      <%= f.fields_for :personal_websites do |w| %>
+          <%= w.association :website_template, label_method: :website_name,value_method: :id, prompt: "Choose website type", validate: true, error: false %>
+          <span class='help-block client_side_error' id="<%= "#{w.object_name}[website_template_id]" %>"></span>
+
+          <%= w.input :url, label: 'URL', validate: true, error: false %>
+          <span class='help-block client_side_error' id="<%= "#{w.object_name}[url]" %>"></span>
+
+      <% end %>
+
+      <div>
+        <%= link_to_add_association 'add website', f, :personal_websites, partial: 'admin/dashboard/personal_website_fields',render_options: { locals: {f: f} } %>
+      </div>
+
+      <h4>Authentication</h4>
+
+      <%= f.input :email, required: true, validate: true, error: false %>
+      <span class='help-block client_side_error' id="<%= "#{f.object_name}[email]" %>"></span>
+
+      <%= f.input :password, required: true, validate: true, error: false, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+      <span class='help-block client_side_error' id="<%= "#{f.object_name}[password]" %>"></span>
+
+      <%= f.input :password_confirmation, required: true, validate: true,error: false %>
+      <span class='help-block client_side_error' id="<%= "#{f.object_name}[password_confirmation]" %>"></span>
+
+      <%= f.hidden_field :isStudent, :value => true %>
+      <%= f.hidden_field :isAdmin, :value => false %>
+    </div>
+  <% end %>
+
 <% else %>
 
   <%= simple_form_for([:admin,@member], remote: true, html: { multipart: true, id: "form_main" }) do |f| %>
@@ -112,6 +172,7 @@
         <%= f.input :password_confirmation, required: true, validate: true,error: false %>
         <span class='help-block client_side_error' id="<%= "#{f.object_name}[password_confirmation]" %>"></span>
 
+        <%= f.hidden_field :isStudent, :value => false %>
       </div>
   <% end %>
 

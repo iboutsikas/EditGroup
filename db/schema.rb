@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607124725) do
+ActiveRecord::Schema.define(version: 20160610133837) do
 
   create_table "authors", force: :cascade do |t|
     t.string   "person_id"
@@ -63,6 +63,9 @@ ActiveRecord::Schema.define(version: 20160607124725) do
     t.integer  "invitations_count",      default: 0
     t.text     "bio"
     t.string   "avatar"
+    t.boolean  "isStudent"
+    t.date     "member_from"
+    t.date     "member_to"
   end
 
   add_index "members", ["email"], name: "index_members_on_email", unique: true

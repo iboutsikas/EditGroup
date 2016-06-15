@@ -1,11 +1,11 @@
-class MemberDatatable < AjaxDatatablesRails::Base
+class StudentMembersDatatable < AjaxDatatablesRails::Base
 
   include Admin::DashboardHelper
 
   def_delegators :@view, :link_to, :fa_icon, :link_to_if, :image_tag, :edit_admin_member_path,
-   :admin_member_path, :edit_admin_member_path, :admin_member_personal_websites_path,
-   :admin_edit_admin_member_change_password_path, :content_tag, :admin_member_destroy_check_for_publications_path,
-   :link_to_button_column
+  :admin_member_path, :edit_admin_member_path, :admin_member_personal_websites_path,
+  :admin_edit_admin_member_change_password_path, :content_tag, :admin_member_destroy_check_for_publications_path,
+  :link_to_button_column
 
   def sortable_columns
     # Declare strings in this format: ModelName.column_name
@@ -15,7 +15,8 @@ class MemberDatatable < AjaxDatatablesRails::Base
         'Person.lastName',
         'Participant.administrative_title',
         'Participant.email',
-        'Member.isAdmin'
+        'Member.member_from',
+        'Member.member_to'
     ]
   end
 
@@ -26,7 +27,9 @@ class MemberDatatable < AjaxDatatablesRails::Base
         'Person.firstName',
         'Person.lastName',
         'Participant.administrative_title',
-        'Participant.email'
+        'Participant.email',
+        'Member.member_from',
+        'Member.member_to'
     ]
   end
 
@@ -42,8 +45,10 @@ class MemberDatatable < AjaxDatatablesRails::Base
         safe_show(record.person.lastName),
         safe_show(record.participant.administrative_title),
         safe_show(record.participant.email),
-        boolean_show(record.isAdmin),
+        safe_show(record.member_from.year),
+        safe_show(record.member_to.year),
         link_to_button_column( ("<i class='fa fa-cloud' aria-hidden='true'></i> Websites").html_safe, admin_member_personal_websites_path(record), class: "btn btn-default btn-xs websitesButton" ),
+
         link_to_button_column(("<i class='fa fa-pencil'></i> Edit").html_safe, edit_admin_member_path(record), remote: true,
                 class:"btn btn-info btn-xs editButton", onclick: 'editButtonPressed("Member")'),
 
@@ -65,7 +70,7 @@ class MemberDatatable < AjaxDatatablesRails::Base
   def get_raw_records
     # insert query here
     #Member.select("id","person_id","participant_id","participants.title as title","people.firstName","people.lastName", "participants.administrative_title","participants.email","members.email","members.isAdmin").joins(:participant,:person)
-    Member.select("id","person_id","participant_id","participants.title as title","people.firstName","people.lastName", "participants.administrative_title","participants.email","members.email","members.isAdmin").includes(:participant).references(:participant).includes(:person).references(:person).where(["members.participant_id is not null and members.person_id is not null",false])
+    Member.select("id","person_id","participant_id","participants.title as title","people.firstName","people.lastName", "participants.administrative_title","participants.email","members.email","members.isAdmin","members.member_from","members.member_to").includes(:participant).references(:participant).includes(:person).references(:person).where(["members.participant_id is not null and members.person_id is not null and members.isStudent = ?",true])
     #Member.find_by_sql("select members.id, members.person_id, members.participant_id, participants.title as title, participants.administrative_title, participants.email, people.firstName, people.lastName, members.email, members.isAdmin from members left outer join participants on members.participant_id = participants.id left outer join people on members.person_id = people.id length '999999' offset 0")
   end
 

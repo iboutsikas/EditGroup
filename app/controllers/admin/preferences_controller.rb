@@ -8,8 +8,8 @@ class Admin::PreferencesController < Admin::DashboardController
     @citation_style = Preference.find_by_description('citation_style')
     @styles = all_styles.values
 
-    @show_timeline = Preference.find_by_description('show_timeline')
-    @timeline_values = ["true", "false"]
+    @publication_display = Preference.find_by_description('publication_display')
+    @timeline_values = ["timeline", "default"]
 
     respond_to do |format|
       format.html
@@ -19,14 +19,14 @@ class Admin::PreferencesController < Admin::DashboardController
   def update
     case @preference.description
     when "citation_style"
-      @new_value = all_styles.key(params[:value])
+      @new_value = all_styles.key(preference_params[:value])
     else
-      @new_value = params[:value]
+      @new_value = preference_params[:value]
     end
 
     respond_to do |format|
       if @preference.update(value: @new_value)
-        format.js { render js: "showNotification('success', 'Preferences Updated', 'Now using #{@new_value}');" }
+        format.js { render js: "showNotification('success', 'Preferences Updated', '#{@preference.description.humanize} is now set to #{@new_value.capitalize}');" }
       else
         format.js { render js: "showNotification('error', 'Error!, 'An error has occured while editing the citation style.);" }
       end

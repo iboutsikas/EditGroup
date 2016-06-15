@@ -1,40 +1,44 @@
 $ ->
+  # initialize PNotify
   PNotify.prototype.options.styling = "fontawesome";
+
+  # Create variables and get JQuery oblects for things needed in datatables
+  $table = $("table")
   default_sort_column = $(".table").data "default_sort_column"
   default_sort_direction = $(".table").data "default_sort_direction"
 
   # Initialize datatable
-  tabled = $("table").DataTable
+  $dataTable = $table.DataTable
     oLanguage:
       sProcessing: "<div class='animated pulse'><i class='fa fa-database fa-2x' aria-hidden='true'></i><p>Loading..</p></div>"
     processing: true
     serverSide: false
     responsive: true
     fixedHeader: false
+    pagingType: 'full_numbers'
     aaSorting: [[default_sort_column, default_sort_direction]]
     ajax:
-      url: $("table").data('source') + "/datatables"
+      url: $table.data('source') + "/datatables"
       type: "POST"
       data: (data) ->
         data.length = 999999
         return data
-    pagingType: 'full_numbers'
-    drawCallback: (settings) ->
-      $("table td .avatar").parent().addClass("avatarColumn")
-      $("table td .editButton").parent().addClass("buttonColumn")
-      $("table td .deleteButton").parent().addClass("buttonColumn")
-      $("table td .editLoginButton").parent().addClass("buttonColumn")
-      $("table td .participantsButton").parent().addClass("buttonColumn")
-      $("table td .authorsButton").parent().addClass("buttonColumn")
-      $("table td .websitesButton").parent().addClass("buttonColumn")
-      $("table td .resendButton").parent().addClass("buttonColumn")
-      $("table td .cancelInvitationButton").parent().addClass("buttonColumn")
-      $("table td .website_logo").parent().addClass("buttonColumn")
-      $("table td .isMember").parent().addClass("isMemberColumn")
     rowCallback: ( row, data, index ) ->
-      $(row).children().first().html(index + 1)
+      for i in [0...data.length]
+        elem = row.children[i]
+        elem.className = elem.firstChild.dataset.tdclass
     fnInitComplete: (settings, json) ->
-      $("table").addClass("tableVisible animated fadeIn")
+      $table.addClass("tableVisible animated fadeIn")
+
+  # when ordering or searching (including during initialization), add row index
+  $dataTable.on('order.dt search.dt', ->
+    nodes = $dataTable.column(0,
+      search: 'applied'
+      order: 'applied').nodes()
+
+    for i in [0...nodes.length]
+      nodes[i].innerHTML = "<div data-tdclass=''> #{i + 1} </div>"
+  ).draw()
 
   # When submit button of modal is clicked, validate the form
   # and submit. Otherwise disable the submit button.

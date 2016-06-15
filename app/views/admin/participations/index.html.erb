@@ -10,12 +10,12 @@
                     data: { toggle: "dropdown" }, aria: {haspopup: true, expanded: false} %>
         <ul class="dropdown-menu .pull-center">
           <li>
-            <%= link_to ("<i class='fa fa-plus'></i> Create New Participant").html_safe, new_admin_project_participation_path,
-                        remote: true, class: "btn btn-success", id: "newBtn", onclick: 'newButtonPressed("Participant")'  %>
+            <%= link_to "Create New Participant..", new_admin_project_participation_path,
+                        remote: true, id: "newBtn", onclick: 'newButtonPressed("Participant")'  %>
           </li>
           <li>
-            <%= link_to ("Add From Database").html_safe, admin_project_new_from_db_path,
-                        remote: true, class: "btn btn-success", id: "newBtn", onclick: 'newButtonPressed("Participant")' %>
+            <%= link_to "Add From Database..", admin_project_new_from_db_path,
+                        remote: true,  id: "newBtn", onclick: 'newButtonPressed("Participant")' %>
           </li>
         </ul>
       </div>
