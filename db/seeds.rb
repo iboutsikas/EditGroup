@@ -188,7 +188,7 @@ website_template.save
 WebsiteTemplate.create(website_name: "Personal Website")
 
 # Add Personal Websites
-Members.all.each do |m|
+Member.all.each do |m|
 		WebsiteTemplate.all.each do |t|
 			p = PersonalWebsite.create(url: "www.cldldlld.com", website_template: t)
 			m.personal_websites << p
