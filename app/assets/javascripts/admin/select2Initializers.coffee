@@ -1,10 +1,19 @@
 $ ->
   # select2 for site preferences page
-  $('#citations_select2').select2
+  $('.citations_select2').select2
     theme: 'bootstrap'
 
-  $('#citations_select2').on "select2:select", () ->
-    $('form').submit()
+  $('.citations_select2').on "select2:select", (e) ->
+    form = e.currentTarget.closest("form")
+    $.ajax
+      url: form.action
+      headers:
+        Accept: 'text/javascript; charset=utf-8'
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+      type: 'PATCH'
+      dataType: 'script'
+      data:
+        "preference": {"value": form.value.value, "id": form.preference_id.value}
 
 
   # Select2 for select boxes in authors and project participants

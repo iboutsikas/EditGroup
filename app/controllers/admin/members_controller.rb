@@ -138,11 +138,12 @@ class Admin::MembersController < Admin::DashboardController
   end
 
   def destroy
+    full_name = @member.full_name
     @member.destroy
 
     respond_to do |format|
       format.js { render js: "hide_and_redraw();
-                              showNotification(type = 'error', title = 'Member Deleted!', text = 'Deleted #{@member.full_name}' );"  }
+                              showNotification(type = 'error', title = 'Member Deleted!', text = 'Deleted #{full_name}' );"  }
     end
   end
 
