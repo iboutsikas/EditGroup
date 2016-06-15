@@ -28,6 +28,28 @@ participant3  = Participant.create(email: "dkdkss@email.com", title: "DR.", admi
 
 Member.create(isAdmin: false, person_id: person3.id, participant_id: participant3.id, bio: "bio", avatar: "", email: "member3@member3.com", password: "asdfasdf", isStudent: false)
 
+# Student Members
+# Student Member 1
+person1 = Person.create(firstName: "Mathitoulis", lastName: "Mikros")
+
+participant1  = Participant.create(email: "dkdkss@email.com", title: "Mr.", administrative_title: "Student", person_id: person1.id)
+
+Member.create(isAdmin: false, person_id: person1.id, participant_id: participant1.id, bio: "bio", avatar: "", email: "stumember1@member1.com", password: "asdfasdf", isStudent: true, member_from: Date.now, member_to: Date.now)
+
+# Member 2
+person2 = Person.create(firstName: "Trelokostakis", lastName: "Geniousboy")
+
+participant2  = Participant.create(email: "dsdsfdd@email.com", title: "Mr.", administrative_title: "Student", person_id: person2.id)
+
+Member.create(isAdmin: false, person_id: person2.id, participant_id: participant2.id, bio: "bio", avatar: "", email: "stumember2@member2.com", password: "asdfasdf", isStudent: true, member_from: Date.now, member_to: Date.now)
+
+# Member 3
+person3 = Person.create(firstName: "Kamilopardali", lastName: "Papadopoulou")
+
+participant3  = Participant.create(email: "dkdkss@email.com", title: "Ms.", administrative_title: "Student", person_id: person3.id)
+
+Member.create(isAdmin: false, person_id: person3.id, participant_id: participant3.id, bio: "bio", avatar: "", email: "stumember3@member3.com", password: "asdfasdf", isStudent: true, member_from: Date.now, member_to: Date.now)
+
 # Create Publications
 # Conferences
 # Conference 1
