@@ -1,11 +1,11 @@
 
   <% if current_member %>
-    <li class="dropdown pull-right">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+    <li class="dropdown login-module">
+      <a href="#" class="dropdown-toggle dropdown-display-lg" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
         Welcome, <%= current_member.full_name %><span class="caret"></span>
       </a>
       <ul class="dropdown-menu">
-        <li><a href="#">Manage Profile</a></li>
+        <li><a href="#">Manage Profile <i class="fa fa-user pull-right" aria-hidden="true"></i></a></li>
         <% if current_member.isAdmin %>
           <li>
             <%= link_to admin_dashboard_index_path do %>
@@ -22,7 +22,7 @@
       </ul>
     </li>
   <% else %>
-  <li class="pull-right">
+  <li class="login-module">
     <%= link_to new_member_session_path do %>
       <i class="fa fa-sign-in" aria-hidden="true"></i>
     <% end %>

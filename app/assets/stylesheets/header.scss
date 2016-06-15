@@ -52,4 +52,7 @@ $nav-color : $color-primary;
       }
     }
   }
+  .login-module {
+    @extend .pull-right;
+  }
 }

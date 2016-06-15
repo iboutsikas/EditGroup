@@ -1,5 +1,5 @@
-<% @news.each do |date, newsForYear| %>
-  <h1><%= date.year %></h1>
+<% @news.each do |year, newsForYear| %>
+  <h1><%= year %></h1>
   <% newsForYear.each do |newsItem| %>
     <div class="row">
       <%= render "home/partials/newsPartial", item: newsItem %>
