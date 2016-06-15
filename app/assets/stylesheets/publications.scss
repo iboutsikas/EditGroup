@@ -51,7 +51,7 @@ Modules - reusable parts of our design
 
 -------------------------------- */
 
-.cd-container { /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
+.publications-timeline-container { /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
 	width: 90%;
 	max-width: $L; // breakpoints inside partials > _layout.scss
 	margin: 0 auto;
@@ -90,7 +90,7 @@ Main components
 // 	}
 // }
 
-#cd-timeline {
+#publications-timeline {
 	position: relative;
 	padding: 2em 0;
 	margin: {
@@ -122,7 +122,7 @@ Main components
 	}
 }
 
-.cd-timeline-block {
+.publication-timeline-block {
 	position: relative;
 	margin: 2em 0;
 	@include clearfix;
@@ -148,14 +148,17 @@ Main components
 	}
 }
 
-.cd-timeline-img {
+.publication-timeline-img {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 40px;
 	height: 40px;
 	border-radius: 50%;
-	box-shadow: 0 0 0 4px $color-3, inset 0 2px 0 rgba(#000, .08), 0 3px 0 4px rgba(#000, .05) ;
+	border: 5px solid white;
+	-webkit-box-shadow: 0px 3px 8px 4px rgba(204,204,204,1);
+	-moz-box-shadow: 0px 3px 8px 4px rgba(204,204,204,1);
+	box-shadow: 0px 3px 8px 4px rgba(204,204,204,1);
 
 	img {
 		display: block;
@@ -168,15 +171,15 @@ Main components
 		margin-top: -12px;
 	}
 
-	&.cd-picture {
+	&.timeline-conference {
 		background: $color-4;
 	}
 
-	&.cd-movie {
+	&.timeline-journal{
 		background: $color-2;
 	}
 
-	&.cd-location {
+	&.timeline-location {
 		background: $color-5;
 	}
 
@@ -196,12 +199,12 @@ Main components
 
 		.cssanimations &.bounce-in {
 			visibility: visible;
-			@include animation(cd-bounce-1 .6s);
+			@include animation(timeline-bounce-1 .6s);
 		}
 	}
 }
 
-@include keyframes(cd-bounce-1) {
+@include keyframes(timeline-bounce-1) {
 	0% {
 		opacity: 0;
 		@include transform(scale(.5));
@@ -217,24 +220,27 @@ Main components
 	}
 }
 
-.cd-timeline-content {
+.publication-timeline-content {
 	position: relative;
 	margin-left: 60px;
 	background: $color-3;
-	@include border-radius;
+	//@include border-radius;
 	padding: 1em;
-	box-shadow: 0 3px 0 darken($background, 5%);
+	//box-shadow: 0 3px 0 darken($background, 5%);
+	-webkit-box-shadow: 0px 3px 8px 4px rgba(204,204,204,1);
+	-moz-box-shadow: 0px 3px 8px 4px rgba(204,204,204,1);
+	box-shadow: 0px 3px 8px 4px rgba(204,204,204,1);
 	@include clearfix;
 
 	h2 {
 		color: $color-1;
 	}
 
-	p, .cd-read-more, .cd-date {
-		@include font-size(13px);
+	p, .timeline-read-more, .timeline-date {
+		@include font-size(15px);
 	}
 
-	.cd-read-more, .cd-date {
+	.timeline-read-more, .timeline-date {
 		display: inline-block;
 	}
 
@@ -243,7 +249,7 @@ Main components
 		line-height: 1.6;
 	}
 
-	.cd-read-more {
+	.timeline-read-more {
 		float: right;
 		padding: .8em 1em;
 		background: $link;
@@ -255,7 +261,7 @@ Main components
 		}
 	}
 
-	.cd-date {
+	.timeline-date {
 		float: left;
 		padding: .8em 0;
 		opacity: .7;
@@ -281,8 +287,8 @@ Main components
 			@include font-size(16px);
 		}
 
-		.cd-read-more, .cd-date {
-			@include font-size(14px);
+		.timeline-read-more, .timeline-date {
+			@include font-size(15px);
 		}
 	}
 
@@ -298,11 +304,11 @@ Main components
 			border-left-color: $color-3;
 		}
 
-		.cd-read-more {
+		.timeline-read-more {
 			float: left;
 		}
 
-		.cd-date {
+		.timeline-date {
 			position: absolute;
 			width: 100%;
 			left: 122%;
@@ -310,7 +316,7 @@ Main components
 			@include font-size(16px);
 		}
 
-		.cd-timeline-block:nth-child(even) & {
+		.publication-timeline-block:nth-child(even) & {
 			float: right;
 
 			&::before {
@@ -321,11 +327,11 @@ Main components
 				border-right-color: $color-3;
 			}
 
-			.cd-read-more {
+			.timeline-read-more {
 				float: right;
 			}
 
-			.cd-date {
+			.timeline-date {
 				left: auto;
 				right: 122%;
 				text-align: right;
@@ -338,19 +344,19 @@ Main components
 
 		.cssanimations &.bounce-in {
 			visibility: visible;
-			@include animation(cd-bounce-2 .6s);
+			@include animation(timeline-bounce-2 .6s);
 		}
 	}
 }
 
 @include MQ(L) {
 	/* inverse bounce effect on even content blocks */
-	.cssanimations .cd-timeline-block:nth-child(even) .cd-timeline-content.bounce-in {
-		@include animation(cd-bounce-2-inverse .6s);
+	.cssanimations .publication-timeline-block:nth-child(even) .publication-timeline-content.bounce-in {
+		@include animation(timeline-bounce-2-inverse .6s);
 	}
 }
 
-@include keyframes(cd-bounce-2) {
+@include keyframes(timeline-bounce-2) {
 	0% {
 		opacity: 0;
 		@include transform(translateX(-100px));
@@ -366,7 +372,7 @@ Main components
 	}
 }
 
-@include keyframes(cd-bounce-2-inverse) {
+@include keyframes(timeline-bounce-2-inverse) {
 	0% {
 		opacity: 0;
 		@include transform(translateX(100px));
