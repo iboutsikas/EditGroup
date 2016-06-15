@@ -6,6 +6,8 @@
 @import "members";
 @import "publications";
 @import "newsevents";
+@import "about";
+@import "contact";
 
 * {
   font-family: $global-font;
@@ -34,6 +36,7 @@ header {
 #footer {
   background-color: $color-primary;
   color: text-contrast($color-primary);
+  z-index: 15;
   .footer-content {
     @extend .container;
   }

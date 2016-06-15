@@ -1,0 +1,16 @@
+#contact-info  {
+  @extend .col-md-6;
+
+  #contact-info-title {
+    border-bottom: 1px solid $color-secondary-1;
+  }
+
+  .contact {
+    @extend .well;
+    padding-top: 0;
+  }
+}
+
+#contact-map {
+  @extend .col-md-6;
+}
