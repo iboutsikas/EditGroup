@@ -135,7 +135,7 @@ author_person1 = Person.create(firstName: "Lovely", lastName: "Katsika")
 author1 = Author.create(publication_id: conference1.id, person_id: author_person1.id, priority: 10)
 
 author_person2 = Person.create(firstName: "Action", lastName: "Man")
-author2 = Author.create(publication_id: conference1.id, person_id: author_person2.id, priority: 10, priority: 10)
+author2 = Author.create(publication_id: conference1.id, person_id: author_person2.id, priority: 10)
 
 author3 = Author.create(publication_id: conference1.id, person_id: person1.id, priority: 10)
 
@@ -188,15 +188,11 @@ website_template.save
 WebsiteTemplate.create(website_name: "Personal Website")
 
 # Add Personal Websites
-websitearray = []
-websitearray << PersonalWebsite.create(url: "www.dldldl.com", website_template: WebsiteTemplate.first)
-websitearray << PersonalWebsite.create(url: "www.dldldl.com", website_template: WebsiteTemplate.second)
-websitearray << PersonalWebsite.create(url: "www.dldldl.com", website_template: WebsiteTemplate.third)
-websitearray << PersonalWebsite.create(url: "www.dldldl.com", website_template: WebsiteTemplate.fourth)
-websitearray << PersonalWebsite.create(url: "www.dldldl.com", website_template: WebsiteTemplate.fifth)
-
 Members.all.each do |m|
-	websitearray.each { |w| m.personal_websites << w }
+		WebsiteTemplate.all.each do |t|
+			p = PersonalWebsite.create(url: "www.cldldlld.com", website_template: t)
+			m.personal_websites << p
+		end
 end
 
 # Preferences
