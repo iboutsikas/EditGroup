@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   get 'marika', to: 'admin/dashboard#index'
   get 'admin', to: 'admin/dashboard#index'
 
-  get 'edit_profile', to: 'members#edit_profile'
-
   namespace :admin do
     get 'dashboard/index'
     get 'preferences', to: 'preferences#preferences'
@@ -88,7 +86,8 @@ Rails.application.routes.draw do
 
   get 'projects', to: 'home#projects'
 
-  get 'members', to: 'home#members'
+  resources :members, only: [:index, :update, :edit]
+  #get 'edit_profile/:id', to: 'members#edit_profile'
 
   devise_for :members, :controllers => { registrations: 'registrations', invitations: 'invitations' }
 

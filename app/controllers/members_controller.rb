@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
   before_action :authenticate_member!, except: [:index]
-  before_action :set_member, only: [:update, :edit_profile]
-  before_filter :allow_if_current_member, only: [:edit_profile, :update]
+  before_action :set_member, only: [:edit, :update, :edit_profile]
+  before_filter :allow_if_current_member, only: [:edit_profile,:edit, :update]
 
   def index
     @members = Member.includes(:personal_websites,:participant,:person)
@@ -15,6 +15,20 @@ class MembersController < ApplicationController
       @edit = true
       format.html
     end
+  end
+
+  def edit
+    unless @member.personal_websites.any?
+    @personal_website = @member.personal_websites.build
+    end
+
+    @edit  = true
+    render "members/edit_profile"
+
+    # respond_to do |format|
+    #   @edit = true
+    #   render "edit_profile"
+    # end
   end
 
   # PATCH/PUT /members/1
