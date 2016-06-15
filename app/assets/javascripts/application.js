@@ -19,3 +19,4 @@
 //= require modernizr
 //= require header
 //= require publications
+//= require contact
