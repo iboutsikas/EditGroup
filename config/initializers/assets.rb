@@ -19,4 +19,5 @@ Rails.application.config.assets.precompile += %w( admin/dashboard.js )
 Rails.application.config.assets.precompile += %w( admin.js )
 Rails.application.config.assets.precompile += %w( admin/dashboard.css )
 Rails.application.config.assets.precompile += %w( invitations.js )
+Rails.application.config.assets.precompile += %w( frontend.js )
 Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/

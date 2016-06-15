@@ -19,4 +19,4 @@ $(function() {
 		mMarker.setMap(mMap);
   }
   google.maps.event.addDomListener(window, 'load', initContactMap);
-})
+});

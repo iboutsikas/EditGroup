@@ -8,7 +8,7 @@
     <% 3.times do |x| %>
       <% index = y * 3 + x %>
       <% if (index < @members.size) %>
-        <%= render "home/partials/memberListPartial", member: @members.at(index) %>
+        <%= render "members/partials/memberListPartial", member: @members.at(index) %>
       <% end %>
     <% end %>
   </div>
@@ -20,7 +20,7 @@
     <% 3.times do |x| %>
       <% index = y * 3 + x %>
       <% if (index < @members.size) %>
-        <%= render "home/partials/memberListPartial", member: @members.at(index) %>
+        <%= render "members/partials/memberListPartial", member: @members.at(index) %>
       <% end %>
     <% end %>
   </div>
