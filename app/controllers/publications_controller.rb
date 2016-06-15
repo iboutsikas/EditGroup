@@ -4,6 +4,13 @@ class PublicationsController < ApplicationController
 
   def index
     @publications = Publication.all
+    pref = Preference.find_by_description("publication_display")
+
+    if (pref.value == "timeline")
+      render "publications-timeline"
+    else
+      render "publications-default"
+    end
   end
 
   def show

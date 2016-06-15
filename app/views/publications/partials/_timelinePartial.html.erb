@@ -1,12 +1,12 @@
-<div class="cd-timeline-block">
-  <div class="cd-timeline-img cd-picture">
+<div class="publication-timeline-block">
+  <div class="publication-timeline-img timeline-conference">
     <i class="fa fa-file-text" aria-hidden="true"></i>
   </div> <!-- cd-timeline-img -->
 
-  <div class="cd-timeline-content">
+  <div class="publication-timeline-content">
     <h2><%= publication.title %></h2>
     <p><%= publication.abstract %></p>
-    <a href="#0" class="cd-read-more">Read more</a>
-    <span class="cd-date">Jan 14</span>
+    <a href="#0" class="timeline-read-more">Read more</a>
+    <span class="timeline-date"><%= publication.date.strftime("%d %b %Y") %></span>
   </div> <!-- cd-timeline-content -->
 </div> <!-- cd-timeline-block -->
