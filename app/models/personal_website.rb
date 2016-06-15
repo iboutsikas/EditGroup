@@ -12,4 +12,9 @@ class PersonalWebsite < ActiveRecord::Base
   def website_name
     self.website_template.website_name
   end
+
+  def url
+    temp = super
+    return "http://#{temp}" unless temp[/^https?/]
+  end
 end

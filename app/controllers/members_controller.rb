@@ -1,10 +1,20 @@
+require 'pry'
 class MembersController < ApplicationController
   before_action :authenticate_member!, except: [:index]
   before_action :set_member, only: [:edit, :update, :edit_profile]
   before_filter :allow_if_current_member, only: [:edit_profile,:edit, :update]
 
   def index
-    @members = Member.includes(:personal_websites,:participant,:person)
+    @members = Member.includes(:personal_websites,:participant,:person).where("members.person_id is not null and members.participant_id is not null")
+    @staff = []
+    @students = []
+    @members.each do |d|
+      if d.isStudent
+        @students << d
+      else
+        @staff << d
+      end
+    end
   end
 
   def edit_profile

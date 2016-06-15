@@ -207,7 +207,10 @@ logo_file = File.open('public/websitelogos/researchgate-logo.png')
 website_template.logo = logo_file
 website_template.save
 
-WebsiteTemplate.create(website_name: "Personal Website")
+website_template = WebsiteTemplate.new(website_name: "Personal Website")
+logo_file = File.open('public/user.svg')
+website_template.logo = logo_file
+website_template.save
 
 # Add Personal Websites
 Member.all.each do |m|
