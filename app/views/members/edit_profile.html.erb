@@ -1,1 +1,24 @@
-<%= render partial: "admin/members/form" %>
+<div class="member-row">
+
+  <div class="member-card">
+    <%= image_tag(current_member.avatar.url, class: "member-image") %>
+    <p class="member-name">
+      <%= current_member.participant.title + " " + current_member.full_name%>
+    </p>
+    <p class="member-position">
+      <%= current_member.participant.administrative_title %>
+    </p>
+    <div class="member-websites">
+      <% @member.personal_websites.each do |website| %>
+        <%= link_to website.url, title: website.website_name do %>
+          <%= image_tag(website.website_template.logo.url, class: "website-logo") %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="member-edit-form">
+    <%= render partial: "admin/members/form" %>
+  </div>
+
+</div>

@@ -19,6 +19,7 @@
     @extend .col-md-2;
     @extend .col-sm-6;
     @extend .col-xs-8;
+    //@extend .col-md-offset-0;
     @extend .col-sm-offset-3;
     @extend .col-xs-offset-2;
     padding: 0px;
@@ -64,3 +65,8 @@
     }
   }//card
 }//row
+
+// Edit profile
+.member-edit-form {
+  @extend .col-md-8;
+}
