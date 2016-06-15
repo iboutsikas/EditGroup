@@ -3,7 +3,7 @@ person = Person.create(firstName: "admin", lastName: "admin")
 
 participant  = Participant.create(email: "public@email.com", title: "Mr.", administrative_title: "Lecturer", person_id: person.id)
 
-Member.create(isAdmin: true, person_id: person.id,participant_id: participant.id, bio: "bio", avatar: "", email: "admin@admin.com", password: "asdfasdf")
+Member.create(isAdmin: true, person_id: person.id,participant_id: participant.id, bio: "bio", avatar: "", email: "admin@admin.com", password: "asdfasdf", isStudent: false)
 
 
 # Create Members
@@ -12,21 +12,43 @@ person1 = Person.create(firstName: "John", lastName: "GeorgiosPapandreou")
 
 participant1  = Participant.create(email: "dkdkss@email.com", title: "Mr.", administrative_title: "Lecturer", person_id: person1.id)
 
-Member.create(isAdmin: false, person_id: person1.id, participant_id: participant1.id, bio: "bio", avatar: "", email: "member1@member1.com", password: "asdfasdf")
+Member.create(isAdmin: false, person_id: person1.id, participant_id: participant1.id, bio: "bio", avatar: "", email: "member1@member1.com", password: "asdfasdf", isStudent: false)
 
 # Member 2
 person2 = Person.create(firstName: "Mixalakis", lastName: "Killer")
 
 participant2  = Participant.create(email: "dsdsfdd@email.com", title: "Mr.", administrative_title: "Lecturer", person_id: person2.id)
 
-Member.create(isAdmin: false, person_id: person2.id, participant_id: participant2.id, bio: "bio", avatar: "", email: "member2@member2.com", password: "asdfasdf")
+Member.create(isAdmin: false, person_id: person2.id, participant_id: participant2.id, bio: "bio", avatar: "", email: "member2@member2.com", password: "asdfasdf", isStudent: false)
 
 # Member 3
 person3 = Person.create(firstName: "John", lastName: "GeorgiosPapandreou")
 
 participant3  = Participant.create(email: "dkdkss@email.com", title: "DR.", administrative_title: "Professor", person_id: person3.id)
 
-Member.create(isAdmin: false, person_id: person3.id, participant_id: participant3.id, bio: "bio", avatar: "", email: "member3@member3.com", password: "asdfasdf")
+Member.create(isAdmin: false, person_id: person3.id, participant_id: participant3.id, bio: "bio", avatar: "", email: "member3@member3.com", password: "asdfasdf", isStudent: false)
+
+# Student Members
+# Student Member 1
+person1 = Person.create(firstName: "Mathitoulis", lastName: "Mikros")
+
+participant1  = Participant.create(email: "dkdkss@email.com", title: "Mr.", administrative_title: "Student", person_id: person1.id)
+
+Member.create(isAdmin: false, person_id: person1.id, participant_id: participant1.id, bio: "bio", avatar: "", email: "stumember1@member1.com", password: "asdfasdf", isStudent: true, member_from: Date.today, member_to: Date.today)
+
+# Member 2
+person2 = Person.create(firstName: "Trelokostakis", lastName: "Geniousboy")
+
+participant2  = Participant.create(email: "dsdsfdd@email.com", title: "Mr.", administrative_title: "Student", person_id: person2.id)
+
+Member.create(isAdmin: false, person_id: person2.id, participant_id: participant2.id, bio: "bio", avatar: "", email: "stumember2@member2.com", password: "asdfasdf", isStudent: true, member_from: Date.today, member_to: Date.today)
+
+# Member 3
+person3 = Person.create(firstName: "Kamilopardali", lastName: "Papadopoulou")
+
+participant3  = Participant.create(email: "dkdkss@email.com", title: "Ms.", administrative_title: "Student", person_id: person3.id)
+
+Member.create(isAdmin: false, person_id: person3.id, participant_id: participant3.id, bio: "bio", avatar: "", email: "stumember3@member3.com", password: "asdfasdf", isStudent: true, member_from: Date.today, member_to: Date.today)
 
 # Create Publications
 # Conferences
@@ -135,7 +157,7 @@ author_person1 = Person.create(firstName: "Lovely", lastName: "Katsika")
 author1 = Author.create(publication_id: conference1.id, person_id: author_person1.id, priority: 10)
 
 author_person2 = Person.create(firstName: "Action", lastName: "Man")
-author2 = Author.create(publication_id: conference1.id, person_id: author_person2.id, priority: 10, priority: 10)
+author2 = Author.create(publication_id: conference1.id, person_id: author_person2.id, priority: 10)
 
 author3 = Author.create(publication_id: conference1.id, person_id: person1.id, priority: 10)
 
@@ -161,11 +183,40 @@ NewsEvent.create(date: Date.today, description: "Person publishes Publication", 
 
 
 # Website Templates
-WebsiteTemplate.create(website_name: "Facebook", logo: "facebook-logo.jpg")
+# LinkedIn
+website_template = WebsiteTemplate.new(website_name: "LinkedIn")
+logo_file = File.open('public/websitelogos/linkedin-logo.svg')
+website_template.logo = logo_file
+website_template.save
 
-WebsiteTemplate.create(website_name: "LinkedIn", logo: "linkedin-logo.jpg")
+# Academia
+website_template = WebsiteTemplate.new(website_name: "Academia")
+logo_file = File.open('public/websitelogos/academia-logo.svg')
+website_template.logo = logo_file
+website_template.save
 
-WebsiteTemplate.create(website_name: "Generic Website")
+# Google Scholar
+website_template = WebsiteTemplate.new(website_name: "Google Scholar")
+logo_file = File.open('public/websitelogos/googlescholar-logo.png')
+website_template.logo = logo_file
+website_template.save
+
+# Research Gate
+website_template = WebsiteTemplate.new(website_name: "ResearchGate")
+logo_file = File.open('public/websitelogos/researchgate-logo.png')
+website_template.logo = logo_file
+website_template.save
+
+WebsiteTemplate.create(website_name: "Personal Website")
+
+# Add Personal Websites
+Member.all.each do |m|
+		WebsiteTemplate.all.each do |t|
+			p = PersonalWebsite.new(url: "www.cldldlld.com", website_template: t)
+			m.personal_websites << p
+		end
+end
 
 # Preferences
 Preference.create(description: "citation_style", value: "ieee")
+Preference.create(description: "publication_display", value: "default")

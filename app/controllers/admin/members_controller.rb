@@ -2,7 +2,7 @@ require 'json'
 require 'pry'
 
 class Admin::MembersController < Admin::DashboardController
-  before_action :set_member, only: [:show, :edit, :update, :destroy, :change_password, :resend_invitation, :destroy_check_for_publications]
+  before_action :set_member, only: [:show, :edit, :update, :destroy, :change_password, :resend_invitation, :destroy_check_for_publications, :edit_profile_page]
 
   def index
     respond_to do |format|
@@ -18,6 +18,13 @@ class Admin::MembersController < Admin::DashboardController
     end
   end
 
+  def student_members_index
+    respond_to do |format|
+      format.html
+      format.json { render json: StudentMembersDatatable.new(view_context, { current_member: current_member }) }
+    end
+  end
+
   def show
     @websites = @member.personal_websites
   end
@@ -27,6 +34,11 @@ class Admin::MembersController < Admin::DashboardController
     @participant = @member.build_participant
     @person = @member.build_person
     @personal_websites = @member.personal_websites.build
+
+    if params[:type] == "student"
+      @member.isStudent = true
+      @student_member = true
+    end
 
     respond_to do |format|
       format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/form" } }
@@ -106,7 +118,7 @@ class Admin::MembersController < Admin::DashboardController
   end
 
   def destroy_check_for_publications
-    # RIGHT NOW IT IS RETURNING ALL THE PUBLICATIONS FOR THE MEMBER. FIX
+############ RIGHT NOW IT IS RETURNING ALL THE PUBLICATIONS FOR THE MEMBER. FIX
     @publications = @member.publications_to_delete
 
 
@@ -123,7 +135,7 @@ class Admin::MembersController < Admin::DashboardController
   end
 
   def destroy_with_publications
-    binding.pry
+
     logger.info "destroy with publications"
     @publications = @member.publications_to_delete
 
@@ -155,7 +167,7 @@ class Admin::MembersController < Admin::DashboardController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:bio, :avatar, :id,:email, :password, :password_confirmation, :isAdmin, :participant_id, :person_id, :invited_by_type,
+      params.require(:member).permit(:bio, :avatar, :id,:email, :password, :password_confirmation, :isAdmin, :isStudent, :member_from, :member_to, :participant_id, :person_id, :invited_by_type,
                                      participant_attributes:[:id,:title,:administrative_title,:email],
                                      person_attributes: [:id,:firstName, :lastName],
                                      personal_websites_attributes: [ :id, :url, :website_template_id, :_destroy] )

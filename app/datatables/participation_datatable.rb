@@ -2,7 +2,8 @@ class ParticipationDatatable < AjaxDatatablesRails::Base
 
   include Admin::DashboardHelper
 
-  def_delegators :@view, :link_to, :edit_admin_project_participation_path, :link_to, :admin_project_participation_path, :content_tag
+  def_delegators :@view, :link_to, :edit_admin_project_participation_path, :link_to,
+  :admin_project_participation_path, :content_tag, :link_to_button_column
 
   def sortable_columns
     # Declare strings in this format: ModelName.column_name
@@ -41,10 +42,10 @@ class ParticipationDatatable < AjaxDatatablesRails::Base
           safe_show(record.participant.administrative_title),
           safe_show(record.participant.email),
           priority_show(record.priority, "participation","participations/#{record.id}", token),
-          link_to(("<i class='fa fa-pencil'></i> Edit").html_safe, edit_admin_project_participation_path(project,record),
+          link_to_button_column(("<i class='fa fa-pencil'></i> Edit").html_safe, edit_admin_project_participation_path(project,record),
                   remote: true,  class:"btn btn-info btn-xs editButton", onclick: 'editButtonPressed("Participant")' ),
 
-          link_to(("<i class='fa fa-trash-o'></i> Remove From this Project").html_safe, admin_project_participation_path(project,record),
+          link_to_button_column(("<i class='fa fa-trash-o'></i> Remove From this Project").html_safe, admin_project_participation_path(project,record),
                   remote: true, method: :delete, data: { confirm: 'Are you sure yo want to delete this project participant?' }, class: "btn btn-danger btn-xs deleteButton" )
       ]
     end

@@ -2,7 +2,8 @@ class NewsEventDatatable < AjaxDatatablesRails::Base
 
   include Admin::DashboardHelper
 
-  def_delegators :@view, :link_to, :admin_news_event_path,:link_to, :edit_admin_news_event_path, :link_to, :content_tag
+  def_delegators :@view, :link_to, :admin_news_event_path,:link_to, :edit_admin_news_event_path,
+  :link_to, :content_tag, :link_to_button_column
 
   def sortable_columns
     # Declare strings in this format: ModelName.column_name
@@ -32,9 +33,9 @@ class NewsEventDatatable < AjaxDatatablesRails::Base
           safe_show(record.date),
           safe_show(record.title),
           safe_show(record.description),
-          link_to(("<i class='fa fa-pencil'></i> Edit").html_safe, edit_admin_news_event_path(record), remote: true,
+          link_to_button_column(("<i class='fa fa-pencil'></i> Edit").html_safe, edit_admin_news_event_path(record), remote: true,
                   class:"btn btn-info btn-xs editButton", onclick: 'editButtonPressed("News-Events")'),
-          link_to(("<i class='fa fa-trash-o'></i> Delete").html_safe, admin_news_event_path(record), method: :delete,
+          link_to_button_column(("<i class='fa fa-trash-o'></i> Delete").html_safe, admin_news_event_path(record), method: :delete,
                   remote: true, data: { confirm: 'Are you sure you want to delete this news/event?' }, class: "btn btn-danger btn-xs deleteButton" )
       ]
     end

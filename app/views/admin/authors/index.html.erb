@@ -10,12 +10,12 @@
                     data: { toggle: "dropdown" }, aria: {haspopup: true, expanded: false} %> <!--,id: "newBtn", onclick: 'newButtonPressed("Author")'-->
         <ul class="dropdown-menu .pull-center">
           <li>
-            <%= link_to ("Create New...").html_safe, new_admin_publication_author_path(id: @publication.id),
-                        remote: true, class: "btn btn-success", id: "newBtn", onclick: 'newButtonPressed("Author")' %>
+            <%= link_to ("Create New..").html_safe, new_admin_publication_author_path(id: @publication.id),
+                        remote: true, id: "newBtn", onclick: 'newButtonPressed("Author")' %>
           </li>
           <li>
-            <%= link_to ("Add From Database").html_safe, admin_publication_new_from_db_path,
-                        remote: true, class: "btn btn-success", id: "newBtn", onclick: 'newButtonPressed("Author")' %>
+            <%= link_to ("Add From Database..").html_safe, admin_publication_new_from_db_path,
+                        remote: true, id: "newBtn", onclick: 'newButtonPressed("Author")' %>
           </li>
         </ul>
       </div>

@@ -29,7 +29,7 @@
 
     <hr>
 
-    <%= simple_form_for(@show_timeline, url: admin_preferences_update_path, remote: true) do |f| %>
+    <%= simple_form_for(@publication_display, url: admin_preferences_update_path, remote: true) do |f| %>
       <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token"/>
       <%= f.input :id, as: :hidden %>
       <div class="row">
@@ -38,7 +38,7 @@
         </div>
 
         <div class="col-md-2">
-          <%= select_tag :value, options_for_select(@timeline_values, @show_timeline.value), class: "citations_select2", style: "width: 100%;", label: "Style" %>
+          <%= select_tag :value, options_for_select(@timeline_values, @publication_display.value), class: "citations_select2", style: "width: 100%;", label: "Style" %>
         </div>
       </div>
     <% end %>
