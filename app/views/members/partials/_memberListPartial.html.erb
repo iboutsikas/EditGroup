@@ -9,7 +9,7 @@
   <div class="member-websites">
     <% member.personal_websites.each do |website| %>
       <%= link_to website.url, title: website.website_name do %>
-        <%= image_tag("F_icon", class: "website-logo") %>
+        <%= image_tag(website.website_template.logo.url, class: "website-logo") %>
       <% end %>
     <% end %>
   </div>
