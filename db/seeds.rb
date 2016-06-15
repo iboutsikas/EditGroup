@@ -161,11 +161,43 @@ NewsEvent.create(date: Date.today, description: "Person publishes Publication", 
 
 
 # Website Templates
-WebsiteTemplate.create(website_name: "Facebook", logo: "facebook-logo.jpg")
+# LinkedIn
+website_template = WebsiteTemplate.new(website_name: "LinkedIn")
+logo_file = File.open('public/websitelogos/linkedin-logo.svg')
+website_template.logo = logo_file
+website_template.save
 
-WebsiteTemplate.create(website_name: "LinkedIn", logo: "linkedin-logo.jpg")
+# Academia
+website_template = WebsiteTemplate.new(website_name: "Academia")
+logo_file = File.open('public/websitelogos/academia-logo.svg')
+website_template.logo = logo_file
+website_template.save
 
-WebsiteTemplate.create(website_name: "Generic Website")
+# Google Scholar
+website_template = WebsiteTemplate.new(website_name: "Google Scholar")
+logo_file = File.open('public/websitelogos/googlescholar-logo.png')
+website_template.logo = logo_file
+website_template.save
+
+# Research Gate
+website_template = WebsiteTemplate.new(website_name: "ResearchGate")
+logo_file = File.open('public/websitelogos/researchgate-logo.png')
+website_template.logo = logo_file
+website_template.save
+
+WebsiteTemplate.create(website_name: "Personal Website")
+
+# Add Personal Websites
+websitearray = []
+websitearray << PersonalWebsite.create(url: "www.dldldl.com", website_template: WebsiteTemplate.first)
+websitearray << PersonalWebsite.create(url: "www.dldldl.com", website_template: WebsiteTemplate.second)
+websitearray << PersonalWebsite.create(url: "www.dldldl.com", website_template: WebsiteTemplate.third)
+websitearray << PersonalWebsite.create(url: "www.dldldl.com", website_template: WebsiteTemplate.fourth)
+websitearray << PersonalWebsite.create(url: "www.dldldl.com", website_template: WebsiteTemplate.fifth)
+
+Members.all.each do |m|
+	websitearray.each { |w| m.personal_websites << w }
+end
 
 # Preferences
 Preference.create(description: "citation_style", value: "ieee")

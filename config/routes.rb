@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'marika', to: 'admin/dashboard#index'
   get 'admin', to: 'admin/dashboard#index'
 
+  get 'edit_profile', to: 'members#edit_profile'
+
   namespace :admin do
     get 'dashboard/index'
     get 'preferences', to: 'preferences#preferences'

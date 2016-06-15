@@ -230,6 +230,7 @@
     type: type
     title: title
     text: text
+    addclass: "stack-bottomright"
     delay: 3000)
   return
 

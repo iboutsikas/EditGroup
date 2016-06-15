@@ -2,7 +2,7 @@ require 'json'
 require 'pry'
 
 class Admin::MembersController < Admin::DashboardController
-  before_action :set_member, only: [:show, :edit, :update, :destroy, :change_password, :resend_invitation, :destroy_check_for_publications]
+  before_action :set_member, only: [:show, :edit, :update, :destroy, :change_password, :resend_invitation, :destroy_check_for_publications, :edit_profile_page]
 
   def index
     respond_to do |format|
@@ -118,7 +118,7 @@ class Admin::MembersController < Admin::DashboardController
   end
 
   def destroy_check_for_publications
-    # RIGHT NOW IT IS RETURNING ALL THE PUBLICATIONS FOR THE MEMBER. FIX
+############ RIGHT NOW IT IS RETURNING ALL THE PUBLICATIONS FOR THE MEMBER. FIX
     @publications = @member.publications_to_delete
 
 
@@ -135,7 +135,7 @@ class Admin::MembersController < Admin::DashboardController
   end
 
   def destroy_with_publications
-    binding.pry
+
     logger.info "destroy with publications"
     @publications = @member.publications_to_delete
 

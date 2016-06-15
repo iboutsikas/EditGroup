@@ -2,7 +2,10 @@ class StudentMembersDatatable < AjaxDatatablesRails::Base
 
   include Admin::DashboardHelper
 
-  def_delegators :@view, :link_to, :fa_icon, :link_to_if, :image_tag, :edit_admin_member_path, :admin_member_path, :edit_admin_member_path, :admin_member_personal_websites_path, :admin_edit_admin_member_change_password_path, :content_tag, :admin_member_destroy_check_for_publications_path
+  def_delegators :@view, :link_to, :fa_icon, :link_to_if, :image_tag, :edit_admin_member_path,
+  :admin_member_path, :edit_admin_member_path, :admin_member_personal_websites_path,
+  :admin_edit_admin_member_change_password_path, :content_tag, :admin_member_destroy_check_for_publications_path,
+  :link_to_button_column
 
   def sortable_columns
     # Declare strings in this format: ModelName.column_name
@@ -44,16 +47,17 @@ class StudentMembersDatatable < AjaxDatatablesRails::Base
         safe_show(record.participant.email),
         safe_show(record.member_from.year),
         safe_show(record.member_to.year),
-        link_to( ("<i class='fa fa-cloud' aria-hidden='true'></i> Websites").html_safe, admin_member_personal_websites_path(record), class: "btn btn-default btn-xs websitesButton" ),
-        link_to(("<i class='fa fa-pencil'></i> Edit").html_safe, edit_admin_member_path(record), remote: true,
+        link_to_button_column( ("<i class='fa fa-cloud' aria-hidden='true'></i> Websites").html_safe, admin_member_personal_websites_path(record), class: "btn btn-default btn-xs websitesButton" ),
+
+        link_to_button_column(("<i class='fa fa-pencil'></i> Edit").html_safe, edit_admin_member_path(record), remote: true,
                 class:"btn btn-info btn-xs editButton", onclick: 'editButtonPressed("Member")'),
 
-        link_to(("<i class='fa fa-pencil'></i> Edit Login Info").html_safe, admin_edit_admin_member_change_password_path(record),
+        link_to_button_column(("<i class='fa fa-pencil'></i> Edit Login Info").html_safe, admin_edit_admin_member_change_password_path(record),
                 remote: true, class:"btn btn-warning btn-xs editLoginButton", onclick: 'editButtonPressed("Member")'),
 
         link_to_if(record == current_member, ("<i class='fa fa-trash-o'></i> Delete").html_safe, "#", method: :delete,
-                   remote: true, data: { confirm: 'Are you sure you want to delete yourself? dont.' }, class: "btn btn-danger btn-xs deleteButton disabled" ) {
-          link_to(("<i class='fa fa-trash-o'></i> Delete").html_safe, admin_member_destroy_check_for_publications_path(id: record),
+                   remote: true, data: { confirm: 'Are you sure you want to delete yourself? dont.', tdclass: "buttonColumn" }, class: "btn btn-danger btn-xs deleteButton disabled" ) {
+          link_to_button_column(("<i class='fa fa-trash-o'></i> Delete").html_safe, admin_member_destroy_check_for_publications_path(id: record),
                   remote: true, class: "btn btn-danger btn-xs deleteButton" ) }
       ]
     end

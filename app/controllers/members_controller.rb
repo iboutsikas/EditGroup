@@ -2,8 +2,8 @@ require 'pry'
 
 class MembersController < ApplicationController
   before_action :authenticate_member!, except: [:index,:show]
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_member, only: [:show, :edit, :update, :destroy, :edit_profile]
+  before_filter :allow_if_current_member, only: [:edit_profile]
 
   # GET /members
   # GET /members.json
@@ -27,6 +27,16 @@ class MembersController < ApplicationController
 
   # GET /members/1/edit
   def edit
+  end
+
+  def edit_profile
+    unless @member.personal_websites.any?
+      @personal_website = @member.personal_websites.build
+    end
+    respond_to do |format|
+      @edit = true
+      format.html
+    end
   end
 
   # POST /members
@@ -76,6 +86,10 @@ class MembersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_member
       @member = Member.find(params[:id])
+    end
+
+    def allow_if_current_member
+      redirect_to root_path unless current_member == @member
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

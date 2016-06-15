@@ -2,7 +2,9 @@ class InviteStatusDatatable < AjaxDatatablesRails::Base
 
   include Admin::DashboardHelper
 
-  def_delegators :@view, :link_to, :link_to_if, :admin_member_resend_invitation_path, :admin_member_path, :content_tag
+  def_delegators :@view, :link_to, :link_to_if, :admin_member_resend_invitation_path,
+  :admin_member_path, :content_tag, :link_to_button_column, :boolean_show
+
 
   def sortable_columns
     # Declare strings in this format: ModelName.column_name
@@ -38,19 +40,20 @@ class InviteStatusDatatable < AjaxDatatablesRails::Base
           "",
           safe_show(record.person.full_name),
           safe_show(record.email),
-          record.isAdmin,
-          record.isStudent,
+          boolean_show(record.isAdmin),
+          boolean_show(record.isStudent),
           invitation_sent_to_string(record),
           invitation_accepted_to_string(record),
           invitation_status_to_string(record),
-          link_to_if(record.invitation_pending?, ("<i class='fa fa-envelope-o' aria-hidden='true'></i> Resend Invitation").html_safe,
-            admin_member_resend_invitation_path(record.id), remote: true, method: 'post', class:"btn btn-info btn-xs resendButton") {
-              link_to(("<i class='fa fa-envelope-o' aria-hidden='true'></i> Resend Invitation").html_safe, '#', remote: true,
-                      class:"btn btn-info btn-xs resendButton disabled") } ,
-          link_to_if(record.invitation_pending?, ("<i class='fa fa-trash-o'></i> Cancel Invitation").html_safe, admin_member_path(record), method: :delete,
-                     remote: true, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs cancelInvitationButton" ) {
-            link_to(("<i class='fa fa-trash-o'></i> Cancel Invitation").html_safe, "#", method: :delete,
-                    remote: true, data: { confirm: 'Are you sure you want to cancel this invitation?' }, class: "btn btn-danger btn-xs cancelInvitationButton disabled" ) } ,
+          link_to_if(!record.invitation_pending?, ("<i class='fa fa-envelope-o' aria-hidden='true'></i> Resend Invitation").html_safe, '#', remote: true,
+                  class:"btn btn-info btn-xs resendButton disabled", data: { tdclass: "buttonColumn" }) {
+                  link_to_button_column(("<i class='fa fa-envelope-o' aria-hidden='true'></i> Resend Invitation").html_safe,
+              admin_member_resend_invitation_path(record.id), remote: true, method: 'post', class:"btn btn-info btn-xs resendButton")
+               } ,
+          link_to_if(!record.invitation_pending?, ("<i class='fa fa-trash-o'></i> Cancel Invitation").html_safe, "#", method: :delete,
+                  remote: true, data: { confirm: 'Are you sure you want to cancel this invitation?', tdclass: "buttonColumn" }, class: "btn btn-danger btn-xs cancelInvitationButton disabled" ) {
+            link_to_button_column(("<i class='fa fa-trash-o'></i> Cancel Invitation").html_safe, admin_member_path(record), method: :delete,
+               remote: true, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs cancelInvitationButton" )  } ,
       ]
     end
   end
