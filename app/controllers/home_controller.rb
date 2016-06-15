@@ -7,13 +7,13 @@ class HomeController < ApplicationController
   def about
   end
 
-  def members
-    @members = Member.all
-    respond_to do |format|
-      format.html
-      format.json { render json: MemberDatatable.new(view_context) }
-    end
-  end
+  # def members
+  #   @members = Member.all
+  #   respond_to do |format|
+  #     format.html
+  #     format.json { render json: MemberDatatable.new(view_context) }
+  #   end
+  # end
 
   def projects
     @projects = Project.all
@@ -29,7 +29,7 @@ class HomeController < ApplicationController
   end
 
   def newsevents
-    @news = NewsEvent.all.group_by{|year| year.date.year}
+    @news = NewsEvent.all.group_by{|year| year.date.year desc}
   end
 
   def contact
