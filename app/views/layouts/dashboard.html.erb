@@ -10,23 +10,13 @@
 </head>
 <body class="nav-md">
 
-  <% flash.each do |name, msg| %>
-    <!--div class="alert alert-success" id="flash_notification">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-
-    </div-->
-    <script>
-      showNotification(type = "notice",title = "skata",text = "<%= msg %>");
-    </script>
-  <% end %>
-
   <div class="container body">
     <div class="main_container">
 
       <%= render 'side_menu'%>
       <%= render 'header' %>
 
-      <div class="right_col" role="main">
+      <div class="right_col" role="main" id="right-col-id">
         <div class="">
           <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12"  id="content_without_footer">

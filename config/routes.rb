@@ -5,8 +5,11 @@ Rails.application.routes.draw do
   get 'marika', to: 'admin/dashboard#index'
   get 'admin', to: 'admin/dashboard#index'
 
+
   namespace :admin do
     get 'dashboard/index'
+    get 'data_chart', to: 'dashboard#data_chart'
+    get 'site_chart', to: 'dashboard#site_chart'
     get 'preferences', to: 'preferences#preferences'
     patch 'preferences_update', to: 'preferences#update'
 
