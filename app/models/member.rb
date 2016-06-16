@@ -39,7 +39,7 @@ class Member < ActiveRecord::Base
   end
 
   def full_name
-    self.participant.person.full_name
+    self.person.full_name
   end
 
   def publications_to_delete

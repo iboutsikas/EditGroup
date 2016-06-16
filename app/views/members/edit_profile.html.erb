@@ -1,3 +1,6 @@
+<%= javascript_include_tag 'invitations' %>
+
+<h1>Edit Profile</h1>
 <div class="member-row">
 
   <div class="member-card">
@@ -10,15 +13,60 @@
     </p>
     <div class="member-websites">
       <% @member.personal_websites.each do |website| %>
-        <%= link_to website.url, title: website.website_name do %>
+        <%= link_to website.url_formatted, title: website.website_name do %>
           <%= image_tag(website.website_template.logo.url, class: "website-logo") %>
         <% end %>
       <% end %>
     </div>
   </div>
 
-  <div class="member-edit-form">
-    <%= render partial: "admin/members/form" %>
-  </div>
+  <!-- Nav tabs -->
+  <div class="col-md-9">
+    <ul class="nav nav-tabs" role="tablist" id="form-tabs">
+      <li role="presentation" class="active"><a href="#main-info-tab" aria-controls="main-info-tab" role="tab" data-toggle="tab">Main Info</a></li>
+      <li role="presentation"><a href="#change-password-tab" aria-controls="change-password-tab" role="tab" data-toggle="tab">Change Email/Password</a></li>
+      <li role="presentation"><a href="#websites-tab" aria-controls="websites-tab" role="tab" data-toggle="tab">Websites</a></li>
+    </ul>
 
-</div>
+    <div class="row">
+      <div class="col-md-12">
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+
+          <div role="tabpanel" class="tab-pane active" id="main-info-tab">
+            <div class="form-div">
+              <%= render partial: "form" %>
+            </div>
+
+            <div class="div-save-button-member-form">
+              <%= link_to "save", "#/", onclick: "update_member('form_main_info')",class: "pull-right btn btn-success", id: "save-button-member-form",style: "text-transform: uppercase; font-weight: 700; font-size: 15px;" %>
+            </div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="change-password-tab">
+            <div class="form-div">
+              <%= render partial: "form_change_password" %>
+            </div>
+
+            <div class="div-save-button-member-form">
+              <%= link_to "save", "#/", onclick: "update_member('form_change_password')",class: "pull-right btn btn-success", id: "save-button-member-form",style: "text-transform: uppercase; font-weight: 700; font-size: 15px;" %>
+            </div>
+          </div>
+
+          <div role="tabpanel" class="tab-pane" id="websites-tab">
+            <div class="form-div">
+              <%= render partial: "form_websites" %>
+            </div>
+
+            <div class="div-save-button-member-form">
+              <%= link_to "save", "#/", onclick: "update_member('form_websites')",class: "pull-right btn btn-success", id: "save-button-member-form",style: "text-transform: uppercase; font-weight: 700; font-size: 15px;" %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div> <!--end of 2nd row-->
+  </div> <!--end of col-md-9 -->
+</div> <!--end of member-row-->

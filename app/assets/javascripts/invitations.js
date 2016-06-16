@@ -3,3 +3,4 @@
 //= require judge
 //= require select2
 //= require jquery.remotipart
+//= require admin/functions

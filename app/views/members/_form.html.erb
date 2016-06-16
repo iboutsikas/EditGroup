@@ -1,0 +1,26 @@
+<%= simple_form_for(@member, html: { multipart: true, id: "form_main_info" }) do |f| %>
+
+    <%= render partial: 'admin/dashboard/errors',locals: {resource: @member} %>
+
+    <div class="form-inputs">
+
+      <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+
+      <%= f.simple_fields_for :person do |p| %>
+          <%= render 'admin/dashboard/person_fields', p: p %>
+      <% end %>
+
+      <%= f.simple_fields_for :participant do |part| %>
+          <%= render 'admin/dashboard/participant_fields', part: part %>
+      <% end %>
+
+      <%= f.input :bio, validate: true, error: false %>
+      <span class='help-block client_side_error' id="<%= "#{f.object_name}[bio]" %>"></span>
+
+      <h4>Upload your Avatar</h4>
+
+      <%= f.file_field :avatar %>
+
+    </div>
+
+<% end %>

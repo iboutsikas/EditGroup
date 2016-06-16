@@ -27,7 +27,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #process :resize_to_fit => [200, 300]
   #
   # def scale(width, height)
-  #   # do something
+  #   :resize_to_fit => [400, 400]
   # end
 
   # Create different versions of your uploaded files:

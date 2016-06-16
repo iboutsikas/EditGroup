@@ -7,11 +7,12 @@ class ApplicationController < ActionController::Base
 
   # customize the redirect path after a successfull sign in
   def after_sign_in_path_for(resource)
-    if resource.isAdmin?
-      admin_path
-    else
-      root_path
-    end
+    # if resource.isAdmin?
+    #   admin_path
+    # else
+    #   root_path
+    # end
+    edit_member_path(current_member)
   end
 
 

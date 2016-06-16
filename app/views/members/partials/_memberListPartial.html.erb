@@ -8,7 +8,7 @@
   </p>
   <div class="member-websites">
     <% member.personal_websites.each do |website| %>
-      <a href="<%= website.url %>" target="_blank" title="<%= website.website_name %>">
+      <a href="<%= website.url_formatted %>" target="_blank" title="<%= website.website_name %>">
         <%= image_tag(website.website_template.logo.url, class: "website-logo") %>
       </a>
     <% end %>

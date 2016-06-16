@@ -83,6 +83,18 @@
 }//row
 
 // Edit profile
-.member-edit-form {
-  @extend .col-md-8;
+.div-save-button-member-form {
+  @extend .col-md-1;
+  padding-top: 10px;
+}
+
+.save-button-member-form {
+  @extend .pull-right;
+  font-size: 16pt;
+}
+
+.form-div {
+  @extend .col-md-11;
+  padding-right: 18px;
+  padding-top: 10px
 }

@@ -26,7 +26,8 @@
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-            <li><a href="javascript:;">  Profile</a>
+            <li>
+              <%= link_to "Profile", edit_member_path(current_member) %>
             </li>
             <li>
               <a href="javascript:;">Help</a>

@@ -18,42 +18,31 @@ class MembersController < ApplicationController
     end
   end
 
-  def edit_profile
-    unless @member.personal_websites.any?
-      @personal_website = @member.personal_websites.build
-    end
-    respond_to do |format|
-      @edit = true
-      format.html
-    end
-  end
-
   def edit
     unless @member.personal_websites.any?
     @personal_website = @member.personal_websites.build
     end
 
-    @edit  = true
     render "members/edit_profile"
-
-    # respond_to do |format|
-    #   @edit = true
-    #   render "edit_profile"
-    # end
   end
 
-  # PATCH/PUT /members/1
-  # PATCH/PUT /members/1.json
   def update
-    respond_to do |format|
-      if @member.update(member_params)
+    @member.update(member_params)
 
-        format.html { redirect_to @member, notice: 'Member was successfully updated.' }
-        format.json { render :show, status: :ok, location: @member }
-      else
-        format.html { render :edit }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
+    # member_params[:personal_websites_attributes].each do |key, val|
+    #   logger.info key
+    #   logger.info val
+    #   @member.personal_websites.find(val[:id]).update(url: val[:url])
+    #   #@member.personal_websites.find(val[:id]).update(val)
+    # end
+
+    # binding.pry
+    respond_to do |format|
+      if member_params[:password]
+        sign_in @member, bypass: true
       end
+
+      format.html { redirect_to(edit_member_path(@member)) }
     end
   end
 
@@ -69,6 +58,9 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:isAdmin,:author_id, participant_attributes:[:title,:administrative_title,:email],person_attributes: [:firstName, :lastName])
+      params.require(:member).permit(:bio, :avatar, :id,:email, :password, :password_confirmation, :participant_id, :person_id, :invited_by_type,
+                                     participant_attributes:[:id,:title,:administrative_title,:email],
+                                     person_attributes: [:id,:firstName, :lastName],
+                                     personal_websites_attributes: [ :id, :url, :website_template_id, :_destroy])
     end
 end
