@@ -29,7 +29,7 @@ class HomeController < ApplicationController
   end
 
   def newsevents
-    @news = NewsEvent.all.group_by{|year| year.date.year desc}
+    @news = NewsEvent.all.order(date: :desc).group_by{|year| year.date.year}
   end
 
   def contact
