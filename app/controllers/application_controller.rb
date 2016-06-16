@@ -15,7 +15,6 @@ class ApplicationController < ActionController::Base
     edit_member_path(current_member)
   end
 
-
   protected
 
   def configure_permitted_parameters
