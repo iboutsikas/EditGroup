@@ -87,6 +87,9 @@ li.collapsable:hover {
   height: 50px;
 }
 
+textarea.form-control {
+  min-height: 100px;
+}
 
 //Charts
 #visits_line, #proj_chart, #pub_chart, #data_per_year_chart, #os_pie, #browser_pie{

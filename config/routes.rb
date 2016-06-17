@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  get 'marika', to: 'admin/dashboard#data_chart'
-  get 'admin', to: 'admin/dashboard#data_chart'
+  get 'marika', to: 'admin/dashboard#site_chart'
+  get 'admin', to: 'admin/dashboard#site_chart'
 
   namespace :admin do
     get 'data_chart', to: 'dashboard#data_chart'

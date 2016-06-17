@@ -3,10 +3,10 @@ $ ->
   PNotify.prototype.options.styling = "fontawesome";
 
   # Create variables and get JQuery oblects for things needed in datatables
-  $table = $("table")
+  $table = $("#table")
   default_sort_column = $(".table").data "default_sort_column"
   default_sort_direction = $(".table").data "default_sort_direction"
-
+  console.log $table
   # Initialize datatable
   $dataTable = $table.DataTable
     oLanguage:

@@ -1,4 +1,3 @@
-require 'pry'
 class MembersController < ApplicationController
   before_action :authenticate_member!, except: [:index]
   before_action :set_member, only: [:edit, :update, :edit_profile]
@@ -17,7 +16,6 @@ class MembersController < ApplicationController
         @staff << member
       end
     end
-    binding.pry
   end
 
   def edit
