@@ -19,5 +19,5 @@ $(function() {
 		mMarker.setMap(mMap);
   }
   if(window.location.pathname === "/contact_us")
-    google.maps.event.addDomListener(window, 'load', initContactMap);
+    initContactMap();
 });

@@ -3,3 +3,4 @@
 //= require publications
 //= require edit_member
 //= require contact
+//= require cookies_eu

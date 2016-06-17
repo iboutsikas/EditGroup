@@ -1,0 +1,30 @@
+#footer {
+  background-color: $color-primary;
+  color: text-contrast($color-primary);
+  margin-top: 10px;
+  z-index: 15;
+  .footer-content {
+    @extend .container;
+
+    ul {
+      @extend .col-md-5;
+      display: inline;
+      list-style-type: none;
+    }
+
+    .seerc-logo {
+      @extend .img-responsive;
+      max-height: 150px;
+    }
+
+    .moutsounes {
+      text-align: center;
+      width: 100%;
+      @include font-size(9px);
+      a {
+        color: text-contrast($nav-color);
+        // font-size: font-size(8px);
+      }
+    }// .moutsounes
+  }// .footer-content
+}
