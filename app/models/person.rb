@@ -8,6 +8,9 @@ class Person < ActiveRecord::Base
   validates :firstName, presence: true
   validates :lastName, presence: true
 
+  delegate :title, :administrative_title, :email , to: :participant, allow_nil: true
+  delegate :isAdmin, :auth_mail, :isStudent, :bio, :member_from, :member_to, :avatar, to: :member, allow_nil: true
+
   def full_name
     self.lastName + " " + self.firstName
   end

@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>EDITGroupWebsite</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title>EDucational InformaTics - CITY College - Research Group on Educational Technology</title>
+  <script>
+    if(typeof(google) == 'undefined') {
+      document.write('<scr' + 'ipt type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false" async defer></scr' + 'ipt>');
+    }
+  </script>
+  <%= stylesheet_link_tag    'frontend', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'frontend', 'data-turbolinks-track' => true %>
 
 
@@ -26,5 +31,6 @@
 <% if !devise_controller? %>
     <%= render 'home/footer' %>
 <% end %>
+<%= render 'cookies_eu/consent_banner' %>
 </body>
 </html>

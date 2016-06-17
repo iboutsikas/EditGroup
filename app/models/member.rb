@@ -24,24 +24,27 @@ class Member < ActiveRecord::Base
   accepts_nested_attributes_for :personal_websites, allow_destroy: true
   accepts_nested_attributes_for :website_templates
 
+  delegate :firstName, :lastName, :full_name, to: :person, allow_nil: true
+  delegate :title, :administrative_title, :participant_email, to: :participant, allow_nil: true
+
   mount_uploader :avatar, AvatarUploader
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX, :multiline => true }
   validates :bio, presence: true
-
-  def firstName
-    self.person.firstName
-  end
-
-  def lastName
-    self.person.lastName
-  end
-
-  def full_name
-    self.person.full_name
-  end
+  #
+  # def firstName
+  #   self.person.firstName
+  # end
+  #
+  # def lastName
+  #   self.person.lastName
+  # end
+  #
+  # def full_name
+  #   self.person.full_name
+  # end
 
   def publications_to_delete
     ####### RETURNIGN ALL PUBLIATIONS CHANGE
@@ -61,4 +64,7 @@ class Member < ActiveRecord::Base
     self.invitation_accepted_at.nil?
   end
 
+  def auth_mail
+    self.email
+  end
 end

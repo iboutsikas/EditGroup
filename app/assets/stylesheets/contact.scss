@@ -1,6 +1,6 @@
 #contact-info  {
   @extend .col-md-6;
-
+  padding-right: 5%;
   #contact-info-title {
     border-bottom: 1px solid $color-secondary-1;
   }
@@ -13,8 +13,10 @@
 
 #contact-map {
   @extend .col-md-6;
+
   @include breakpoint(md) {
-    height: 100%;
+    margin-top: 1%;
+    height: 450px;
   }
 
   @include breakpoint(sm) {

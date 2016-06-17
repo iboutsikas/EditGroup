@@ -1,0 +1,40 @@
+@import "application";
+@import "bourbon";
+@import "partials/mixins";
+@import "partials/variables";
+@import "partials/layout";
+@import "header";
+@import "footer";
+@import "home";
+@import "members";
+@import "publications";
+@import "newsevents";
+@import "about";
+@import "contact";
+@import "projects";
+@import "cookies_eu";
+
+* {
+  font-family: $global-font;
+}
+
+//Layout
+#flash_notification {
+  text-align: center;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    width: 100%;
+}
+
+header {
+
+}
+
+#yield-container {
+  margin-top: 5px;
+  flex: 1;
+}
