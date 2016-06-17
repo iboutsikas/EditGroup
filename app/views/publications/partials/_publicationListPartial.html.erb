@@ -12,5 +12,14 @@
     <p>
       <%= publication.cite(@citation) %>
     </p>
+    <button class="default-publication-read-more"
+            data-toggle="collapse"
+            role="button"
+            data-target="#default-publication-info-<%= publication.id%>">
+      V
+    </button>
+    <div class="collapse" id="default-publication-info-<%= publication.id%>">
+      hey i am collapsible
+    </div>
   </div>
 </div>

@@ -38,6 +38,11 @@
 	.default-publication-content {
 		@extend .col-md-11;
 	}
+
+	.default-publication-read-more {
+		@extend .btn;
+		@extend .btn-primary;
+	}
 }
 
 .default-publication-search {
