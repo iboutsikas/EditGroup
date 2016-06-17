@@ -4,8 +4,6 @@ $(function () {
     // make the content column equal to the window height
     windowHeight = $(window).height();
     contentHeight = windowHeight - 200;
-    console.log(windowHeight);
-    console.log(contentHeight);
     $("#side-menu-everything").css('height', windowHeight);
     $("#right-col-id").css("min-height", windowHeight);
     $("#all_content").css("min-height", contentHeight);

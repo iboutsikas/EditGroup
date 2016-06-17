@@ -6,7 +6,7 @@ class MembersController < ApplicationController
   def index
     # @members = Member.includes(:personal_websites,:participant,:person).where("members.person_id is not null and members.participant_id is not null")
 
-    @members = Member.includes(:personal_websites, :participant, :person).where("members.person_id IS NOT NULL AND members.participant_id IS NOT NULL")
+    @members = Member.where("members.person_id IS NOT NULL AND members.participant_id IS NOT NULL")
     @staff = []
     @students =[]
     @members.each do |member|
@@ -29,14 +29,6 @@ class MembersController < ApplicationController
   def update
     @member.update(member_params)
 
-    # member_params[:personal_websites_attributes].each do |key, val|
-    #   logger.info key
-    #   logger.info val
-    #   @member.personal_websites.find(val[:id]).update(url: val[:url])
-    #   #@member.personal_websites.find(val[:id]).update(val)
-    # end
-
-    # binding.pry
     respond_to do |format|
       if member_params[:password]
         sign_in @member, bypass: true

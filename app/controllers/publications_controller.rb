@@ -3,7 +3,8 @@ class PublicationsController < ApplicationController
   before_action :set_publication, only: [:show]
 
   def index
-    @publications = Publication.all.includes(:journal, :conference, :authors)
+    #@publications = Publication.all.includes(:journal, :conference, :authors)
+    @publications = Publication.all.includes(:authors).references(:authors)
     pref = Preference.find_by_description("publication_display")
 
     if (pref.value == "timeline")

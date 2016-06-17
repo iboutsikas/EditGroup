@@ -9,7 +9,7 @@ class Person < ActiveRecord::Base
   validates :lastName, presence: true
 
   def full_name
-    self.firstName + " " + self.lastName
+    self.lastName + " " + self.firstName
   end
 
   def full_name_for_select2

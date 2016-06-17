@@ -16,7 +16,7 @@ class HomeController < ApplicationController
   # end
 
   def projects
-    @projects = Project.all
+    @projects = Project.all.includes(:participants).references(:participants)
   end
 
   def publications

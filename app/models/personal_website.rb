@@ -1,4 +1,5 @@
 class PersonalWebsite < ActiveRecord::Base
+  default_scope { includes(:website_template).references(:website_template) }
   belongs_to :member
   belongs_to :website_template, inverse_of: :personal_websites
   has_many :personal_websites, foreign_key: "id"

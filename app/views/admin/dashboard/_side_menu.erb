@@ -10,7 +10,7 @@
     <div class="profile">
       <div class="profile_pic">
         <% if current_member.avatar? %>
-          <%= image_tag current_member.avatar.url, class: "img-circle profile_img" %>
+          <%= image_tag current_member.avatar.thumb.url, class: "img-circle profile_img" %>
         <% else %>
             <div class="img-circle profile_img"><i class="fa fa-user" aria-hidden="true" style="font-size: 45px; padding-left: 5px"></i></div>
         <% end %>
