@@ -1,6 +1,7 @@
 require 'pry'
 
 class Member < ActiveRecord::Base
+  default_scope { includes(:person).references(:person).includes(:participant).references(:participant).includes(:personal_websites).references(:personal_websites) }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
@@ -39,7 +40,7 @@ class Member < ActiveRecord::Base
   end
 
   def full_name
-    self.participant.person.full_name
+    self.person.full_name
   end
 
   def publications_to_delete

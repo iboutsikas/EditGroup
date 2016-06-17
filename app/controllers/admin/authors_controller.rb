@@ -50,7 +50,7 @@ class Admin::AuthorsController < Admin::DashboardController
       params[:publication][:people_attributes].each do |key,val|
 
         if val[:person]
-          @author = Author.new(publication_id: @publication.id )
+          @author = Author.new(publication_id: @publication.id, priority: 10 )
           person_params_array = val[:person].except(:_destroy, :id)
           @author.person = Person.new( person_params_array.permit(:firstName, :lastName) )
           @publication.authors << @author
@@ -77,7 +77,7 @@ class Admin::AuthorsController < Admin::DashboardController
   def create_from_db
     params[:people].each do |id|
       unless id.empty?
-        @author = Author.new(publication_id: @publication.id, person_id: id)
+        @author = Author.new(publication_id: @publication.id, person_id: id, priority: 10)
         unless @author.save
           respond_to do |format|
             format.js { render 'admin/initializeForm', locals: {resource: @author, form_path: "authors/select_multiple" } }

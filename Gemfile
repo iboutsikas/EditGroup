@@ -50,6 +50,7 @@ gem 'judge-simple_form', '~> 1.0'
 gem 'select2-rails', '~> 4.0', '>= 4.0.1.1'
 
 gem 'carrierwave', '~> 0.11.0'
+gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 
 gem 'remotipart', '~> 1.2', '>= 1.2.1'
 
@@ -75,6 +76,10 @@ gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# Charts gems
+gem 'lazy_high_charts'
+gem 'ahoy_matey', '~> 1.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

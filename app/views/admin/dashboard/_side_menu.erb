@@ -1,5 +1,5 @@
-<div class="col-md-3 left_col">
-  <div class="left_col scroll-view">
+<div class="col-md-3 left_col" id="side-menu-everything">
+  <div class="left_col scroll-view" id="side-menu-overflowy">
 
     <div class="navbar nav_title" style="border: 0;">
       <%= link_to "<i class='fa fa-tachometer'></i> <span>EDIT Group </span>".html_safe, admin_path, class: 'site_title' %>
@@ -10,7 +10,7 @@
     <div class="profile">
       <div class="profile_pic">
         <% if current_member.avatar? %>
-          <%= image_tag current_member.avatar.url, class: "img-circle profile_img" %>
+          <%= image_tag current_member.avatar.thumb.url, class: "img-circle profile_img" %>
         <% else %>
             <div class="img-circle profile_img"><i class="fa fa-user" aria-hidden="true" style="font-size: 45px; padding-left: 5px"></i></div>
         <% end %>
@@ -32,17 +32,19 @@
         <h3>Administator</h3>
         <ul class="nav side-menu">
           <li class="collapsable">
-            <a> <i class="fa fa-bar-chart-o"></i> Charts <span class="fa fa-chevron-down"></span> </a>
-            <ul class="nav child_menu" style="display: none">
-              <li>
-                <!-- LINK HERE THANOS  -->
-                <a>Charts Data</a>
-              </li>
-              <li>
-                <!-- HERE TOO THANOS  -->
-                <a> Charts Website</a>
-              </li>
-            </ul>
+                <a><i class="fa fa-line-chart"></i> Charts <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav child_menu" style="display: none">
+                  <li>
+                    <%= link_to admin_site_chart_path do %>
+                      <i class="fa fa-sitemap"></i> Site Charts <span class="fa"></span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to admin_data_chart_path do %>
+                      <i class="fa fa-database" aria-hidden="true"></i> Data Charts<span class="fa"></span>
+                    <% end %>
+                  </li>
+                </ul>
           </li>
 
           <li>

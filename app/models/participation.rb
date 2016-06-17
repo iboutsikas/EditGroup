@@ -11,6 +11,9 @@ class Participation < ActiveRecord::Base
     else
       self.person = Person.new
     end
+  end
 
+  def full_name
+    self.participant.full_name
   end
 end

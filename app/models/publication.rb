@@ -1,4 +1,7 @@
+require 'pry'
 class Publication < ActiveRecord::Base
+  default_scope { includes(:journal).references(:journal).includes(:conference).references(:conference) }
+
   has_many :authors, dependent: :destroy
   has_many :people, {:through=>:authors, :source=>"person"}
   has_one :conference, dependent: :destroy

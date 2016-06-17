@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-10">
+    <h1>Data Charts</h1>
+  </div>
+</div>
+
+<div class="x_panel" id="all_content" >
+
+    <div class="col-md-12">
+      <%= high_chart_globals(@chart_globals) %>
+    </div>
+
+  <div class = "row">
+      <div class="col-md-12">
+          <%= high_chart("proj_chart", @proj_chart) %>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-12">
+          <%= high_chart("pub_chart", @pub_chart) %>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-12" >
+          <%= high_chart("d_chart", @data_per_year_chart) %>
+      </div>
+  </div>
+
+</div>
+<!--style=" height:350px; "-->

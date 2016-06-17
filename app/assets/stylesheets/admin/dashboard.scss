@@ -8,13 +8,27 @@
 @import "select2-bootstrap";
 
 #all_content {
-  height: 557px;
+  min-height: 500px;
+}
+
+#side-menu-everything {
+  overflow: auto;
+
+}
+
+.dataTables_info {
+  margin-bottom: 17px;
+}
+
+#side-menu-everything::-webkit-scrollbar {
+    display: none;
 }
 
 .client_side_error {
   color: #a94442;
   display: block;
 }
+
 
 .modal .modal-body {
   max-height: 450px;
@@ -66,4 +80,16 @@ li.collapsable:hover {
 
 .preference_div {
   margin-bottom: 10%;
+}
+
+.image_thumbnail {
+  width: 50px;
+  height: 50px;
+}
+
+
+//Charts
+#visits_line, #proj_chart, #pub_chart, #data_per_year_chart, #os_pie, #browser_pie{
+  height:100%;
+  width:100%;
 }

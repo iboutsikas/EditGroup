@@ -54,7 +54,7 @@ class Admin::ParticipationsController < Admin::DashboardController
 
         if val[:participant] && val[:person]
 
-          @participation = Participation.new(project_id: @project.id )
+          @participation = Participation.new(project_id: @project.id, priority: 10 )
           participant_params_array = val[:participant].except(:_destroy, :id)
           person_params_array = val[:person].except(:_destroy, :id)
           @participation.participant = Participant.new( participant_params_array.permit(:title, :administrative_title, :email) )
@@ -81,7 +81,7 @@ class Admin::ParticipationsController < Admin::DashboardController
   def create_from_db
     params[:people].each do |id|
       unless id.empty?
-        @participation = Participation.new(project_id: @project.id, participant_id: id )
+        @participation = Participation.new(project_id: @project.id, participant_id: id, priority: 10 )
         unless @participation.save
           respond_to do |format|
             format.js { render 'admin/initializeForm', locals: {resource: @participation, form_path: "participation/form_select_multiple" } }

@@ -1,0 +1,31 @@
+.project-row {
+  @extend .row;
+  padding-bottom: 30px;
+  margin-bottom: 60px;
+  border-bottom: 1px solid #eaeae9;
+}
+
+.project-motto {
+  font-style: italic;
+  color: rgb(144, 102, 55);
+}
+
+.project-title {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.project-description {
+  padding-top: 30px;
+  font-size: 15px;
+}
+
+.project-video {
+  @extend .col-md-4;
+  @extend .col-sm-12;
+  @extend .embed-responsive;
+  @extend .embed-responsive-16by9;
+  padding-bottom: 300px;
+  padding-right: 20px;
+  padding-left: 10px;
+}
