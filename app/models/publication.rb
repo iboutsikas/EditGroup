@@ -65,4 +65,24 @@ class Publication < ActiveRecord::Base
     ref = ref[3..-1] if ref.start_with?('[')
     ref
   end
+
+  def self.search(params)
+    params.select { |k, v| v.present?}.reduce(all) do |scope, (key, value)|
+      case key.to_sym
+      when :keyword
+        scope.where(["title LIKE ?", "%#{value}%"])
+      when :author
+        # scope.where(author.person.full_name: "LIKE ?","%#{value}%")
+        scope.joins(:people).where("(lastName LIKE :name) OR (firstName LIKE :name)", name: "%#{value}%")
+      when :year
+        #this will NOT work on SQLite
+        #scope.where('extract(year from publications.date) = ?', value)
+
+        #this will work on SQLite ONLY
+        scope.where("cast(strftime('%Y', date) as int) = ?", value)
+      else
+        scope
+      end
+    end
+  end
 end
