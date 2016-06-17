@@ -58,6 +58,8 @@ gem 'bourbon', '~> 4.2', '>= 4.2.7'
 
 gem 'bootstrap-will_paginate', '~> 0.0.10'
 
+gem 'cookies_eu'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

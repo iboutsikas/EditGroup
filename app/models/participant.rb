@@ -10,13 +10,16 @@ class Participant < ActiveRecord::Base
   validates :administrative_title, presence: true
   validates :email, presence: true
 
+  delegate :firstName, :lastName, :full_name, to: :person, allow_nil: true
+  delegate :isAdmin, :auth_mail, :isStudent, :bio, :member_from, :member_to, :avatar, to: :member, allow_nil: true
+
   def check_if_used_elsewhere(participant)
 
       raise "error"
 
   end
 
-  def full_name
-    self.person.full_name
+  def participant_email
+    self.email
   end
 end
