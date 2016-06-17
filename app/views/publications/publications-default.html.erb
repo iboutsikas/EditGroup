@@ -1,3 +1,11 @@
+
+<div class="dropdown pull-right">
+  <button type="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Search</button>
+  <%= render "publications/partials/searchPartial" %>
+</div>
+
 <% @publications.each do |publication| %>
   <%= render "publications/partials/publicationListPartial", publication: publication %>
 <% end %>
+
+<%= will_paginate @publications %>
