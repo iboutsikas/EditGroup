@@ -38,3 +38,8 @@ header {
   margin-top: 5px;
   flex: 1;
 }
+
+h1.title {
+	text-align:center;
+	border-bottom: 1px solid $color-secondary-1;
+}

@@ -70,7 +70,7 @@ class Publication < ActiveRecord::Base
     params.select { |k, v| v.present?}.reduce(all) do |scope, (key, value)|
       case key.to_sym
       when :keyword
-        scope.where(["title LIKE ?", "%#{value}%"])
+        scope.where(["publications.title LIKE ?", "%#{value}%"])
       when :author
         # scope.where(author.person.full_name: "LIKE ?","%#{value}%")
         scope.joins(:people).where("(lastName LIKE :name) OR (firstName LIKE :name)", name: "%#{value}%")
