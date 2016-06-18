@@ -223,5 +223,3 @@ end
 # Preferences
 Preference.create(description: "citation_style", value: "ieee")
 Preference.create(description: "publication_display", value: "default")
-
-Visit.create(visit_token: "7b9e7c80-cc39-4f19-8f6f-a4732337a458", visitor_token: "875c9933-b3ef-4dc0-9d35-551c7e6fdacf", ip: "::1", user_agent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) Ap...", referrer: "http://localhost:3000/members", landing_page: "http://localhost:3000/admin/dashboard/index", user_id: nil, referring_domain: "localhost", search_keyword: nil, browser: "Chrome", os: "Mac OS X", device_type: "Desktop", screen_height: 900, screen_width: 1440, country: "Reserved", region: nil, city: nil, postal_code: nil, latitude: #<BigDecimal:7fd617db30b8,'0.0',9(27)>, longitude: #<BigDecimal:7fd617db2f28,'0.0',9(27)>, utm_source: nil, utm_medium: nil, utm_term: nil, utm_content: nil, utm_campaign: nil, started_at: "2016-06-17 07:15:43")
