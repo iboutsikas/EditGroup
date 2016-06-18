@@ -44,4 +44,54 @@
     <% end %>
 
   </div>
+
+  <div class="preference_div">
+
+    <h2>Pagination Preferences <small style="margin-left: 10px">Choose number of pages</small></h2>
+
+    <hr>
+
+    <%= simple_form_for(@pagination_publications, url: admin_preferences_update_path, remote: true) do |f| %>
+      <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token"/>
+      <%= f.input :id, as: :hidden %>
+      <div class="preferences-row">
+        <div class="col-md-2">
+          # of pages for Publications:
+        </div>
+
+        <div class="col-md-2">
+          <%= select_tag :value, options_for_select(@pagination_publications_values, @pagination_publications.value.to_i), class: "citations_select2", style: "width: 100%;", label: "Style" %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= simple_form_for(@pagination_news, url: admin_preferences_update_path, remote: true) do |f| %>
+      <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token"/>
+      <%= f.input :id, as: :hidden %>
+      <div class="preferences-row">
+        <div class="col-md-2">
+          # of pages for News-Events:
+        </div>
+
+        <div class="col-md-2">
+          <%= select_tag :value, options_for_select(@pagination_news_values, @pagination_news.value.to_i), class: "citations_select2", style: "width: 100%;", label: "Style" %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= simple_form_for(@pagination_projects, url: admin_preferences_update_path, remote: true) do |f| %>
+      <input type="hidden" value="<%= form_authenticity_token %>" name="authenticity_token"/>
+      <%= f.input :id, as: :hidden %>
+      <div class="preferences-row">
+        <div class="col-md-2">
+          # of pages for Projects:
+        </div>
+
+        <div class="col-md-2">
+          <%= select_tag :value, options_for_select(@pagination_projects_values, @pagination_projects.value.to_i), class: "citations_select2", style: "width: 100%;", label: "Style" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
 </div>

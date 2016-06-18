@@ -1,23 +1,38 @@
+.projects-header {
+  text-align: center;
+  border-bottom: 1px solid #FA9526;
+  margin-bottom: 50px;
+}
+
 .project-row {
   @extend .row;
   padding-bottom: 30px;
   margin-bottom: 60px;
   border-bottom: 1px solid #eaeae9;
+  //border-bottom: 1px solid $color-secondary-1;
 }
 
 .project-motto {
   font-style: italic;
-  color: rgb(144, 102, 55);
+  //color: rgb(144, 102, 55);
+  color: $color-secondary-2;
 }
 
 .project-title {
-  font-size: 24px;
+  @include font-size(27px);
   font-weight: 800;
 }
 
 .project-description {
-  padding-top: 30px;
-  font-size: 15px;
+  @include font-size(15px);
+  padding-top: 20px;
+  padding-bottom: 10px;
+  text-align: justify;
+}
+
+.project-participants {
+  //border-top: 2px solid #dddddd;
+  padding-top: 20px;
 }
 
 .project-video {
@@ -28,4 +43,16 @@
   padding-bottom: 300px;
   padding-right: 20px;
   padding-left: 10px;
+}
+
+.project-participant-table-header {
+  border-bottom: 0;
+}
+
+.project-participants-table > thead > tr > th {
+  border-bottom: 0;
+}
+
+.project-website-icon {
+  @include font-size(18px)
 }

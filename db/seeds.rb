@@ -223,3 +223,6 @@ end
 # Preferences
 Preference.create(description: "citation_style", value: "ieee")
 Preference.create(description: "publication_display", value: "default")
+Preference.create(description: "'pagination_publications'", value: "5")
+Preference.create(description: "'pagination_news'", value: "10")
+Preference.create(description: "'pagination_projects'", value: "10")

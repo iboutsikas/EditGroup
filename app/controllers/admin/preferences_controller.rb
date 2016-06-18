@@ -5,11 +5,44 @@ class Admin::PreferencesController < Admin::DashboardController
   include Admin::CitationStylesHelper
 
   def preferences
-    @citation_style = Preference.find_by_description('citation_style')
-    @styles = all_styles.values
+    preferences = Preference.all
 
-    @publication_display = Preference.find_by_description('publication_display')
-    @timeline_values = ["timeline", "default"]
+    preferences.each do |p|
+      case p.description
+
+      when 'citation_style'
+        @citation_style = p
+        @styles = all_styles.values
+      when 'publication_display'
+        @publication_display = p
+        @timeline_values = ["timeline", "default"]
+      when 'pagination_publications'
+        @pagination_publications = p
+        @pagination_publications_values = [*1...99]
+      when 'pagination_news'
+        @pagination_news = p
+        @pagination_news_values = [*1...99]
+      when 'pagination_projects'
+        @pagination_projects = p
+        @pagination_projects_values = [*1...99]
+      end
+
+      # @citation_style = Preference.find_by_description('citation_style')
+      # @styles = all_styles.values
+      #
+      # @publication_display = Preference.find_by_description('publication_display')
+      # @timeline_values = ["timeline", "default"]
+      #
+      #
+      # @pagination_publications = Preference.find_by_description('pagination_publications')
+      # @pagination_publications_values = [*1...99]
+      #
+      # @pagination_news = Preference.find_by_description('pagination_news')
+      # @pagination_news_values = [*1...99]
+      #
+      # @pagination_projects = Preference.find_by_description('pagination_projects')
+      # @pagination_projects_values = [*1...99]
+    end
 
     respond_to do |format|
       format.html

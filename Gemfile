@@ -83,6 +83,9 @@ gem 'unicorn'
 gem 'lazy_high_charts'
 gem 'ahoy_matey', '~> 1.4'
 
+# text editor
+gem 'tinymce-rails', '~> 4.3', '>= 4.3.13'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

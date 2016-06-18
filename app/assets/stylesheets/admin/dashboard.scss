@@ -28,6 +28,10 @@
   display: block;
 }
 
+.modal .modal-dialog {
+  //width: 700px;
+  //min-width: 700px;
+}
 
 .modal .modal-body {
   max-height: 450px;
@@ -78,7 +82,12 @@ li.collapsable:hover {
 }
 
 .preference_div {
-  margin-bottom: 10%;
+  margin-bottom: 5%;
+}
+
+.preferences-row {
+  @extend .row;
+  margin-bottom: 20px;
 }
 
 .image_thumbnail {
@@ -86,6 +95,9 @@ li.collapsable:hover {
   height: 50px;
 }
 
+textarea.form-control {
+  min-height: 100px;
+}
 
 //Charts
 #visits_line, #proj_chart, #pub_chart, #data_per_year_chart, #os_pie, #browser_pie{

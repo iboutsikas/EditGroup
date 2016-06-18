@@ -12,5 +12,6 @@ class Author < ActiveRecord::Base
   delegate :firstName, :to => :person, :allow_nil => false
   delegate :lastName, :to => :person, :allow_nil => false
   delegate :email, :to => :person, :allow_nil => true
+  delegate :full_name, to: :person, allow_nil: true
 
 end

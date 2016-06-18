@@ -16,7 +16,8 @@ class HomeController < ApplicationController
   # end
 
   def projects
-    @projects = Project.all.includes(:participants).references(:participants)
+    pages = Preference.find_by_description('pagination_projects').value.to_i
+    @projects = Project.all.paginate(:page => params[:page], :per_page => pages).includes(:participants).references(:participants)
   end
 
   def publications
@@ -24,12 +25,15 @@ class HomeController < ApplicationController
     #@conferences = Conference.all
     #@conferences = Conference.includes(:authors, :publication)
     @citation_style = Preference.find_by_description('citation_style').value
-
+    
     @publications = Publication.all.includes(:authors, :conference, :journal)
   end
 
   def newsevents
-    @news = NewsEvent.all.order(date: :desc).group_by{|year| year.date.year}
+    pages = Preference.find_by_description('pagination_news').value.to_i
+    logger.info pages
+    @news = NewsEvent.all.paginate(:page => params[:page], :per_page => pages).order(date: :desc)
+    @news_hash = @news.group_by{|year| year.date.year}
   end
 
   def contact

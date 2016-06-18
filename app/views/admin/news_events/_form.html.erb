@@ -8,10 +8,7 @@
     <%= f.input :title, validate: true, error: false %>
     <span class='help-block client_side_error' id="<%= "#{f.object_name}[title]" %>"></span>
 
-    <%= f.input :description, validate: true, error: false %>
-    <span class='help-block client_side_error' id="<%= "#{f.object_name}[description]" %>"></span>
-
-    <%= f.input :content, validate: true, error: false %>
+    <%= f.input :content, validate: true, error: false, input_html: { id: "tinymceArea" } %>
     <span class='help-block client_side_error' id="<%= "#{f.object_name}[content]" %>"></span>
   </div>
 
