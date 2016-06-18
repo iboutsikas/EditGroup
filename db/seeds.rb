@@ -175,11 +175,11 @@ Project.create(title: "Oh my god", motto: "write a seeder, its good for you", de
 
 
 # News Events
-NewsEvent.create(date: Date.today, description: "To trixrono tzatziki mou genithike!", title: "Egina Mitera!", content: "content")
+NewsEvent.create(date: Date.today, content: "To trixrono tzatziki mou genithike!", title: "Egina Mitera!")
 
-NewsEvent.create(date: Date.today, description: "Oh No Sun!", title: "Crazy Weather", content: "The sun is sunny bad news what an event")
+NewsEvent.create(date: Date.today, content: "Oh No Sun!", title: "Crazy Weather")
 
-NewsEvent.create(date: Date.today, description: "Person publishes Publication", title: "New Publication by Person", content: "Publication was create by person and it was journal")
+NewsEvent.create(date: Date.today, content: "Person publishes Publication", title: "New Publication by Person")
 
 
 # Website Templates
@@ -223,6 +223,6 @@ end
 # Preferences
 Preference.create(description: "citation_style", value: "ieee")
 Preference.create(description: "publication_display", value: "default")
-Preference.create(description: "'pagination_publications'", value: "5")
-Preference.create(description: "'pagination_news'", value: "10")
-Preference.create(description: "'pagination_projects'", value: "10")
+Preference.create(description: "pagination_publications", value: "5")
+Preference.create(description: "pagination_news", value: "10")
+Preference.create(description: "pagination_projects", value: "10")
