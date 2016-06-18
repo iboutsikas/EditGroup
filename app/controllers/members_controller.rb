@@ -20,7 +20,7 @@ class MembersController < ApplicationController
 
   def edit
     unless @member.personal_websites.any?
-    @personal_website = @member.personal_websites.build
+      @personal_website = @member.personal_websites.build
     end
 
     render "members/edit_profile"
@@ -41,7 +41,7 @@ class MembersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_member
-      @member = Member.find(params[:id])
+      @member = Member.extended.find(params[:id])
     end
 
     def allow_if_current_member

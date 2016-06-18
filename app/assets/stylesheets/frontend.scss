@@ -39,11 +39,7 @@ header {
   flex: 1;
 }
 
-a, p, h1, h2, h3, h4, h5, h6, span, div {
-
-  &.highlight-1 {
-    color: $color-secondary-1;
-  }
-
-
+h1.title {
+	text-align:center;
+	border-bottom: 1px solid $color-secondary-1;
 }

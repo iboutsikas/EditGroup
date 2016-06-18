@@ -1,7 +1,8 @@
 require 'pry'
 
 class Member < ActiveRecord::Base
-  default_scope { includes(:person).references(:person).includes(:participant).references(:participant).includes(:personal_websites).references(:personal_websites) }
+  scope :extended, -> { includes(:person).references(:person).includes(:participant).references(:participant).includes(:personal_websites).references(:personal_websites) }
+  default_scope { includes(:person).references(:person)}
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
