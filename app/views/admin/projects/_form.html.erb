@@ -9,7 +9,7 @@
     <%= f.input :motto, validate: true, error: false %>
     <span class='help-block client_side_error' id="<%= "#{f.object_name}[motto]" %>"></span>
 
-    <%= f.input :description, validate: true, error: false %>
+    <%= f.input :description, as: :text, validate: true, error: false, input_html: { id: "tinymceArea" } %>
     <span class='help-block client_side_error' id="<%= "#{f.object_name}[description]" %>"></span>
     <%= f.input :date_started, as: :date, start_year: 2001, end_year: Date.today.year + 10 %>
     <%= f.input :website %>

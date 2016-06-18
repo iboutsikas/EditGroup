@@ -16,4 +16,16 @@ class Participation < ActiveRecord::Base
   def full_name
     self.participant.full_name
   end
+
+  def title
+    self.participant.title
+  end
+
+  def administrative_title
+    self.participant.administrative_title
+  end
+
+  def email
+    self.participant.email
+  end
 end

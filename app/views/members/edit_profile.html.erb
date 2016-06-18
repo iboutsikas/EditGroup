@@ -23,9 +23,10 @@
   <!-- Nav tabs -->
   <div class="col-md-9">
     <ul class="nav nav-tabs" role="tablist" id="form-tabs">
-      <li role="presentation" class="active"><a href="#main-info-tab" aria-controls="main-info-tab" role="tab" data-toggle="tab">Main Info</a></li>
-      <li role="presentation"><a href="#change-password-tab" aria-controls="change-password-tab" role="tab" data-toggle="tab">Change Email/Password</a></li>
-      <li role="presentation"><a href="#websites-tab" aria-controls="websites-tab" role="tab" data-toggle="tab">Websites</a></li>
+      <li role="presentation" class="active"> <a href="#main-info-tab" aria-controls="main-info-tab" role="tab" data-toggle="tab"> Main Info </a> </li>
+      <li role="presentation"> <a href="#change-password-tab" aria-controls="change-password-tab" role="tab" data-toggle="tab"> Change Email/Password </a> </li>
+      <li role="presentation"> <a href="#websites-tab" aria-controls="websites-tab" role="tab" data-toggle="tab"> Websites </a> </li>
+      <li role="presentation"> <a href="#image-tab" aria-controls="image-tab" role="tab" data-toggle="tab"> Upload Avatar </a> </li>
     </ul>
 
     <div class="row">
@@ -63,7 +64,17 @@
               <%= link_to "save", "#/", onclick: "update_member('form_websites')",class: "pull-right btn btn-success", id: "save-button-member-form",style: "text-transform: uppercase; font-weight: 700; font-size: 15px;" %>
             </div>
           </div>
-        </div>
+
+          <div role="tabpanel" class="tab-pane" id="image-tab">
+            <div class="form-div">
+              <%= render partial: "form_image" %>
+            </div>
+
+            <div class="div-save-button-member-form">
+              <%= link_to "save", "#/", onclick: "update_member('form_image')",class: "pull-right btn btn-success", id: "save-button-member-form",style: "text-transform: uppercase; font-weight: 700; font-size: 15px;" %>
+            </div>
+          </div>
+        </div><!--End of tab-content-->
 
       </div>
 

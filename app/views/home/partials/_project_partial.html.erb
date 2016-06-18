@@ -13,25 +13,44 @@
           "<%= project.motto %>"
         </p>
 
-        <p class="project-description">
-          <%= project.description %>
-        </p>
-
+        <div class="project-description">
+          <%= (project.description).html_safe %>
+        </div>
+        <%= link_to project.website_formatted do %>
+          <p> <i class="fa fa-globe" aria-hidden="true"></i> <%= project.website %> </p>
+        <% end %>
         <div class="project-participants">
-          Participants:
 
           <div class="row">
-            <div class="col-md-4">
-              <%= project.participations.sort { |a,b| a.priority <=> b.priority }.map{ |p| p.full_name }.join(', ') %>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
+            <div class="col-md-12">
+              <table class="table table-responsive project-participants-table">
+              	<thead>
+              		<tr>
+              			<th colspan="3" style="text-align: center;" class="project-participant-table-header">Participants</th>
+              			<th class="project-participant-table-header" style="border-bottom: 0;"></th>
+              			<th class="project-participant-table-header" style="border-bottom: 0;"></th>
+              		</tr>
+              	</thead>
+                <tbody>
+                  <% project.participations.sort { |a,b| a.priority <=> b.priority }.each do |participation| %>
+                		<tr class="project-participant-table-row">
+                			<td> <%= participation.title + " " + participation.full_name %> </td>
+                			<td> <%= participation.administrative_title %> </td>
+                			<td> <%= participation.email %> </td>
+                		</tr>
+                  <% end %>
+              	</tbody>
+              </table>
+            </div> <!--end of col-md-4-->
+          </div> <!--End of row-->
+        </div> <!--End of project-participants-->
+      </div> <!--End of col-md-8-->
 
       <div class="project-video">
-        <iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/1rPxiXXxftE" frameborder="0" allowfullscreen></iframe>
+        <% unless project.video.nil? || project.video == "" %>
+          <iframe class="embed-responsive-item" width="560" height="315" src='<%= project.video_url_only %>' frameborder="0" allowfullscreen></iframe>
+          <!--iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/1rPxiXXxftE" frameborder="0" allowfullscreen></iframe-->
+        <% end %>
       </div>
     </div> <!--End of row-->
 

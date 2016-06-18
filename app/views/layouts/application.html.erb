@@ -15,9 +15,7 @@
 </head>
 <body>
 
-<% if !devise_controller? %>
-    <%= render 'home/header' %>
-<% end %>
+<%= render 'home/header' %>
 
 <% flash.each do |name, msg| %>
     <%= content_tag(:div, msg, class: "alert alert-info", id: "flash_notification") %>
@@ -28,9 +26,8 @@
 </div>
 
 
-<% if !devise_controller? %>
-    <%= render 'home/footer' %>
-<% end %>
+<%= render 'home/footer' %>
+
 <%= render 'cookies_eu/consent_banner' %>
 </body>
 </html>

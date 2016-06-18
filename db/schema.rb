@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616162849) do
+ActiveRecord::Schema.define(version: 20160618100323) do
 
   create_table "ahoy_events", force: :cascade do |t|
     t.integer  "visit_id"
-    t.integer  "user_id"
+    t.integer  "member_id"
     t.string   "name"
     t.text     "properties"
     t.datetime "time"
   end
 
+  add_index "ahoy_events", ["member_id", "name"], name: "index_ahoy_events_on_member_id_and_name"
   add_index "ahoy_events", ["name", "time"], name: "index_ahoy_events_on_name_and_time"
-  add_index "ahoy_events", ["user_id", "name"], name: "index_ahoy_events_on_user_id_and_name"
   add_index "ahoy_events", ["visit_id", "name"], name: "index_ahoy_events_on_visit_id_and_name"
 
   create_table "authors", force: :cascade do |t|
@@ -90,10 +90,9 @@ ActiveRecord::Schema.define(version: 20160616162849) do
 
   create_table "news_events", force: :cascade do |t|
     t.date     "date"
-    t.string   "description"
     t.string   "title"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.text     "content"
   end
 
@@ -147,7 +146,7 @@ ActiveRecord::Schema.define(version: 20160616162849) do
   create_table "projects", force: :cascade do |t|
     t.string   "title"
     t.string   "motto"
-    t.string   "description"
+    t.text     "description"
     t.date     "date_started"
     t.string   "website"
     t.string   "video"
@@ -172,7 +171,7 @@ ActiveRecord::Schema.define(version: 20160616162849) do
     t.text     "user_agent"
     t.text     "referrer"
     t.text     "landing_page"
-    t.integer  "user_id"
+    t.integer  "member_id"
     t.string   "referring_domain"
     t.string   "search_keyword"
     t.string   "browser"
@@ -194,7 +193,7 @@ ActiveRecord::Schema.define(version: 20160616162849) do
     t.datetime "started_at"
   end
 
-  add_index "visits", ["user_id"], name: "index_visits_on_user_id"
+  add_index "visits", ["member_id"], name: "index_visits_on_member_id"
   add_index "visits", ["visit_token"], name: "index_visits_on_visit_token", unique: true
 
   create_table "website_templates", force: :cascade do |t|

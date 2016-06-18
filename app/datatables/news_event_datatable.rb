@@ -10,7 +10,6 @@ class NewsEventDatatable < AjaxDatatablesRails::Base
     @sortable_columns ||= [
         'NewsEvent.date',
         'NewsEvent.title',
-        'NewsEvent.description'
     ]
   end
 
@@ -32,7 +31,6 @@ class NewsEventDatatable < AjaxDatatablesRails::Base
           "",
           safe_show(record.date),
           safe_show(record.title),
-          safe_show(record.description),
           link_to_button_column(("<i class='fa fa-pencil'></i> Edit").html_safe, edit_admin_news_event_path(record), remote: true,
                   class:"btn btn-info btn-xs editButton", onclick: 'editButtonPressed("News-Events")'),
           link_to_button_column(("<i class='fa fa-trash-o'></i> Delete").html_safe, admin_news_event_path(record), method: :delete,
