@@ -4,5 +4,5 @@
 <%= part.input :title, validate: true, error: false %>
 <span class='help-block client_side_error' id="<%= "#{part.object_name}[title]" %>"></span>
 
-<%= part.input :email, validate: true, error: false %>
+<%= part.input :email, validate: true, error: false, label: "Contact Email" %>
 <span class='help-block client_side_error' id="<%= "#{part.object_name}[email]" %>"></span>

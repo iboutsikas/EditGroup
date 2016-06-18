@@ -79,7 +79,12 @@ li.collapsable:hover {
 }
 
 .preference_div {
-  margin-bottom: 10%;
+  margin-bottom: 5%;
+}
+
+.preferences-row {
+  @extend .row;
+  margin-bottom: 20px;
 }
 
 .image_thumbnail {

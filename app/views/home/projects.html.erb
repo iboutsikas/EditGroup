@@ -1,10 +1,11 @@
 <section id="projects">
   <div class="row">
-    <h1 class="projects-header">Projects</h1>
+    <h1 class="title">Projects</h1>
   </div>
 
   <% @projects.each do |project| %>
     <%= render 'home/partials/project_partial', project: project %>
   <% end %>
 
+  <%= will_paginate @projects %>
 </section>

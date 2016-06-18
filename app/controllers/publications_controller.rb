@@ -10,8 +10,9 @@ class PublicationsController < ApplicationController
       render "publications-timeline"
     else
       @citation = Preference.find_by_description("citation_style").value
+      pages = Preference.find_by_description("pagination_publications").value
       @publications = Publication.search(params)
-                                 .paginate(:page => params[:page], :per_page => 2)
+                                 .paginate(:page => params[:page], :per_page => pages)
                                  .includes(:authors).references(:authors)
 
       render "publications-default"

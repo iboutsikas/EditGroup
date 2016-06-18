@@ -1,8 +1,12 @@
-<% @news.each do |year, newsForYear| %>
-  <h1><%= year %></h1>
+<h1 class="title">News - Events</h1>
+
+<% @news_hash.each do |year, newsForYear| %>
+  <h2><%= year %></h2>
   <% newsForYear.each do |newsItem| %>
     <div class="row">
       <%= render "home/partials/newsPartial", item: newsItem %>
     </div>
   <% end %>
 <% end %>
+
+<%= will_paginate @news %>

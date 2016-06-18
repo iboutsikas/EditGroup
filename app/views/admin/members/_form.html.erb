@@ -10,7 +10,7 @@
 
           <%= f.hidden_field :id %>
 
-          <%= f.input :email, required: true, validate: true, error: false %>
+          <%= f.input :email, required: true, validate: true, error: false, label: "Login Email" %>
           <span class='help-block client_side_error' id="<%= "#{f.object_name}[email]" %>"></span>
 
           <%= f.input :password, required: true, validate: true, error: false, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
@@ -102,7 +102,7 @@
 
       <h4>Authentication</h4>
 
-      <%= f.input :email, required: true, validate: true, error: false %>
+      <%= f.input :email, required: true, validate: true, error: false, label: "Login Email" %>
       <span class='help-block client_side_error' id="<%= "#{f.object_name}[email]" %>"></span>
 
       <%= f.input :password, required: true, validate: true, error: false, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
@@ -163,7 +163,7 @@
 
         <h4>Authentication</h4>
 
-        <%= f.input :email, required: true, validate: true, error: false %>
+        <%= f.input :email, required: true, validate: true, error: false, label: "Login Email" %>
         <span class='help-block client_side_error' id="<%= "#{f.object_name}[email]" %>"></span>
 
         <%= f.input :password, required: true, validate: true, error: false, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
