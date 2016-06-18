@@ -19,14 +19,15 @@
 }
 
 .project-title {
-  @include font-size(24px);
+  @include font-size(27px);
   font-weight: 800;
 }
 
 .project-description {
   @include font-size(15px);
-  padding-top: 30px;
-  padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  text-align: justify;
 }
 
 .project-participants {

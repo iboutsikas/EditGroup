@@ -13,16 +13,16 @@
           "<%= project.motto %>"
         </p>
 
-        <p class="project-description">
+        <div class="project-description">
           <%= (project.description).html_safe %>
-        </p>
+        </div>
         <%= link_to project.website_formatted do %>
           <p> <i class="fa fa-globe" aria-hidden="true"></i> <%= project.website %> </p>
         <% end %>
         <div class="project-participants">
 
           <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-12">
               <table class="table table-responsive project-participants-table">
               	<thead>
               		<tr>
