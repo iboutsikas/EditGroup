@@ -24,4 +24,28 @@ $(function() {
 		});
 	}
 
+  var $searchToggle = $("#searchToggle");
+  var $searchCollapse = $("#searchCollapse");
+  var showing = false;
+
+  $searchToggle.on('click', function() {
+    if(showing) {
+      $searchToggle.html("<i class='fa fa-search' aria-hidden='true'></i>");
+      $searchCollapse.removeClass("bounceInLeft");
+      $searchCollapse.addClass("bounceOutRight");
+      $searchCollapse.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+        $searchCollapse.removeClass("showing");
+        $searchCollapse.off('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend');
+      });
+      showing = false;
+    } else {
+      $searchToggle.html("<i class='fa fa-times' aria-hidden='true'></i>");
+      $searchCollapse.removeClass("bounceOutRight");
+      $searchCollapse.addClass("showing");
+      $searchCollapse.addClass("bounceInLeft");
+      showing = true;
+    }
+  });
+
+
 });

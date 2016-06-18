@@ -77,14 +77,47 @@
 }
 
 .default-publication-search {
-	@extend .dropdown;
-	@extend .pull-right;
-
+	@extend .row;
+	margin-bottom: 2%;
 	.default-publication-form {
-		padding: 15px;
-		border-radius: 0;
-		@include breakpoint(md) {
-			min-width: 450px;
+		@extend .form-inline;
+		display: none;
+
+		&.showing {
+			display: flex;
+			flex-direction: row;
+			.form-group:not(:last-child) {
+				flex: 1;
+				label {
+					width: 20%;
+					display: inline;
+				}
+				input {
+					width: 80%;
+				}
+				select {
+					width: 80%;
+				}// select
+			}// .form-group:not(:last-child)
+		}// &.showing
+
+	}
+	#searchToggle {
+
+		@extend .btn;
+		@extend .col-md-1;
+		@extend .pull-right;
+		background-color: $color-secondary-1;
+		color: white;
+		box-shadow: none;
+		border: 0;
+		&:hover, &:active, &:focus {
+			background-color: darken($color-secondary-1, 5%);
+			color: white;
+			border: 0;
+		}
+		&:focus, &:active:focus, &.active:focus {
+    	outline: 0 none;
 		}
 	}
 
