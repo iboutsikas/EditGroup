@@ -18,13 +18,11 @@ class RegistrationsController < Devise::RegistrationsController
     #@member.participant = Participant.new(sign_up_params[:participant_attributes])
     #@member.person = Person.new(sign_up_params[:person_attributes])
     #@member.update(personal_websites_attributes: sign_up_params[:personal_websites_attributes])
-    binding.pry
     @member = Member.find_by_email(sign_up_params[:email])
     if @member.update(sign_up_params.except(:invitation_token))
       @member = Member.accept_invitation!(invitation_token: sign_up_params[:invitation_token], email: sign_up_params[:email],
                                                                            password: sign_up_params[:password])
       @member.participant.person_id = @member.person_id
-      binding.pry
       flash[:notice] = "Welcome #{@member.person.full_name}! You have successfully signed up."
       redirect_to root_url
     else
