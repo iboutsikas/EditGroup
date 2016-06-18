@@ -91,6 +91,7 @@
 				label {
 					width: 20%;
 					display: inline;
+					margin-right: 2px;
 				}
 				input {
 					width: 80%;
@@ -101,18 +102,32 @@
 			}// .form-group:not(:last-child)
 		}// &.showing
 
+		button {
+			@extend .btn;
+			background-color: $color-secondary-1;
+			color: white;
+			box-shadow: none;
+			border: 0;
+			&:hover, &:active, &:focus {
+				background-color: darken($color-secondary-1, 5%);
+				color: white;
+				border: 0;
+			}
+			&:focus, &:active:focus, &.active:focus {
+	    	outline: 0 none;
+			}
+		}
 	}
 	#searchToggle {
-
 		@extend .btn;
 		@extend .col-md-1;
 		@extend .pull-right;
-		background-color: $color-secondary-1;
+		background-color: $color-primary;
 		color: white;
 		box-shadow: none;
 		border: 0;
 		&:hover, &:active, &:focus {
-			background-color: darken($color-secondary-1, 5%);
+			background-color: darken($color-primary, 5%);
 			color: white;
 			border: 0;
 		}

@@ -12,7 +12,7 @@
       <%= select_tag :year, options_for_select((2001..Date.today.year + 5).to_a, params[:year]), :include_blank => true, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= button_tag type: 'submit', class: "btn btn-primary", name: nil do %>
+      <%= button_tag type: 'submit', name: nil do %>
         Go
       <% end %>
     </div>
