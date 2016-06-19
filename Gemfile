@@ -19,8 +19,6 @@ gem 'simple_form', '~> 3.2', '>= 3.2.1'
 
 gem 'cocoon', '~> 1.2', '>= 1.2.8'
 
-gem 'pry', '~> 0.10.3'
-
 gem 'sprockets-rails', '~> 3.0', '>= 3.0.4'
 
 #gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
@@ -99,6 +97,7 @@ group :development do
 
   gem "unicorn-rails"
 
+  gem 'pry', '~> 0.10.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end

@@ -64,8 +64,46 @@
         margin: 2px 5px;
         //float: left;
       }
+    }//member-websites
+
+    .member-show-more-button {
+      position: absolute;
+      top:0px;
+      left:0px;
+      right: 0px;
+      //margin-top: 200px;
+      height: 76%;
+      margin-left: 10px;
+      opacity: 0;
+      background-color: #0076a2;
+      width: 94%;
+      display: none;
+      font-size: 50px;
+      transition: opacity 1s;
+      -webkit-transition: opacity 1s;
+    }
+
+    &:hover {
+      .member-show-more-button {
+        opacity: 0.8;
+        display: block;
+      }
+    }
+
+    &.active:hover .member-show-more-button {
+      display: none;
     }
   }//card
+
+  .member-bio {
+    @extend .col-md-9;
+    display: none;
+
+    p {
+      font-size: 20px;
+    }
+  }
+
 }//row
 
 // Edit profile

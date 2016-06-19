@@ -55,11 +55,12 @@
 #           current page. Preceded by # i.e. #project, #member
 ###
 @toggleSubmitButton = (value) ->
-  $('#saveModalBtn').prop('disabled', !value);
+  $saveModalBtn = $('#saveModalBtn')
+  $saveModalBtn.prop('disabled', !value);
   if value
-    $('#saveModalBtn').css('background','#f05f40');
+    $saveModalBtn.css('background','#f05f40');
   else
-    $('#saveModalBtn').css('background','grey');
+    $saveModalBtn.css('background','grey');
 
 ###*
 # Hide the modal and redraw the datatable.
@@ -99,8 +100,9 @@
   $("#myModalLabel").html "Edit " + resource
   $("#saveModalBtn").html("Save Changes");
   toggleSubmitButton false
-  $(".modal").first().modal 'show'
-  $(".modal").first().on 'shown.bs.modal', ->
+  $modal = $(".modal").first()
+  $modal.modal 'show'
+  $modal.on 'shown.bs.modal', ->
     $('form:first *:input[type!=hidden]:first').focus()
 
 ###*
@@ -113,8 +115,9 @@
   $('#myModalLabel').html "New " + resource
   $('#saveModalBtn').html 'Create'
   toggleSubmitButton false
-  $(".modal").first().modal 'show'
-  $(".modal").first().on 'shown.bs.modal', ->
+  $modal = $(".modal").first()
+  $modal.modal 'show'
+  $modal.on 'shown.bs.modal', ->
     $('form:first *:input[type!=hidden]:first').focus()
 
 ###*
@@ -140,20 +143,21 @@
 #
 ###
 @bind_modal_submit_default =  () ->
-  saveModalBtn = $("#saveModalBtn")
-  saveModalBtn.unbind()
-  $('.modal').first().off('keypress')
+  $saveModalBtn = $("#saveModalBtn")
+  $modal = $('.modal').first()
+  $saveModalBtn.unbind()
+  $modal.off('keypress')
 
-  saveModalBtn.click ->
+  $saveModalBtn.click ->
     if validateForm('form')
       formSubmit()
     else
       toggleSubmitButton(false)
 
-  $('.modal').first().keypress (e) ->
+  $modal.keypress (e) ->
     if e.which == 13
       e.preventDefault()
-      saveModalBtn.trigger 'click' if !saveModalBtn.is(":disabled")
+      $saveModalBtn.trigger 'click' if !$saveModalBtn.is(":disabled")
 
 ###*
 # Bind the modal button in order to handle the special case of selecting multiple
@@ -163,10 +167,11 @@
 #
 ###
 @bind_modal_submit_for_select2 =  () ->
-  $("#saveModalBtn").unbind()
+  $saveModalBtn = $("#saveModalBtn")
+  $saveModalBtn.unbind()
   $('.modal').first().off('keypress')
 
-  $("#saveModalBtn").click ->
+  $saveModalBtn.click ->
     unless typeof $("#select2_box").select2('data')[0] == 'undefined'
       submit_the_select_form()
     else
@@ -184,7 +189,6 @@
 #
 ###
 @formSubmit = () ->
-  #$('form').submit()
   $('#form_main').submit()
 
 ###*
@@ -194,13 +198,14 @@
 #
 ###
 @submit_the_select_form = () ->
-  selectData = $("#select2_box").select2 'data'
+  $select2_box = $("#select2_box")
+  selectData = $select2_box.select2 'data'
   ids = []
 
   ids.push selectData[i].id for i in [0...selectData.length]
 
   $.ajax
-    url: $("#select2_box").parents('form')[0].action
+    url: $select2_box.parents('form')[0].action
     headers:
       Accept: 'text/javascript; charset=utf-8'
       'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -208,7 +213,7 @@
     dataType: 'script'
     data:
       'people': ids
-      'authenticity_token': $("#select2_box").siblings('#authenticity_token').val()
+      'authenticity_token': $select2_box.siblings('#authenticity_token').val()
 
 
 ###*
@@ -265,9 +270,10 @@
     .addClass('btn').addClass('btn-danger')
     .html(button_text)
 
-  $('#confirmation_modal .modal-body').html(message)
-  $('#confirmation_modal #modal_confirmation_buttons').html button
-  $("#confirmation_modal").modal 'show'
+  $confirmation_modal = $('#confirmation_modal')
+  $confirmation_modal.find('.modal-body').html(message)
+  $confirmation_modal.find('#modal_confirmation_buttons').html button
+  $confirmation_modal.modal 'show'
 
 ###*
 # Sumbits the form via js that changes the priority in authors/participants.
