@@ -25,6 +25,29 @@
     //border-bottom: 2px solid #efebe8;
     padding-top: 10px;
     padding-bottom: 10px;
+
+    &.ellipsis {
+      >p {
+        &:first-child {
+          text-overflow: ellipsis;
+        	white-space: nowrap;
+        	overflow: hidden;
+        	padding-right: 10px;
+        }
+
+        &:not(:first-child) {
+          display: none;
+        }
+      }
+      >button {
+        content: "Show Less"
+      }
+    }
+
+    >button {
+      content: "Show More"
+    }
+
   }
 
   .date {

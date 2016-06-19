@@ -12,11 +12,16 @@
     <div class="news-item-heading">
       <p><%= item.title %></p>
     </div>
-    
+
   </div> <!--end of row-->
 
-  <div class="news-item-content">
+  <div class="news-item-content ellipsis" id="news-item-content-<%= item.id%>">
     <%= (item.content).html_safe %>
+    <% if (item.content.size > 50) %>
+      <button class="news-item-toggle" data-target="news-item-content-<%= item.id%>">
+        Show more
+      </button>
+    <% end %>
   </div>
 
 </div>
