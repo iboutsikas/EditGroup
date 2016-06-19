@@ -30,7 +30,7 @@
 
 	.default-publication-content {
 		@extend .col-md-11;
-		>div {
+		#collapse-well {
 			@extend .well;
 			@extend .well-sm;
 			margin-top: 5px;
@@ -38,6 +38,7 @@
 		}
 		.default-publication-info {
 			@extend .row;
+
 			>section >h3 {
 				border-bottom: 1px solid $color-secondary-1;
 			}
@@ -72,7 +73,21 @@
 
 	.default-publication-read-more {
 		@extend .btn-xs;
-		@extend .btn-primary;
+		@extend .btn;
+		@extend .col-md-1;
+
+		background-color: $color-primary;
+		color: white;
+		box-shadow: none;
+		border: 0;
+		&:hover, &:active, &:focus {
+			background-color: darken($color-primary, 5%);
+			color: white;
+			border: 0;
+		}
+		&:focus, &:active:focus, &.active:focus {
+    	outline: 0 none;
+		}
 	}
 }
 

@@ -1,7 +1,10 @@
 require 'pry'
 
 class Member < ActiveRecord::Base
-  scope :extended, -> { includes(:person).references(:person).includes(:participant).references(:participant).includes(:personal_websites).references(:personal_websites) }
+  scope :extended, -> { eager_load(:person,
+                                   :participant,
+                                   :personal_websites)
+                      }
   default_scope { includes(:person).references(:person)}
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -10,7 +13,7 @@ class Member < ActiveRecord::Base
 
   belongs_to :participant, dependent: :destroy
   belongs_to :person, dependent: :destroy
-  has_many :personal_websites, dependent: :destroy
+  has_many :personal_websites, -> { extended }, dependent: :destroy
   has_many :website_templates, through: :personal_websites
 
   has_many :authors, through: :person
