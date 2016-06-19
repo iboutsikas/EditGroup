@@ -8,6 +8,8 @@
     padding-top: 5px;
     ul {
       @extend .col-md-5;
+      @extend .col-sm-4;
+      @extend .col-xs-4;
       display: inline;
       list-style-type: none;
     }
@@ -15,6 +17,7 @@
     .seerc-logo {
       @extend .img-responsive;
       max-height: 150px;
+      margin: 0 auto;
     }
 
     .moutsounes {

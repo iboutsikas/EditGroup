@@ -5,7 +5,7 @@ class Member < ActiveRecord::Base
                                    :participant,
                                    :personal_websites)
                       }
-  default_scope { includes(:person).references(:person)}
+  default_scope { eager_load(:person)}
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
