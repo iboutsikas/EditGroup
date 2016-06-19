@@ -31,7 +31,7 @@ class Admin::ParticipationsController < Admin::DashboardController
                                                                      where participations.project_id = ?)", @project.id])
 
     respond_to do |format|
-      format.js { render 'admin/initializeForm', locals: { resource: @participation, form_path: "participations/form_select_multiple", participants: @participants_list } }
+      format.js { render 'admin/initializeForm', locals: { resource: @participation, form_path: "participations/form_select_multiple" } }
     end
   end
 

@@ -23,11 +23,13 @@ class PublicationsController < ApplicationController
 
   end
 
-  def set_publication
-    @publication = Publication.find(params[:id])
-  end
+  private
 
-  def dummy
+    def set_publication
+      @publication = Publication.find(params[:id])
+    end
 
-  end
+    def dummy
+
+    end
 end

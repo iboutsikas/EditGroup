@@ -3,11 +3,11 @@
 <h2>Staff Members</h2>
 <% rows = (@staff.size / max_per_row).to_i + 1 %>
 <% rows.times do |y| %>
-  <div class="member-row">
+  <div class="member-row" id="staff-row-<%= y %>">
     <% max_per_row.times do |x| %>
       <% index = y * max_per_row + x %>
       <% if (index < @staff.size) %>
-        <%= render "members/partials/memberListPartial", member: @staff.at(index) %>
+        <%= render  "members/partials/memberListPartial", member: @staff.at(index), max_per_row: max_per_row, row: y, index: x, type: "staff" %>
       <% end %>
     <% end %>
   </div>
@@ -15,11 +15,11 @@
 <h2>Student Members</h2>
 <% rows = (@students.size / max_per_row).to_i + 1 %>
 <% rows.times do |y| %>
-  <div class="member-row">
+  <div class="member-row" id="student-row-<%= y %>">
     <% max_per_row.times do |x| %>
       <% index = y * max_per_row + x %>
       <% if (index < @students.size) %>
-        <%= render "members/partials/memberListPartial", member: @students.at(index) %>
+        <%= render "members/partials/memberListPartial", member: @students.at(index), max_per_row: max_per_row, row: y, index: index, type: "student" %>
       <% end %>
     <% end %>
   </div>

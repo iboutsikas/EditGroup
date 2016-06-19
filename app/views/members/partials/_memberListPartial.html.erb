@@ -1,19 +1,35 @@
-<div class="member-card">
-  <%= image_tag(member.avatar.url, class: "member-image") %>
-  <p class="member-name">
-    <%= member.participant.title + " " + member.full_name%>
-  </p>
-  <p class="member-position">
-    <%= member.participant.administrative_title %>
-  </p>
-  <div class="member-websites">
-    <% member.personal_websites.each do |website| %>
-      <a href="<%= website.url_formatted %>" target="_blank" title="<%= website.website_name %>">
-        <%= image_tag(website.website_template.logo.url, class: "website-logo") %>
-      </a>
-    <% end %>
-    <a href="mailto:<%= member.participant.email %>">
-      <i class="fa fa-envelope" aria-hidden="true"></i>
+<div id="<%= type %>-row-<%= row %>-index-<%= index %>">
+  <div class="member-card">
+    <%= image_tag(member.avatar.url, class: "member-image") %>
+    <a href="#/" onclick="show_member_bio('<%= type %>-row-<%= row %>-index-<%= index %>', '<%= type %>', <%= row %>, <%= index %>, <%= max_per_row %>); return false;">
+      <button class="btn btn-info member-show-more-button" onclick="$(window).trigger('click'); return false;">Read More </button>
     </a>
+    <p class="member-name">
+      <%= member.participant.title + " " + member.full_name%>
+    </p>
+    <p class="member-position">
+      <%= member.participant.administrative_title %>
+    </p>
+    <div class="member-websites">
+      <% member.personal_websites.each do |website| %>
+        <a href="<%= website.url_formatted %>" target="_blank" title="<%= website.website_name %>">
+          <%= image_tag(website.website_template.logo.url, class: "website-logo") %>
+        </a>
+      <% end %>
+      <a href="mailto:<%= member.participant.email %>">
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="member-bio">
+    <div class="row">
+      <div class="col-md-11">
+        <p>Mr. Hatziapostolou is the coordinator of the Educational Informatics research group. He has been concerned with the development, evaluation and deployment of innovative teaching-learning technologies and methods for higher education in blended and distance learning settings. His primary interests also include intelligent and personalised learning management systems, computer science education, and entrepreneurial education. Mr. Hatziapostolou is also the academic supervisor of the College's learning management system.</p>
+      </div>
+      <div class="col-md-1">
+        <button class="btn btn-danger" onclick="$(window).trigger('click'); return false;"> <i class="fa fa-times" aria-hidden="true"></i> Close </button>
+      </div>
+    </div>
   </div>
 </div>

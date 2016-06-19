@@ -16,8 +16,12 @@
         <div class="project-description">
           <%= (project.description).html_safe %>
         </div>
-        <%= link_to project.website_formatted do %>
-          <p> <i class="fa fa-globe" aria-hidden="true"></i> <%= project.website %> </p>
+        <% unless project.website.nil? || project.website == "" %>
+
+          <%= link_to project.website_formatted do %>
+            <p> <i class="fa fa-globe" aria-hidden="true"></i> <%= project.website %> </p>
+          <% end %>
+
         <% end %>
         <div class="project-participants">
 
@@ -49,7 +53,6 @@
       <div class="project-video">
         <% unless project.video.nil? || project.video == "" %>
           <iframe class="embed-responsive-item" width="560" height="315" src='<%= project.video_url_only %>' frameborder="0" allowfullscreen></iframe>
-          <!--iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/1rPxiXXxftE" frameborder="0" allowfullscreen></iframe-->
         <% end %>
       </div>
     </div> <!--End of row-->

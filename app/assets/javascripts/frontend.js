@@ -5,3 +5,4 @@
 //= require contact
 //= require ahoy
 //= require cookies_eu
+//= require members

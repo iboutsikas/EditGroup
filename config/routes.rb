@@ -87,10 +87,11 @@ Rails.application.routes.draw do
 
   get 'projects', to: 'home#projects'
 
+  devise_for :members, :controllers => { registrations: 'registrations', invitations: 'invitations' }
+
   resources :members, only: [:index, :update, :edit]
   #get 'edit_profile/:id', to: 'members#edit_profile'
 
-  devise_for :members, :controllers => { registrations: 'registrations', invitations: 'invitations' }
 
 
 
