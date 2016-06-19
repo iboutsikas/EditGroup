@@ -6,14 +6,16 @@ class PublicationsController < ApplicationController
     pref = Preference.find_by_description("publication_display")
 
     if (pref.value == "timeline")
-      @publications = Publication.all.includes(:authors).references(:authors)
+      @publications = Publication.all.eager_load(:authors)
+                                     .eager_load(:people)
       render "publications-timeline"
     else
       @citation = Preference.find_by_description("citation_style").value
       pages = Preference.find_by_description("pagination_publications").value
       @publications = Publication.search(params)
                                  .paginate(:page => params[:page], :per_page => pages)
-                                 .includes(:authors).references(:authors)
+                                 .eager_load(:authors)
+                                 .eager_load(:people)
 
       render "publications-default"
     end
@@ -30,4 +32,5 @@ class PublicationsController < ApplicationController
   def dummy
 
   end
+
 end

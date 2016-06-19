@@ -6,7 +6,7 @@ class MembersController < ApplicationController
   def index
     # @members = Member.includes(:personal_websites,:participant,:person).where("members.person_id is not null and members.participant_id is not null")
 
-    @members = Member.where("members.person_id IS NOT NULL AND members.participant_id IS NOT NULL")
+    @members = Member.extended.where("members.person_id IS NOT NULL AND members.participant_id IS NOT NULL")
     @staff = []
     @students =[]
     @members.each do |member|

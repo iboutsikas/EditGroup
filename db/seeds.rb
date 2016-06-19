@@ -167,19 +167,30 @@ journal3.authors << author3
 
 
 # Projects
-Project.create(title: "Projectara", motto: "Die with the rest, project with the best", description: "The project happened with gorgous rithmous with people constantly doing thing and being excelent while achieving project.", date_started: Date.today)
-
-Project.create(title: "This is super project", motto: "To project and to infinity, we become people", description: "Just super, just incredible, all good, no problems", date_started: Date.today)
-
-Project.create(title: "Oh my god", motto: "write a seeder, its good for you", description: "Seedin', seedin', seedin'", date_started: Date.today)
+projects = []
+p = Project.create(title: "Projectara", motto: "Die with the rest, project with the best", description: "The project happened with gorgous rithmous with people constantly doing thing and being excelent while achieving project.", date_started: Date.today, website: "www.google.com", video: '<iframe width="560" height="315" src="https://www.youtube.com/embed/Dpl2ZwT4rq0" frameborder="0" allowfullscreen></iframe>')
+projects << p
+p =  Project.create(title: "This is super project", motto: "To project and to infinity, we become people", description: "Just super, just incredible, all good, no problems", date_started: Date.today, website: "www.google.com", video: '<iframe width="560" height="315" src="https://www.youtube.com/embed/LG-X1iOQBXE" frameborder="0" allowfullscreen></iframe>')
+projects << p
+p = Project.create(title: "Oh my god", motto: "write a seeder, its good for you", description: "Seedin', seedin', seedin'", date_started: Date.today, website: "www.google.com", video: '<iframe width="560" height="315" src="https://www.youtube.com/embed/GfhOxDvV88I" frameborder="0" allowfullscreen></iframe>')
+projects << p
+# Project Participations
+projects.each do |p|
+	part1 = Participation.create(participant_id: participant1.id, project_id: p.id, priority: 10)
+	part2 = Participation.create(participant_id: participant2.id, project_id: p.id, priority: 10)
+	part3 = Participation.create(participant_id: participant3.id, project_id: p.id, priority: 10)
+	p.participations << part1
+	p.participations << part2
+	p.participations << part3
+end
 
 
 # News Events
-NewsEvent.create(date: Date.today, content: "To trixrono tzatziki mou genithike!", title: "Egina Mitera!")
+NewsEvent.create(date: Date.today, title: "Egina Mitera!", content: "To trixrono tzatziki mou genithike!")
 
-NewsEvent.create(date: Date.today, content: "Oh No Sun!", title: "Crazy Weather")
+NewsEvent.create(date: Date.today, title: "Crazy Weather", content: "The sun is sunny bad news what an event")
 
-NewsEvent.create(date: Date.today, content: "Person publishes Publication", title: "New Publication by Person")
+NewsEvent.create(date: Date.today, title: "New Publication by Person", content: "Person publishes Publication")
 
 
 # Website Templates
