@@ -2,7 +2,7 @@
   <div class="member-card">
     <%= image_tag(member.avatar.url, class: "member-image") %>
     <a href="#/" onclick="show_member_bio('<%= type %>-row-<%= row %>-index-<%= index %>', '<%= type %>', <%= row %>, <%= index %>, <%= max_per_row %>); return false;">
-      <button class="btn btn-info member-show-more-button" onclick="$(window).trigger('click'); return false;">Read More </button>
+      <button class="btn btn-info member-show-more-button animated bounceIn" onclick="$(window).trigger('click'); return false;"> <i class="fa fa-info info-icon" aria-hidden="true"></i> </button>
     </a>
     <p class="member-name">
       <%= member.participant.title + " " + member.full_name%>
@@ -32,4 +32,5 @@
       </div>
     </div>
   </div>
+
 </div>

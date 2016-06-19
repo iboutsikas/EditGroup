@@ -5,8 +5,11 @@ $(function () {
     windowHeight = $(window).height();
     contentHeight = windowHeight - 200;
     $("#side-menu-everything").css('height', windowHeight);
-    $("#right-col-id").css("min-height", windowHeight);
-    $("#all_content").css("min-height", contentHeight);
+    //if (windowHeight > 500){
+      $("#right-col-id").css("min-height", windowHeight);
+      $("#all_content").css("min-height", contentHeight);
+    //}
+
 
 
     var $collapsibles, url;

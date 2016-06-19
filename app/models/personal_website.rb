@@ -18,7 +18,9 @@ class PersonalWebsite < ActiveRecord::Base
   end
 
   def url_formatted
+    logger.info self.url
     temp = self.url
-    return "http://#{temp}" unless temp[/^https?/]
+    return /^http/i.match(temp) ? url : "http://#{temp}"
+    #return "http://#{temp}" unless temp[/^http?/]
   end
 end

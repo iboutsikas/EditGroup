@@ -99,6 +99,10 @@ textarea.form-control {
   min-height: 100px;
 }
 
+.child_menu {
+  z-index: 9999;
+}
+
 //Charts
 #visits_line, #proj_chart, #pub_chart, #data_per_year_chart, #os_pie, #browser_pie{
   height:100%;

@@ -13,6 +13,12 @@ $(document).on('shown.bs.modal', function () {
         setup: function (editor) {
             editor.on('change', function () {
                 tinyMCE.triggerSave();
+                if (this.getContent() === "") {
+                  toggleSubmitButton(false);
+                } else {
+                  toggleSubmitButton(true);
+                }
+
             });
         },
         save_onsavecallback: function () { console.log('Saved'); }

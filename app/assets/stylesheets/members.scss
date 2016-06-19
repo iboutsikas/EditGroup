@@ -68,30 +68,37 @@
 
     .member-show-more-button {
       position: absolute;
-      top:0px;
-      left:0px;
+      top: 0px;
       right: 0px;
-      //margin-top: 200px;
-      height: 76%;
-      margin-left: 10px;
+      height: 70px;
+      margin-right: 10px;
       opacity: 0;
-      background-color: #0076a2;
-      width: 94%;
+      width: 70px;
       display: none;
-      font-size: 50px;
-      transition: opacity 1s;
-      -webkit-transition: opacity 1s;
+      font-size: 20px;
+      border: 0;
+      border-radius: 50%;
+      background: white;
+      color: black;
+      transition: all 0.3s ease;
+      outline: 0;
+      box-shadow: 0 2px 4px rgba(0,0,0, 0.12), 0 2px 4px rgba(0,0,0, 0.24);
     }
 
     &:hover {
       .member-show-more-button {
-        opacity: 0.8;
+        opacity: 1;
         display: block;
       }
     }
 
     &.active:hover .member-show-more-button {
       display: none;
+    }
+
+    .info-icon {
+      font-size: 34px;
+      color: $color-primary-highlight;
     }
   }//card
 

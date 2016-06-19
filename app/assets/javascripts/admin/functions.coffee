@@ -104,6 +104,9 @@
   $modal.modal 'show'
   $modal.on 'shown.bs.modal', ->
     $('form:first *:input[type!=hidden]:first').focus()
+    $("#member_avatar").change ->
+      toggleSubmitButton(true)
+
 
 ###*
 # Executed when the new button is pressed. Changes the label in
@@ -119,6 +122,8 @@
   $modal.modal 'show'
   $modal.on 'shown.bs.modal', ->
     $('form:first *:input[type!=hidden]:first').focus()
+    $("#member_avatar").change ->
+      toggleSubmitButton(true)
 
 ###*
 # Alter the modals appearce to create a custom confirmation modal.

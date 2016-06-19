@@ -1,5 +1,5 @@
 $(function() {
-
+  
   $('.news-item-toggle').on('click', function () {
     var $button = $(this);
     var $content = $('#' + $button.data("target"));
