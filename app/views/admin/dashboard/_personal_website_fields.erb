@@ -1,11 +1,18 @@
 <div class="nested-fields">
-  <%= f.fields_for :personal_websites do |w| %>
-      <%= w.association :website_template, label_method: :website_name,value_method: :id, prompt: "Choose website name", validate: true, error: false %>
-      <span class='help-block client_side_error' id="<%= "#{w.object_name}[website_template_id]" %>"></span>
+  <div class="form-group">
+    <%= f.fields_for :personal_websites do |w| %>
+        <div class="col-md-3 col-lg-3 col-sm-12">
+          <%= w.association :website_template, label_method: :website_name,value_method: :id, prompt: "Choose website name", validate: true, error: false, label:"Websites" %>
+          <span class='help-block client_side_error' id="<%= "#{w.object_name}[website_template_id]" %>"></span>
+        </div>
+        <div class="col-md-8 col-lg-8 col-sm-12">
+          <%= w.input :url, label: 'URL', validate: true, error: false %>
+          <span class='help-block client_side_error' id="<%= "#{w.object_name}[url]" %>"></span>
+        </div>
+        <div class="col-md-1 col-lg-1 col-sm-12">
 
-      <%= w.input :url, label: 'URL', validate: true, error: false %>
-      <span class='help-block client_side_error' id="<%= "#{w.object_name}[url]" %>"></span>
-
-      <%= link_to_remove_association "remove website", w %>
-  <% end %>
+          <%= link_to_remove_association ("<i class='fa fa-times' aria-hidden='true' style='margin-top:32px; color:#ff0000;'></i>").html_safe, w %>
+        </div>
+    <% end %>
+  </div>
 </div>
