@@ -4,7 +4,8 @@
     <%= member.participant.title + " " + member.full_name%>
   </p>
   <p class="member-position">
-    <%= member.participant.administrative_title %>
+    <div>Membership</div>
+    <%= member.member_from.strftime("%b-%Y") %> to <%= member.member_to.strftime("%b-%Y") %>
   </p>
   <div class="member-websites">
     <% member.personal_websites.each do |website| %>

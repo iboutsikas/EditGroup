@@ -1,5 +1,3 @@
-require 'pry'
-
 class Admin::AuthorsController < Admin::DashboardController
   before_action :set_publication
   before_action :set_author, only: [:edit, :update, :destroy, :edit_priority]
