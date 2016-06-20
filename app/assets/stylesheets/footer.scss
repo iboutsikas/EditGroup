@@ -2,7 +2,7 @@
   background-color: $color-primary;
   color: text-contrast($color-primary);
   margin-top: 10px;
-  z-index: 15;
+  z-index: 10;
   .footer-content {
     @extend .container;
     padding-top: 5px;

@@ -6,8 +6,9 @@ class PublicationsController < ApplicationController
     pref = Preference.find_by_description("publication_display")
 
     if (pref.value == "timeline")
-      @publications = Publication.all.eager_load(:authors)
-                                     .eager_load(:people)
+      @citation = Preference.find_by_description("citation_style").value
+      @publications = Publication.all.eager_load(authors: :people)
+      @citation_list = generate_citations(@publications, @citation)
       render "publications-timeline"
     else
       @citation = Preference.find_by_description("citation_style").value
