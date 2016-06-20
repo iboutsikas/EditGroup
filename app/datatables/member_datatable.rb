@@ -65,7 +65,8 @@ class MemberDatatable < AjaxDatatablesRails::Base
   def get_raw_records
     # insert query here
     #select("id","person_id","participant_id","participants.title as title","people.firstName","people.lastName", "participants.administrative_title","participants.email","members.email","members.isAdmin")
-    Member.extended.where(["members.participant_id is not null and members.person_id is not null and isStudent = ?",0])
+    #Member.extended.where(["members.participant_id is not null and members.person_id is not null and isStudent = ?",false])
+    Member.extended.where.not(participants: {id: nil}).where(isStudent: false)
   end
 
   # ==== Insert 'presenter'-like methods below if necessary
