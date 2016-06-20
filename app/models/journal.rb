@@ -5,16 +5,16 @@ class Journal < ActiveRecord::Base
 
   validates :title, presence: true
 
-  def cite(authors)
-    BibTeX::Entry.new({
-                          :bibtex_type => :article,
-                          :author => "#{authors}",
-                          :journal => "#{self.title}",
-                          :volume => "#{self.volume}",
-                          :number => "#{self.issue}"#,
-                          #:title => "#{self.publication.title}",
-                          #:pages => "#{self.publication.pages}",
-                          #:date => "#{self.publication.date}"
-                      })
-  end
+  # def cite(authors)
+  #   BibTeX::Entry.new({
+  #                         :bibtex_type => :article,
+  #                         :author => "#{authors}",
+  #                         :journal => "#{self.title}",
+  #                         :volume => "#{self.volume}",
+  #                         :number => "#{self.issue}"#,
+  #                         #:title => "#{self.publication.title}",
+  #                         #:pages => "#{self.publication.pages}",
+  #                         #:date => "#{self.publication.date}"
+  #                     })
+  # end
 end

@@ -5,16 +5,16 @@ class Conference < ActiveRecord::Base
 
   validates :name, presence: true
 
-  def cite(authors)
-    BibTeX::Entry.new({
-                          :bibtex_type => :inproceedings,
-                          :author => "#{authors}",
-                          :booktitle => "#{self.name}",
-                          :publisher => "#{self.publisher}",
-                          :place => "#{self.location}"#,
-                          #:title => "#{self.publication.title}",
-                          #:pages => "#{self.publication.pages}",
-                          #:date => "#{self.publication.date}"
-                      })
-  end
+  # def cite(authors)
+  #   BibTeX::Entry.new({
+  #                         :bibtex_type => :inproceedings,
+  #                         :author => "#{authors}",
+  #                         :booktitle => "#{self.name}",
+  #                         :publisher => "#{self.publisher}",
+  #                         :place => "#{self.location}"#,
+  #                         #:title => "#{self.publication.title}",
+  #                         #:pages => "#{self.publication.pages}",
+  #                         #:date => "#{self.publication.date}"
+  #                     })
+  # end
 end
