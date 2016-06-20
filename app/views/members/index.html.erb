@@ -19,7 +19,7 @@
     <% max_per_row.times do |x| %>
       <% index = y * max_per_row + x %>
       <% if (index < @students.size) %>
-        <%= render "members/partials/memberListPartial", member: @students.at(index), max_per_row: max_per_row, row: y, index: index, type: "student" %>
+        <%= render "members/partials/studentListPartial", member: @students.at(index), max_per_row: max_per_row, row: y, index: index, type: "student" %>
       <% end %>
     <% end %>
   </div>
