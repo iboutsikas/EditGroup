@@ -1,5 +1,3 @@
-require 'pry'
-
 class Admin::ParticipationsController < Admin::DashboardController
   before_action :set_project
   before_action :set_participation, only: [:show, :edit, :update, :destroy]

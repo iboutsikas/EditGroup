@@ -4,6 +4,7 @@ $nav-color : $color-primary;
   border-radius: 0px !important;
   background-color: $nav-color;
   border-color: darken($nav-color, 10%);
+  z-index:15;
 
   &.affix {
     top: 0px;
@@ -17,9 +18,17 @@ $nav-color : $color-primary;
   .navbar-collapse {
     padding-left: 0;
     padding-right: 0;
+
   }
   .navbar-nav {
     width: 100%;
+
+    @include breakpoint(xs) {
+      padding-left: 5%;
+      padding-right: 5%;
+      max-height: 60vh;
+      overflow-y: scroll;
+    }
     .dropdown {
       &.open > a {
           background-color: $color-primary-dark;
@@ -53,6 +62,14 @@ $nav-color : $color-primary;
     }
   }
   .login-module {
-    @extend .pull-right;
+
+    
+    @include breakpoint(xs) {
+      float: none;
+    }
+
+    @include breakpoint(md) {
+      float: right;
+    }
   }
 }

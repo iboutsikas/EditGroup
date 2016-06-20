@@ -51,7 +51,6 @@ class Admin::PersonalWebsitesController < Admin::DashboardController
 
   # PATCH
   def create_multiple
-    binding.pry
   end
 
   # PATCH/PUT /personal_websites/1
