@@ -1,6 +1,4 @@
 require 'json'
-require 'pry'
-
 class Admin::MembersController < Admin::DashboardController
   before_action :set_member, only: [:show, :edit, :update, :destroy, :change_password, :resend_invitation, :destroy_check_for_publications, :edit_profile_page]
 

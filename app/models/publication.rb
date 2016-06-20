@@ -1,4 +1,3 @@
-require 'pry'
 class Publication < ActiveRecord::Base
   default_scope { includes(:journal).references(:journal).includes(:conference).references(:conference) }
 

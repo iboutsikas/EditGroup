@@ -1,11 +1,9 @@
-require 'pry'
-
 class Member < ActiveRecord::Base
   scope :extended, -> { eager_load(:person,
                                    :participant,
                                    :personal_websites)
                       }
-  default_scope { includes(:person).references(:person)}
+  default_scope { eager_load(:person)}
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,

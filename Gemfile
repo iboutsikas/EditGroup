@@ -72,7 +72,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.11'
 
 # Use Unicorn as the app server
-gem 'unicorn'
+#gem 'unicorn'
+gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -95,7 +96,7 @@ group :development do
 
   gem 'letter_opener', '~> 1.4', '>= 1.4.1'
 
-  gem "unicorn-rails"
+  #gem "unicorn-rails"
 
   gem 'pry', '~> 0.10.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

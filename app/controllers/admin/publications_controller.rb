@@ -1,5 +1,3 @@
-require 'pry'
-
 class Admin::PublicationsController < Admin::DashboardController
   before_action :set_publication, only: [:check_if_any_members, :edit, :update, :destroy, :new_people, :create_people]
 
