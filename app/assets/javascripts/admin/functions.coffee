@@ -86,7 +86,7 @@
   $(resource + "s-table").dataTable().api().ajax.reload()
 
 @redraw_table = () ->
-  $('table').dataTable().api().ajax.reload()
+  $('#table').dataTable().api().ajax.reload()
 
 ###*
 # Executed when the edit button is pressed. Changes the label in

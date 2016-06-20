@@ -1,5 +1,3 @@
-require 'pry'
-
 class Member < ActiveRecord::Base
   scope :extended, -> { eager_load(:person,
                                    :participant,
