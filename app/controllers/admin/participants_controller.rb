@@ -17,7 +17,6 @@ class Admin::ParticipantsController < Admin::DashboardController
   def update
     respond_to do |format|
       if @participant.update(participant_params.except(:person_attributes) ) && @participant.person.update(participant_params[:person_attributes])
-        binding.pry
         format.js { render js: 'hide_and_redraw()' }
       else
         format.js { render 'admin/initializeForm', locals: { resource: @participant, form_path: "participants/form" } }
