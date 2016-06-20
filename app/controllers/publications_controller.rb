@@ -13,14 +13,9 @@ class PublicationsController < ApplicationController
       @citation = Preference.find_by_description("citation_style").value
       @pages = Preference.find_by_description("pagination_publications").value
 
-      if params.length > 2
-        @publications = Publication.search(params)
-                                   .paginate(:page => params[:page], :per_page => @pages)
-                                   .eager_load(authors: :person)
-     else
-        @publications = Publication.paginate(:page => params[:page], :per_page => @pages)
-                                  .eager_load(authors: :person)
-     end
+      @publications = Publication.search(params)
+                                 .paginate(:page => params[:page], :per_page => @pages)
+                                 .eager_load(authors: :person)
 
      @citation_list = generate_citations(@publications, @citation)
 

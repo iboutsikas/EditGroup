@@ -30,7 +30,7 @@ $(function() {
 
   $searchToggle.on('click', function() {
     if(showing) {
-      $searchToggle.css('width','100px');
+      $searchToggle.css('width','90px');
       $searchToggle.html("<i class='fa fa-search' aria-hidden='true'></i>");
       $searchCollapse.removeClass("bounceInLeft");
       $searchCollapse.addClass("bounceOutRight");
