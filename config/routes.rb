@@ -87,6 +87,8 @@ Rails.application.routes.draw do
 
   get 'projects', to: 'home#projects'
 
+  get 'developers', to: 'home#moutsounes'
+
   devise_for :members, :controllers => { registrations: 'registrations', invitations: 'invitations' }
 
   resources :members, only: [:index, :update, :edit]
