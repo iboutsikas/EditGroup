@@ -20,9 +20,9 @@ class Publication < ActiveRecord::Base
   def return_member_authors
     Publication.find_by_sql([
       "select * from authors, publications, people
-      where authors.publication_id == publications.id and
-      authors.person_id == people.id and
-      publications.id == ? and
+      where authors.publication_id = publications.id and
+      authors.person_id = people.id and
+      publications.id = ? and
       authors.person_id in
         (select person_id from members)", self.id])
   end

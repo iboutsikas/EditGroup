@@ -1,12 +1,15 @@
 <div class="publication-timeline-block">
   <div class="publication-timeline-img timeline-conference">
-    <i class="fa fa-file-text" aria-hidden="true"></i>
+    <% if publication.journal %>
+      <%= image_tag("report") %>
+    <% else %>
+      <%= imate_tag("conference") %>
+    <% end %>
   </div> <!-- cd-timeline-img -->
 
   <div class="publication-timeline-content">
     <h2><%= publication.title %></h2>
-    <p><%= publication.abstract %></p>
-    <a href="#0" class="timeline-read-more">Read more</a>
+    <p><%= @citation_list[index] %></p>
     <span class="timeline-date"><%= publication.date.strftime("%d %b %Y") %></span>
   </div> <!-- cd-timeline-content -->
 </div> <!-- cd-timeline-block -->

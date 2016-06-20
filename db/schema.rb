@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20160618100323) do
   add_index "ahoy_events", ["visit_id", "name"], name: "index_ahoy_events_on_visit_id_and_name"
 
   create_table "authors", force: :cascade do |t|
-    t.string   "person_id"
-    t.string   "publication_id"
+    t.integer   "person_id"
+    t.integer   "publication_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "priority"

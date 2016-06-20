@@ -1,49 +1,49 @@
 # Create Admin
 person = Person.create(firstName: "Athanasios", lastName: "Hatziapostolou")
 
-participant  = Participant.create(email: "a.hatziapostolou@city.academic.gr", title: "Mr.", administrative_title: "Senior Lecturer, CS Department", person_id: person.id)
+participant  = Participant.create(email: "member1@edit.com", title: "Mr.", administrative_title: "Senior Lecturer, CS Department", person_id: person.id)
 
-hatzis = Member.create(isAdmin: true, person_id: person.id,participant_id: participant.id, bio: "Mr. Hatziapostolou is the coordinator of the Educational Informatics research group. He has been concerned with the development, evaluation and deployment of innovative teaching-learning technologies and methods for higher education in blended and distance learning settings. His primary interests also include intelligent and personalised learning management systems, computer science education, and entrepreneurial education. Mr. Hatziapostolou is also the academic supervisor of the College's learning management system.", avatar: "", email: "a.hatziapostolou@city.academic.gr", password: "asdfasdf", isStudent: false)
+hatzis = Member.create(isAdmin: true, person_id: person.id,participant_id: participant.id, bio: "Mr. Hatziapostolou is the coordinator of the Educational Informatics research group. He has been concerned with the development, evaluation and deployment of innovative teaching-learning technologies and methods for higher education in blended and distance learning settings. His primary interests also include intelligent and personalised learning management systems, computer science education, and entrepreneurial education. Mr. Hatziapostolou is also the academic supervisor of the College's learning management system.", avatar: "", email: "member1@edit.com", password: "asdfasdf", isStudent: false)
 
 # Create Members
 # Member 1
 person1 = Person.create(firstName: "Iraklis", lastName: "Paraskakis")
 
-participant1  = Participant.create(email: "iparaskakis@seerc.org", title: "Dr.", administrative_title: "Senior Lecturer, CS Department", person_id: person1.id)
+participant1  = Participant.create(email: "member2@edit.com", title: "Dr.", administrative_title: "Senior Lecturer, CS Department", person_id: person1.id)
 
-paras = Member.create(isAdmin: false, person_id: person1.id, participant_id: participant1.id, bio: "Dr. Paraskakis' interests are in the area of Education and Information Technology and in particular the formalisation of multiple teaching strategies. Other areas of research include the use of virtual learning management systems and mobile learning. He has worked as an Associate Lecturer at the Open University (UK) and as a part-time Lecturer at Bedford College and Stevenage College. Currently he is also an Associate Lecturer with the Hellenic Open University in the Department of Informatics.", avatar: "", email: "iparaskakis@seerc.org", password: "StupidP@ssw0rd", isStudent: false)
+paras = Member.create(isAdmin: false, person_id: person1.id, participant_id: participant1.id, bio: "Dr. Paraskakis' interests are in the area of Education and Information Technology and in particular the formalisation of multiple teaching strategies. Other areas of research include the use of virtual learning management systems and mobile learning. He has worked as an Associate Lecturer at the Open University (UK) and as a part-time Lecturer at Bedford College and Stevenage College. Currently he is also an Associate Lecturer with the Hellenic Open University in the Department of Informatics.", avatar: "", email: "member2@edit.com", password: "StupidP@ssw0rd", isStudent: false)
 
 # Member 2
 person2 = Person.create(firstName: "Anna", lastName: "Sotiriadou")
 
-participant2  = Participant.create(email: "sotiriadou@city.academic.gr", title: "Mrs.", administrative_title: "Head of Computer Science Department", person_id: person2.id)
+participant2  = Participant.create(email: "member3@edit.com", title: "Mrs.", administrative_title: "Head of Computer Science Department", person_id: person2.id)
 
-sotir = Member.create(isAdmin: false, person_id: person2.id, participant_id: participant2.id, bio: "Mrs. Sotiriadou is the Head and Senior Lecturer of the Computer Science Department. She is a member of the organising and scientific committees in a number of scientific conferences, she has published in various conferences and edited books. She has also taught Probability and Statistics courses in the Statistics Department of the University of Rochester. Her research interests are centered around Computer Science education, teaching and learning in higher education and formal methods in software engineering.", avatar: "", email: "sotiriadou@city.academic.gr", password: "12345678", isStudent: false)
+sotir = Member.create(isAdmin: false, person_id: person2.id, participant_id: participant2.id, bio: "Mrs. Sotiriadou is the Head and Senior Lecturer of the Computer Science Department. She is a member of the organising and scientific committees in a number of scientific conferences, she has published in various conferences and edited books. She has also taught Probability and Statistics courses in the Statistics Department of the University of Rochester. Her research interests are centered around Computer Science education, teaching and learning in higher education and formal methods in software engineering.", avatar: "", email: "member3@edit.com", password: "12345678", isStudent: false)
 
 # Member 3
 person3 = Person.create(firstName: "Petros", lastName: "Kefalas")
 
-participant3  = Participant.create(email: "kefalas@scity.academic.gr", title: "Dr.", administrative_title: "Vice-Principal", person_id: person3.id)
+participant3  = Participant.create(email: "member4@edit.com", title: "Dr.", administrative_title: "Vice-Principal", person_id: person3.id)
 
-kefal = Member.create(isAdmin: false, person_id: person3.id, participant_id: participant3.id, bio: "Dr. Kefalas research interests are centred around Artificial Intelligence and the applicability of formal methods for specifying, verifying and testing agent systems. He has published around 80 papers in journal and conference proceedings and co-authored a Greek textbook. As the Director for Teaching and Learning of CITY College, his research also includes quality assurance in higher education, intelligent learning management systems, innovative teaching/learning methods and computer science education.", avatar: "", email: "kefalas@scity.academic.gr", password: "ExMachinaRocks123", isStudent: false)
+kefal = Member.create(isAdmin: false, person_id: person3.id, participant_id: participant3.id, bio: "Dr. Kefalas research interests are centred around Artificial Intelligence and the applicability of formal methods for specifying, verifying and testing agent systems. He has published around 80 papers in journal and conference proceedings and co-authored a Greek textbook. As the Director for Teaching and Learning of CITY College, his research also includes quality assurance in higher education, intelligent learning management systems, innovative teaching/learning methods and computer science education.", avatar: "", email: "member4@edit.com", password: "ExMachinaRocks123", isStudent: false)
 
 # Member 4
 person4 = Person.create(firstName: "Dimitris", lastName: "Dranidis")
 
-participant4  = Participant.create(email: "dranidis@city.academic.gr", title: "Dr.", administrative_title: "Academic Director of MSc in Software Engineering and Telecommunications", person_id: person4.id)
+participant4  = Participant.create(email: "member5@edit.com", title: "Dr.", administrative_title: "Academic Director of MSc in Software Engineering and Telecommunications", person_id: person4.id)
 
-dran = Member.create(isAdmin: false, person_id: person4.id, participant_id: participant4.id, bio: "Dr Dranidis's interests are in the areas of Software Engineering, Formal methods, and Artificial Intelligence. He is involved in investigating software development methodologies for service-oriented architecture, object-oriented technologies, and agile formal methods. Dr. Dranidis research interests also include software engineering education, web 2.0 in education, web services for education systems, computer science education, project-based learning, vocational education and training, and lifelong learning.", avatar: "", email: "dranidis@city.academic.gr", password: "JsxmJsxm", isStudent: false)
+dran = Member.create(isAdmin: false, person_id: person4.id, participant_id: participant4.id, bio: "Dr Dranidis's interests are in the areas of Software Engineering, Formal methods, and Artificial Intelligence. He is involved in investigating software development methodologies for service-oriented architecture, object-oriented technologies, and agile formal methods. Dr. Dranidis research interests also include software engineering education, web 2.0 in education, web services for education systems, computer science education, project-based learning, vocational education and training, and lifelong learning.", avatar: "", email: "member5@edit.com", password: "JsxmJsxm", isStudent: false)
 
 # Student Members
 # Student Member 1
 person5 = Person.create(firstName: "Petros", lastName: "Lameras")
 
-participant5  = Participant.create(email: "plameras@seerc.org", title: "Mr.", administrative_title: "PhD Candidate", person_id: person5.id)
+participant5  = Participant.create(email: "member6@edit.com", title: "Mr.", administrative_title: "PhD Candidate", person_id: person5.id)
 
 lama = Member.create(isAdmin: false, person_id: person5.id,
 participant_id: participant5.id, bio: "Mr. Lameras PhD research project is related with issues concerning social and educational informatics and has provided him with the opportunity to engage deeply with the complexities of e-learning in SEE countries and to contribute to the ongoing development of e-learning and the wider field of educational informatics. His research interests include blended learning, distance learning,
 computer assisted learning, learning organizations, virtual universities, virtual learning environments with computer mediated communications.", avatar: "",
-email: "plameras@seerc.org", password: "asdfasdf", isStudent: true, member_from: Date.today, member_to: Date.today)
+email: "member6@edit.com", password: "asdfasdf", isStudent: true, member_from: Date.today, member_to: Date.today)
 
 # Create Publications
 # Conferences

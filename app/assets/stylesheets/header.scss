@@ -47,16 +47,6 @@ $nav-color : $color-primary;
     }
   }
   li {
-    @media screen and (min-width: 1000px) {
-      margin-right: 40px;
-    }
-
-
-//
-    // &:not(:last-child) {
-    //   margin-right: 5%;
-    // }
-
     a {
       color: text-contrast($nav-color);
 
