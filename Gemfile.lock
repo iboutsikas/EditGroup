@@ -168,6 +168,7 @@ GEM
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
     orm_adapter (0.5.0)
+    pg (0.18.4)
     pkg-config (1.1.7)
     pry (0.10.3)
       coderay (~> 1.1.0)
@@ -199,6 +200,11 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (4.2.6)
       actionpack (= 4.2.6)
       activesupport (= 4.2.6)
@@ -299,9 +305,11 @@ DEPENDENCIES
   lazy_high_charts
   letter_opener (~> 1.4, >= 1.4.1)
   mini_magick (~> 4.5, >= 4.5.1)
+  pg
   pry (~> 0.10.3)
   rack-mini-profiler (~> 0.10.1)
   rails (= 4.2.6)
+  rails_12factor
   rake (= 11.2.2)
   remotipart (~> 1.2, >= 1.2.1)
   sass-rails (~> 5.0)
