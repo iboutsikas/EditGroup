@@ -167,9 +167,6 @@ GEM
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
     orm_adapter (0.5.0)
-    passenger (5.0.28)
-      rack
-      rake (>= 0.8.1)
     pkg-config (1.1.7)
     pry (0.10.3)
       coderay (~> 1.1.0)
@@ -294,7 +291,6 @@ DEPENDENCIES
   lazy_high_charts
   letter_opener (~> 1.4, >= 1.4.1)
   mini_magick (~> 4.5, >= 4.5.1)
-  passenger (>= 5.0.25)
   pry (~> 0.10.3)
   rack-mini-profiler (~> 0.10.1)
   rails (= 4.2.6)
