@@ -24,9 +24,11 @@ class Admin::ParticipationsController < Admin::DashboardController
 
   def new_from_db
     @participation = Participation.new({project_id: @project.id})
-    @participants = Participant.includes(:person).references(:person).find_by_sql(
-        ["select * from participants where participants.id not in (select participant_id from participations
-                                                                     where participations.project_id = ?)", @project.id])
+    #@participants = Participant.includes(:person).references(:person).find_by_sql(
+    #    ["select * from participants where participants.id not in (select participant_id from participations
+    #                                                                 where participations.project_id = ?)", @project.id])
+
+    @participants = Participant.eager_load(projects: :people).where.not(id: @project.people)
 
     respond_to do |format|
       format.js { render 'admin/initializeForm', locals: { resource: @participation, form_path: "participations/form_select_multiple" } }
