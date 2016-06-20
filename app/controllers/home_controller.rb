@@ -27,4 +27,8 @@ class HomeController < ApplicationController
 
   def contact
   end
+
+  def moutsounes
+    
+  end
 end

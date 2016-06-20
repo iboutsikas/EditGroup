@@ -9,6 +9,10 @@
   </button>
 </div>
 
+<% if @publications.length == 0 %>
+  No results found
+<% end %>
+
 <% @publications.each_with_index do |publication, index| %>
   <%= render "publications/partials/publicationListPartial", publication: publication, index: index %>
 <% end %>

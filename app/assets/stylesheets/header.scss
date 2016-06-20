@@ -70,7 +70,7 @@ $nav-color : $color-primary;
     }
 
     @include breakpoint(md) {
-      //float: right;
+      float: right;
     }
   }
 }

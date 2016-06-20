@@ -118,11 +118,13 @@ class Publication < ActiveRecord::Base
         # scope.where(author.person.full_name: "LIKE ?","%#{value}%")
         scope.joins(:people).where("(lastName LIKE :name) OR (firstName LIKE :name)", name: "%#{value}%")
       when :year
-        #this will NOT work on SQLite
-        scope.where('extract(year from publications.date) = ?', value)
-
-        #this will work on SQLite ONLY
-        #scope.where("cast(strftime('%Y', date) as int) = ?", value)
+        if Rails.env.production?
+          #this will NOT work on SQLite
+          scope.where('extract(year from publications.date) = ?', value)
+        else
+          #this will work on SQLite ONLY
+          scope.where("cast(strftime('%Y', date) as int) = ?", value)
+        end
       else
         scope
       end
