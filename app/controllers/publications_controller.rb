@@ -12,7 +12,7 @@ class PublicationsController < ApplicationController
       render "publications-timeline"
     else
       @citation = Preference.find_by_description("citation_style").value
-      @pages = Preference.find_by_description("pagination_publications").value
+      @pages = Preference.find_by_description("pagination_publications").value.to_i
 
       @publications = Publication.search(params)
                                  .paginate(:page => params[:page], :per_page => @pages)
