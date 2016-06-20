@@ -6,7 +6,7 @@ $ ->
   $table = $("#table")
   default_sort_column = $(".table").data "default_sort_column"
   default_sort_direction = $(".table").data "default_sort_direction"
-  console.log $table
+  
   # Initialize datatable
   $dataTable = $table.DataTable
     oLanguage:

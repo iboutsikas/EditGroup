@@ -29,13 +29,13 @@ class AuthorDatatable < AjaxDatatablesRails::Base
           # comma separated list of the values for each cell of a table row
           # example: record.attribute,
           "",
-          isMember_show(record.person),
+          isMember_show(!record.member.nil?),
           safe_show(record.person.lastName),
           safe_show(record.person.firstName),
           priority_show(record.priority, "author","authors/#{record.id}", token),
           link_to_button_column(("<i class='fa fa-pencil'></i> Edit").html_safe, edit_admin_publication_author_path(publication,record),
                   remote: true,  class:"btn btn-info btn-xs editButton", onclick: 'editButtonPressed("Author")' ),
-          link_to_if(record.person.isMember?, ("<i class='fa fa-trash-o'></i> Remove From This Publication").html_safe, admin_publication_check_if_any_members_path(id: publication, author_id: record.id),
+          link_to_if(check_if_member(record), ("<i class='fa fa-trash-o'></i> Remove From This Publication").html_safe, admin_publication_check_if_any_members_path(id: publication, author_id: record.id),
                     remote: true, class: "btn btn-danger btn-xs deleteButton", data: { tdclass: "buttonColumn" } ) {
             link_to_button_column(("<i class='fa fa-trash-o'></i> Remove From This Publication").html_safe, admin_publication_author_path(publication,record),
                     remote: true, method: :delete,
@@ -53,9 +53,14 @@ class AuthorDatatable < AjaxDatatablesRails::Base
     @authenticity_token = options[:token]
   end
 
+  def check_if_member(record)
+    #record.person.isMember?
+    !record.member.nil?
+  end
+
   def get_raw_records
     # insert query here
-    Author.includes(:person).references(:person).includes(:participant).references(:participant).includes(:member).references(:member).where("publication_id = ?", publication.id)
+    Author.eager_load(:publication, :member).where("publication_id = ?", publication.id)
   end
 
   # ==== Insert 'presenter'-like methods below if necessary

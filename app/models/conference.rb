@@ -11,10 +11,10 @@ class Conference < ActiveRecord::Base
                           :author => "#{authors}",
                           :booktitle => "#{self.name}",
                           :publisher => "#{self.publisher}",
-                          :place => "#{self.location}",
-                          :title => "#{self.publication.title}",
-                          :pages => "#{self.publication.pages}",
-                          :date => "#{self.publication.date}"
+                          :place => "#{self.location}"#,
+                          #:title => "#{self.publication.title}",
+                          #:pages => "#{self.publication.pages}",
+                          #:date => "#{self.publication.date}"
                       })
   end
 end

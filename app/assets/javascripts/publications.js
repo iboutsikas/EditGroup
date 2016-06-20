@@ -30,6 +30,7 @@ $(function() {
 
   $searchToggle.on('click', function() {
     if(showing) {
+      $searchToggle.css('width','100px');
       $searchToggle.html("<i class='fa fa-search' aria-hidden='true'></i>");
       $searchCollapse.removeClass("bounceInLeft");
       $searchCollapse.addClass("bounceOutRight");
@@ -39,6 +40,7 @@ $(function() {
       });
       showing = false;
     } else {
+      $searchToggle.css('width','50px');
       $searchToggle.html("<i class='fa fa-times' aria-hidden='true'></i>");
       $searchCollapse.removeClass("bounceOutRight");
       $searchCollapse.addClass("showing");

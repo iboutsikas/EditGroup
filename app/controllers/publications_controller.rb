@@ -1,5 +1,5 @@
 class PublicationsController < ApplicationController
-
+  include ApplicationHelper
   before_action :set_publication, only: [:show]
 
   def index
@@ -11,13 +11,20 @@ class PublicationsController < ApplicationController
       render "publications-timeline"
     else
       @citation = Preference.find_by_description("citation_style").value
-      pages = Preference.find_by_description("pagination_publications").value
-      @publications = Publication.search(params)
-                                 .paginate(:page => params[:page], :per_page => pages)
-                                 .eager_load(:authors)
-                                 .eager_load(:people)
+      @pages = Preference.find_by_description("pagination_publications").value
 
-      render "publications-default"
+      if params.length > 2
+        @publications = Publication.search(params)
+                                   .paginate(:page => params[:page], :per_page => @pages)
+                                   .eager_load(authors: :person)
+     else
+        @publications = Publication.paginate(:page => params[:page], :per_page => @pages)
+                                  .eager_load(authors: :person)
+     end
+
+     @citation_list = generate_citations(@publications, @citation)
+
+     render "publications-default"
     end
   end
 

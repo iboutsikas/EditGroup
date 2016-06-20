@@ -3,9 +3,11 @@ require 'pry'
 class Member < ActiveRecord::Base
   scope :extended, -> { eager_load(:person,
                                    :participant,
-                                   :personal_websites)
+                                   personal_websites: :website_template)
                       }
-  default_scope { includes(:person).references(:person)}
+  scope :normal, -> { select("*") }
+  default_scope { eager_load(:person)}
+  #default_scope { select("members.id, isAdmin, avatar, encrypted_password, invitation_token, current_sign_in_at, last_sign_in_at,current_sign_in_ip, last_sign_in_ip, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, members.person_id, members.participant_id, firstName, lastName, participants.title").joins(:person).joins(:participant) }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,

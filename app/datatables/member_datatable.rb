@@ -64,9 +64,7 @@ class MemberDatatable < AjaxDatatablesRails::Base
 
   def get_raw_records
     # insert query here
-    #Member.select("id","person_id","participant_id","participants.title as title","people.firstName","people.lastName", "participants.administrative_title","participants.email","members.email","members.isAdmin").joins(:participant,:person)
     Member.select("id","person_id","participant_id","participants.title as title","people.firstName","people.lastName", "participants.administrative_title","participants.email","members.email","members.isAdmin").includes(:participant).references(:participant).includes(:person).references(:person).where(["members.participant_id is not null and members.person_id is not null and isStudent = ?",false])
-    #Member.find_by_sql("select members.id, members.person_id, members.participant_id, participants.title as title, participants.administrative_title, participants.email, people.firstName, people.lastName, members.email, members.isAdmin from members left outer join participants on members.participant_id = participants.id left outer join people on members.person_id = people.id length '999999' offset 0")
   end
 
   # ==== Insert 'presenter'-like methods below if necessary

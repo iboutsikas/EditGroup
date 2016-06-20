@@ -11,10 +11,10 @@ class Journal < ActiveRecord::Base
                           :author => "#{authors}",
                           :journal => "#{self.title}",
                           :volume => "#{self.volume}",
-                          :number => "#{self.issue}",
-                          :title => "#{self.publication.title}",
-                          :pages => "#{self.publication.pages}",
-                          :date => "#{self.publication.date}"
+                          :number => "#{self.issue}"#,
+                          #:title => "#{self.publication.title}",
+                          #:pages => "#{self.publication.pages}",
+                          #:date => "#{self.publication.date}"
                       })
   end
 end

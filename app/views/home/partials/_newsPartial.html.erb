@@ -18,9 +18,11 @@
   <div class="news-item-content ellipsis" id="news-item-content-<%= item.id%>">
     <%= (item.content).html_safe %>
     <% if (item.content.size > 50) %>
+    <p>
       <button class="news-item-toggle" data-target="news-item-content-<%= item.id%>">
         Show more
       </button>
+    </p>
     <% end %>
   </div>
 

@@ -1,6 +1,5 @@
-require 'pry'
 class Publication < ActiveRecord::Base
-  default_scope { includes(:journal).references(:journal).includes(:conference).references(:conference) }
+  default_scope { eager_load(:conference, :journal) }
 
   has_many :authors, dependent: :destroy
   has_many :people, {:through=>:authors, :source=>"person"}
@@ -40,31 +39,75 @@ class Publication < ActiveRecord::Base
     end
   end
 
-  def cite(style)
+  def cite
     array = []
     # sort the authors by priority
-    authors_sorted = self.authors.sort { |a,b| a.priority <=> b.priority }
+    sorted = self.authors.sort { |a,b| a.priority <=> b.priority }
 
     # format the authors in the appropriate style
-    authors_sorted.each do |au|
+    sorted.each do |au|
       array << "#{au.person.lastName}, #{au.person.firstName}"
     end
     authors = array.join(" and ")
 
-    cp = CiteProc::Processor.new style: "#{style}", format: 'text'
-    bib = BibTeX::Bibliography.new
-
-    if self.conference
-      bib << self.conference.cite(authors)
+    if self.journal
+      entry  = BibTeX::Entry.new({
+                            :bibtex_type => :article,
+                            :author => "#{authors}",
+                            :journal => "#{self.journal.title}",
+                            :volume => "#{self.journal.volume}",
+                            :number => "#{self.journal.issue}",
+                            :title => "#{self.title}",
+                            :pages => "#{self.pages}",
+                            :date => "#{self.date}"
+                        })
     else
-      bib << self.journal.cite(authors)
+      entry = BibTeX::Entry.new({
+                            :bibtex_type => :inproceedings,
+                            :author => "#{authors}",
+                            :booktitle => "#{self.conference.name}",
+                            :publisher => "#{self.conference.publisher}",
+                            :place => "#{self.conference.location}",
+                            :title => "#{self.title}",
+                            :pages => "#{self.pages}",
+                            :date => "#{self.date}"
+                        })
     end
-
-    cp.import bib.to_citeproc
-    ref = cp.bibliography.references[0].to_s
-    ref = ref[3..-1] if ref.start_with?('[')
-    ref
+    return entry
   end
+
+  # def cite(style)
+  #   array = []
+  #   # sort the authors by priority
+  #   authors_sorted = self.authors.sort { |a,b| a.priority <=> b.priority }
+  #
+  #   # format the authors in the appropriate style
+  #   authors_sorted.each do |au|
+  #     array << "#{au.person.lastName}, #{au.person.firstName}"
+  #   end
+  #   authors = array.join(" and ")
+  #
+  #   cp = CiteProc::Processor.new style: "#{style}", format: 'text'
+  #   bib = BibTeX::Bibliography.new
+  #
+  #   # add the conference or journal attributes
+  #   if self.conference
+  #     bib << self.conference.cite(authors)
+  #   else
+  #     bib << self.journal.cite(authors)
+  #   end
+  #
+  #   # add the standard publication attributes
+  #   bib[0][:title] = self.title
+  #   bib[0][:pages] = self.pages
+  #   bib[0][:date]  = self.date
+  #
+  #
+  #   cp.import bib.to_citeproc
+  #   ref = cp.bibliography.references[0].to_s
+  #   ref = ref[3..-1] if ref.start_with?('[')
+  #   ref
+  # end
 
   def self.search(params)
     params.select { |k, v| v.present?}.reduce(all) do |scope, (key, value)|

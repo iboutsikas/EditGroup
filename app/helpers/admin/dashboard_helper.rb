@@ -52,8 +52,8 @@ module Admin::DashboardHelper
   end
 
   # If the author is a member, display a fontawesome users icon. Else an empty string
-  def isMember_show(author)
-    content_tag(:div, author.isMember? ? ("<i class='fa fa-users' style='font-size: 20px'><p style='display: none'>a</p></i>").html_safe : "",
+  def isMember_show(isMember)
+    content_tag(:div, isMember ? ("<i class='fa fa-users' style='font-size: 20px'><p style='display: none'>a</p></i>").html_safe : "",
     class: "isMember", data: { tdclass: "isMemberColumn" } )
   end
 

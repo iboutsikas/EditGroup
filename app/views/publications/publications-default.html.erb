@@ -9,8 +9,8 @@
   </button>
 </div>
 
-<% @publications.each do |publication| %>
-  <%= render "publications/partials/publicationListPartial", publication: publication %>
+<% @publications.each_with_index do |publication, index| %>
+  <%= render "publications/partials/publicationListPartial", publication: publication, index: index %>
 <% end %>
 
 <%= will_paginate @publications %>

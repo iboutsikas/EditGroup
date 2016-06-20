@@ -16,7 +16,7 @@ class Admin::DashboardController < ApplicationController
   #  Charts
   ###
   def data_chart
-    @members = Member.all
+    @members = Member.extended.eager_load(:projects, :publications, :journals, :conferences)
     load_proj_charts
     load_pubs_per_year
     load_pub_charts
@@ -49,7 +49,7 @@ class Admin::DashboardController < ApplicationController
     os.each do |o, v|
       os_percentage = []
       os_percentage << o
-      os_percentage << v.count * 100 / @visit_sum.to_f
+      os_percentage << v.length * 100 / @visit_sum.to_f
       os_percentage[1] = os_percentage[1].round(2)
       data << os_percentage
     end
@@ -130,7 +130,7 @@ class Admin::DashboardController < ApplicationController
     browsers.each do |b, v|
       browser_percentage = []
       browser_percentage << b
-      browser_percentage << v.count * 100 / @visit_sum.to_f
+      browser_percentage << v.length * 100 / @visit_sum.to_f
       browser_percentage[1] = browser_percentage[1].round(2)
       data << browser_percentage
     end
@@ -167,8 +167,8 @@ class Admin::DashboardController < ApplicationController
 
     @members.each do |mem|
       if (mem.participant != nil)
-        m = mem.person.participant.title+" "+ mem.lastName+" "+ mem.firstName[0].upcase+"."
-        numj = mem.journals.size
+        m = mem.participant.title+" "+ mem.lastName+" "+ mem.firstName[0].upcase+"."
+        numj = mem.journals.length
         numc = mem.conferences.size
         if(numc> 0 || numj > 0 )
           member_in_publ << m
@@ -200,8 +200,8 @@ class Admin::DashboardController < ApplicationController
 
      @members.each do |mem|
       if (mem.participant != nil)
-        m = mem.person.participant.title+" "+ mem.lastName+" "+ mem.firstName[0].upcase+"."
-        numpr = mem.projects.size
+        m = mem.participant.title+" "+ mem.lastName+" "+ mem.firstName[0].upcase+"."
+        numpr = mem.projects.length
         if(numpr > 0)
           member_in_projects << m
           member_projects << numpr
@@ -227,17 +227,17 @@ class Admin::DashboardController < ApplicationController
     years = []
     conferences_in_year = []
     journals_in_year = []
-    journals = Journal.all.group_by{|yj| yj.publication.date.year}
+    journals = Journal.eager_load(:publication).group_by{|yj| yj.publication.date.year}
     years = years | journals.keys
-    conferences = Conference.all.group_by{|yc| yc.publication.date.year}
+    conferences = Conference.eager_load(:publication).group_by{|yc| yc.publication.date.year}
     years = years | conferences.keys
     years = years.sort
     years.each do |y|
       unless conferences[y].nil?
-        conferences_in_year << conferences[y].count
+        conferences_in_year << conferences[y].length
       end
       unless journals[y].nil?
-        journals_in_year << journals[y].count
+        journals_in_year << journals[y].length
       end
     end
 

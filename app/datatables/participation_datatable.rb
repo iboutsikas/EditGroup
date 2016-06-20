@@ -35,7 +35,7 @@ class ParticipationDatatable < AjaxDatatablesRails::Base
           # comma separated list of the values for each cell of a table row
           # example: record.attribute,
           "",
-          isMember_show(record.person),
+          isMember_show(!record.member.nil?),
           safe_show(record.participant.title),
           safe_show(record.person.firstName),
           safe_show(record.person.lastName),
@@ -52,17 +52,17 @@ class ParticipationDatatable < AjaxDatatablesRails::Base
   end
 
   def project
-    @project = options[:project]
+    options[:project]
   end
 
   def token
-    @token = options[:token]
+    options[:token]
   end
 
   def get_raw_records
     # insert query here
     #Participation.joins(:participant,:person).where("project_id = ?", project.id)
-    Participation.includes(:participant).references(:participant).includes(:person).references(:person).where("project_id = ?", project.id)
+    Participation.includes(:project, :member).where("project_id = ?", project.id)
   end
 
   # ==== Insert 'presenter'-like methods below if necessary

@@ -1,7 +1,9 @@
 class Participation < ActiveRecord::Base
+  default_scope { eager_load(:participant, :person) }
   belongs_to :project
-  belongs_to :participant
+  belongs_to :participant#, inverse_of: :participations
   has_one :person,through: :participant
+  has_one :member, through: :participant
 
   accepts_nested_attributes_for :participant
 

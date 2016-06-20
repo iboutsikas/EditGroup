@@ -3,6 +3,7 @@ require "uri"
 class Project < ActiveRecord::Base
   has_many :participations, dependent: :destroy, inverse_of: :project
   has_many :participants, through: :participations
+  has_many :people, through: :participants
 
   accepts_nested_attributes_for :participants
 

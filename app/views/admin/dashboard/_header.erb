@@ -1,8 +1,3 @@
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
 <!-- top navigation -->
 <div class="top_nav">
 
@@ -16,11 +11,7 @@
         <li class="">
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 
-            <% if current_member.avatar? %>
-                <%= image_tag current_member.avatar.thumb.url %>
-            <% else %>
-                <i class="fa fa-user" aria-hidden="true" style="font-size: 25px; padding-left: 5px; padding-right: 5px;"></i>
-            <% end %>
+            <%= image_tag current_member.avatar.thumb.url %>
 
             <%= "#{current_member.firstName} #{current_member.lastName}" %>
             <span class=" fa fa-angle-down"></span>

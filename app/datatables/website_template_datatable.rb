@@ -36,11 +36,11 @@ class WebsiteTemplateDatatable < AjaxDatatablesRails::Base
 
   def get_raw_records
     # insert query here
-    WebsiteTemplate.all
+    WebsiteTemplate.all.eager_load(:personal_websites)
   end
 
   def delete_link_if_not_used(record)
-    if record.personal_websites.size > 0
+    if !record.personal_websites.empty?
       link_to_button_column(("<i class='fa fa-trash-o'></i> Delete").html_safe, "#", remote: true,
               method: :delete, data: { confirm: 'Are you sure you want to delete this website type? ' }, class: "btn btn-danger btn-xs deleteButton disabled" )
     else

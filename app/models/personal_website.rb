@@ -1,5 +1,5 @@
 class PersonalWebsite < ActiveRecord::Base
-#  default_scope { includes(:website_template).references(:website_template) }
+  #default_scope { eager_load(:website_template) }
   scope :extended, -> {
     eager_load(:website_template)
   }
@@ -18,9 +18,7 @@ class PersonalWebsite < ActiveRecord::Base
   end
 
   def url_formatted
-    logger.info self.url
     temp = self.url
     return /^http/i.match(temp) ? url : "http://#{temp}"
-    #return "http://#{temp}" unless temp[/^http?/]
   end
 end

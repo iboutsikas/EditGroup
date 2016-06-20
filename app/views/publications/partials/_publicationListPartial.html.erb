@@ -11,7 +11,7 @@
   <div class="default-publication-content">
     <div class="row">
       <p class="col-md-11">
-        <%= publication.cite(@citation) %>
+        <%= @citation_list[index] %>
       </p>
       <button class="default-publication-read-more"
               data-toggle="collapse"
@@ -72,7 +72,7 @@
         <p class="abstract">
           <%= publication.abstract %>
         </p>
-        <button class="default-publication-read-more pull-right"
+        <button class="default-publication-read-more pull-right read-more-close"
                 data-toggle="collapse"
                 role="button"
                 data-target="#default-publication-info-<%= publication.id%>">
