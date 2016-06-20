@@ -1,11 +1,13 @@
 <div class="publication-timeline-block">
-  <div class="publication-timeline-img timeline-conference">
-    <% if publication.journal %>
+  <% if publication.journal %>
+    <div class="publication-timeline-img timeline-journal">
       <%= image_tag("report") %>
-    <% else %>
-      <%= imate_tag("conference") %>
-    <% end %>
-  </div> <!-- cd-timeline-img -->
+    </div>
+  <% else %>
+    <div class="publication-timeline-img timeline-conference">
+      <%= image_tag("conference") %>
+    </div>
+  <% end %>
 
   <div class="publication-timeline-content">
     <h2><%= publication.title %></h2>

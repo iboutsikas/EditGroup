@@ -1,5 +1,5 @@
 <section id="publications-timeline" class="publications-timeline-container">
   <% @publications.each_with_index do |publication, index| %>
-    <%= render "publications/partials/publicationListPartial", publication: publication, index: index %>
+    <%= render "publications/partials/timelinePartial", publication: publication, index: index %>
   <% end %>
 </section>

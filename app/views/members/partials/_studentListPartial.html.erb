@@ -1,17 +1,36 @@
-<div class="member-card">
-  <%= image_tag(member.avatar.url, class: "member-image") %>
-  <p class="member-name">
-    <%= member.participant.title + " " + member.full_name%>
-  </p>
-  <p class="member-position">
-    <div>Membership</div>
-    <%= member.member_from.strftime("%b-%Y") %> to <%= member.member_to.strftime("%b-%Y") %>
-  </p>
-  <div class="member-websites">
-    <% member.personal_websites.each do |website| %>
-      <%= link_to website.url, title: website.website_name do %>
-        <%= image_tag(website.website_template.logo.url, class: "website-logo") %>
+<div id="<%= type %>-row-<%= row %>-index-<%= index %>">
+  <div class="member-card">
+    <%= image_tag(member.avatar.url, class: "member-image") %>
+    <a href="#/" onclick="show_member_bio('<%= type %>-row-<%= row %>-index-<%= index %>', '<%= type %>', <%= row %>, <%= index %>, <%= max_per_row %>); return false;">
+      <button class="btn btn-info member-show-more-button animated bounceIn" onclick="$(window).trigger('click'); return false;"> <i class="fa fa-info info-icon" aria-hidden="true"></i> </button>
+    </a>
+    <p class="member-name">
+      <%= member.participant.title + " " + member.full_name%>
+    </p>
+    <p class="member-position">
+      <div>Membership</div>
+      <%= member.member_from.strftime("%b-%Y") %> to <%= member.member_to.strftime("%b-%Y") %>
+    </p>
+    <div class="member-websites">
+      <% member.personal_websites.each do |website| %>
+        <a href="<%= website.url_formatted %>" target="_blank" title="<%= website.website_name %>">
+          <%= image_tag(website.website_template.logo.url, class: "website-logo") %>
+        </a>
       <% end %>
-    <% end %>
+      <a href="mailto:<%= member.participant.email %>">
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="member-bio">
+    <div class="row">
+      <div class="col-md-11">
+        <p><%= member.bio %></p>
+      </div>
+      <div class="col-md-1">
+        <button class="btn btn-danger" onclick="$(window).trigger('click'); return false;"> <i class="fa fa-times" aria-hidden="true"></i> Close </button>
+      </div>
+    </div>
   </div>
 </div>
