@@ -20,9 +20,9 @@ class Publication < ActiveRecord::Base
   def return_member_authors
     Publication.find_by_sql([
       "select * from authors, publications, people
-      where authors.publication_id = publications.id and
-      authors.person_id = people.id and
-      publications.id = ? and
+      where authors.publication_id == publications.id and
+      authors.person_id == people.id and
+      publications.id == ? and
       authors.person_id in
         (select person_id from members)", self.id])
   end
@@ -119,10 +119,10 @@ class Publication < ActiveRecord::Base
         scope.joins(:people).where("(lastName LIKE :name) OR (firstName LIKE :name)", name: "%#{value}%")
       when :year
         #this will NOT work on SQLite
-        #scope.where('extract(year from publications.date) = ?', value)
+        scope.where('extract(year from publications.date) = ?', value)
 
         #this will work on SQLite ONLY
-        scope.where("cast(strftime('%Y', date) as int) = ?", value)
+        #scope.where("cast(strftime('%Y', date) as int) = ?", value)
       else
         scope
       end
