@@ -93,6 +93,9 @@ group :development, :test do
   gem 'byebug'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+
+  # needed for email
+  gem 'foreman', '~> 0.82.0'
 end
 
 group :development do
