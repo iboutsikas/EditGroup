@@ -117,8 +117,8 @@ class Admin::MembersController < Admin::DashboardController
 
   def destroy_check_for_publications
 ############ RIGHT NOW IT IS RETURNING ALL THE PUBLICATIONS FOR THE MEMBER. FIX
-    @publications = @member.publications_to_delete
-
+    #@publications = @member.publications_to_delete
+    @publications = []
 
     respond_to do |format|
       if ( @publications.any? )

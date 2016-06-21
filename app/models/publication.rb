@@ -27,8 +27,10 @@ class Publication < ActiveRecord::Base
         (select person_id from members)", self.id])
   end
 
-  def return_authors_only_in_this_publication
-
+  def return_unused_authors
+    #Author.eager_load(:publication).where({ count.publication_id: self.id }: 0)
+    #Publication.eager_load(:authors).where(self.authors)
+    #Author.eager_load(:publication, :person, :members).group('person_id').having('count(person_id) = 1').where(publication_id: self.id).where(person: Member.all.people)
   end
 
   def type
