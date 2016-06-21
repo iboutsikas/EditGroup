@@ -1,6 +1,6 @@
 $(function() {
   function initContactMap() {
-    var mLocation = new google.maps.LatLng(40.6374643,22.9346953);
+    var mLocation = new google.maps.LatLng(40.637374,22.9346933);
 
     var mOptions = {
       center: mLocation,

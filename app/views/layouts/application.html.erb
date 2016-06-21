@@ -18,7 +18,10 @@
 <%= render 'home/header' %>
 
 <% flash.each do |name, msg| %>
-    <%= content_tag(:div, msg, class: "alert alert-info", id: "flash_notification") %>
+    <div class="alert alert-info alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <%= msg %>
+    </div>
 <% end %>
 
 <div class="container" id="yield-container">
