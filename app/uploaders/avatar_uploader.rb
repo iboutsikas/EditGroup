@@ -1,5 +1,4 @@
 # encoding: utf-8
-require 'pry'
 class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
