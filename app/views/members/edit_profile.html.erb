@@ -71,7 +71,7 @@
             </div>
 
             <div class="div-save-button-member-form">
-              <%= link_to "save", "#/", onclick: "update_member('form_image')",class: "pull-right btn btn-success", id: "save-button-member-form",style: "text-transform: uppercase; font-weight: 700; font-size: 15px;" %>
+              <%= link_to "save", "#/", onclick: "$('#crop-button').trigger('click')",class: "pull-right btn btn-success", id: "save-button-member-form",style: "text-transform: uppercase; font-weight: 700; font-size: 15px;" %>
             </div>
           </div>
         </div><!--End of tab-content-->

@@ -11,20 +11,18 @@
 
     </div>
 
-<% end %>
+
 <div id="crop_div" style="display: none">
-  <%= image_tag @member.avatar.large.url, id: "cropbox"%>
+  <%= image_tag @member.avatar.large.url, id: "cropbox" %>
 
-  <%= simple_form_for @member do |f| %>
 
-    <input type='hidden' name='authenticity_token' value="<%= @authenticity_token%>">
 
     <% %w[x y w h].each do |attribute| %>
       <%= f.hidden_field "crop_#{attribute}" %> <br>
     <% end %>
 
     <div class="actions">
-      <%= f.submit "Crop" %>
+      <%= f.submit "Crop", id: "crop-button", style: "display: none" %>
     </div>
 
   <% end %>

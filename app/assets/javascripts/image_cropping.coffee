@@ -1,5 +1,19 @@
 $ ->
-  new AvatarCropper()
+
+@loadFile = (event) ->
+  file =  event.path[0].files[0]
+  reader = new FileReader()
+  reader.onloadend = () ->
+    img = $('#cropbox')[0]
+    img.src = reader.result
+
+    new AvatarCropper()
+    img.id = "cropbox"
+    $('#cropbox').style = "width: 500px; height: 500px;"
+    $('.jcrop-holder .img').style = ""
+
+  reader.readAsDataURL(file)
+  $('#crop_div').show()
 
 
 class AvatarCropper

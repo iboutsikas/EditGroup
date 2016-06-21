@@ -4,14 +4,14 @@
     <h1>Publications</h1>
   </div>
 
-  <div class="col-md-3">
+  <div class="col-md-2">
     <div class="allNewButtons" style="margin-right: 55px;">
         <%= link_to ("<i class='fa fa-plus'></i> Add Conference").html_safe, new_admin_conference_path, remote: true,
                     class: "btn btn-success", id: "newBtn", onclick: 'newButtonPressed("Conference")' %>
     </div>
   </div>
 
-  <div class="col-md-1">
+  <div class="col-md-2">
     <div class="allNewButtons">
       <%= link_to ("<i class='fa fa-plus'></i> Add Journal").html_safe, new_admin_journal_path, remote: true,
                   class: "btn btn-success", id: "newBtn", onclick: 'newButtonPressed("Journal")' %>

@@ -1,8 +1,8 @@
 <div class="row">
-  <div class="col-md-10">
+  <div class="col-md-9">
     <h1>"<%= @member.firstName %> <%= @member.lastName %>" Personal Websites</h1>
   </div>
-  <div class="col-md-2">
+  <div class="col-md-3">
     <div class="allNewButtons">
         <%= link_to ("<i class='fa fa-plus'></i> New Personal Website").html_safe, new_admin_member_personal_website_path,
                     remote: true, class: "btn btn-success", id: "newBtn", onclick: 'newButtonPressed("Personal Website")'  %>

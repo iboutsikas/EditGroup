@@ -32,10 +32,6 @@ class MembersController < ApplicationController
     @member.update(member_params)
 
     respond_to do |format|
-      if params[:member][:avatar]
-        render :crop
-        return
-      end
 
       if member_params[:password]
         sign_in @member, bypass: true
