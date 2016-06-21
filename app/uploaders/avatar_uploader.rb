@@ -1,5 +1,5 @@
 # encoding: utf-8
-
+require 'pry'
 class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
@@ -24,15 +24,34 @@ class AvatarUploader < CarrierWave::Uploader::Base
    end
 
   # Process files as they are uploaded:
-  process :resize_to_fill => [400, 400]
+  #process :resize_to_fill => [400, 400]
   #
   # def scale(width, height)
   #   :resize_to_fit => [400, 400]
   # end
 
   # Create different versions of your uploaded files:
+  version :large do
+    resize_to_limit(500,500)
+  end
+
   version :thumb do
-   process resize_to_fit: [70, 70]
+    process :crop
+    process resize_to_fit: [70, 70]
+  end
+
+  version :cropped do
+    process :crop
+    process resize_to_fit: [400,400]
+  end
+
+  def crop
+    return if model.crop_x.blank?
+    resize_to_limit(500,500)
+    manipulate! do |img|
+      img.crop "#{model.crop_w.to_i}x#{model.crop_h.to_i}+#{model.crop_x.to_i}+#{model.crop_y.to_i}!"
+      img
+    end
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
