@@ -27,6 +27,7 @@ Procfile
 # dotenv
 # TODO Comment out this rule if environment variables can be committed
 .env
+Procfile
 
 ## Environment normalization:
 /.bundle

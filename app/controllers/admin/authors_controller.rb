@@ -19,8 +19,8 @@ class Admin::AuthorsController < Admin::DashboardController
 
   def new_from_db
     @author = Author.new({publication_id: @publication.id})
-    @people = Person.find_by_sql(["select * from people where people.id not in
-                                        (select authors.person_id from authors where authors.publication_id = ?)", @publication.id])
+
+    @people = Person.with_member.eager_load(publications: :people).where.not(id: @publication.people)
 
     respond_to do |format|
       format.js { render 'admin/initializeForm',

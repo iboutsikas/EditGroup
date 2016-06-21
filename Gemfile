@@ -84,7 +84,7 @@ gem 'ahoy_matey', '~> 1.4'
 gem 'tinymce-rails', '~> 4.3', '>= 4.3.13'
 
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.18.4'
   gem 'rails_12factor'
 end
 
@@ -93,6 +93,9 @@ group :development, :test do
   gem 'byebug'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+
+  # needed for email
+  gem 'foreman', '~> 0.82.0'
 end
 
 group :development do
@@ -105,7 +108,7 @@ group :development do
 
   gem 'pry', '~> 0.10.3'
 
-  gem 'rack-mini-profiler', '~> 0.10.1'
+  #gem 'rack-mini-profiler', '~> 0.10.1'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end

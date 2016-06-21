@@ -1,4 +1,5 @@
 class Person < ActiveRecord::Base
+  scope :with_member, -> { eager_load(:member) }
   has_one :participant, inverse_of: :person
   has_one :member, through: :participant, inverse_of: :person
   has_many :projects, through: :participations
