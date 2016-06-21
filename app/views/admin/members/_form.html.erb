@@ -48,7 +48,7 @@
 
           <% if @member != current_member %>
               <h4>Administrator?</h4>
-              <%= f.input :isAdmin, label:"Admin?", validate: true, error: false %>
+              <%= f.input :isAdmin, label:"Admin?", as: :boolean, validate: true, error: false, input_html: {onchange: "toggleSubmitButton(true);"} %>
               <span class='help-block client_side_error' id='error_text_isAdmin'></span>
           <% end %>
 
