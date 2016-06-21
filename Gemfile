@@ -83,6 +83,9 @@ gem 'ahoy_matey', '~> 1.4'
 # text editor
 gem 'tinymce-rails', '~> 4.3', '>= 4.3.13'
 
+# image cropping
+gem 'jcrop-rails-v2', '~> 0.9.12.3'
+
 group :production do
   gem 'pg', '~> 0.18.4'
   gem 'rails_12factor'

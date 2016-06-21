@@ -1,3 +1,5 @@
+require 'pry'
+
 class MembersController < ApplicationController
   before_action :authenticate_member!, except: [:index]
   before_action :set_member, only: [:edit, :update, :edit_profile]
@@ -22,7 +24,7 @@ class MembersController < ApplicationController
     unless @member.personal_websites.any?
       @personal_website = @member.personal_websites.build
     end
-
+    @authenticity_token  = form_authenticity_token
     render "members/edit_profile"
   end
 
@@ -30,6 +32,7 @@ class MembersController < ApplicationController
     @member.update(member_params)
 
     respond_to do |format|
+
       if member_params[:password]
         sign_in @member, bypass: true
       end
@@ -50,7 +53,7 @@ class MembersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:bio, :avatar, :id,:email, :password, :password_confirmation, :participant_id, :person_id, :invited_by_type,
+      params.require(:member).permit(:crop_x, :crop_y, :crop_w, :crop_h,:bio, :avatar, :id,:email, :password, :password_confirmation, :participant_id, :person_id, :invited_by_type,
                                      participant_attributes:[:id,:title,:administrative_title,:email],
                                      person_attributes: [:id,:firstName, :lastName],
                                      personal_websites_attributes: [ :id, :url, :website_template_id, :_destroy])

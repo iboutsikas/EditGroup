@@ -3,11 +3,27 @@
     <%= render partial: 'admin/dashboard/errors',locals: {resource: @member} %>
 
     <div class="form-inputs">
+      <%#= f.hidden_field :authenticity_token, value: @authenticity_token %>
+      <input type='hidden' name='authenticity_token' value="<%= @authenticity_token%>">
+      <p>Choose your image and press save. You will then be give the option to crop you image. All images will be automatically resized to 400x400. Acceptable file types: png, jpg, gif.</p>
 
-      <p>Please make sure that your image's size is 400x400. All images will be automatically resized to 400x400 and your image will look distorted if it is not in the correct size and aspect ratio. Acceptable file types: png, jpg, gif.</p>
-
-      <%= f.file_field :avatar %>
+      <%= f.file_field :avatar, id: "edit_member_avatar", onchange: "loadFile(event)"  %>
 
     </div>
 
-<% end %>
+
+<div id="crop_div" style="display: none">
+  <%= image_tag @member.avatar.large.url, id: "cropbox" %>
+
+
+
+    <% %w[x y w h].each do |attribute| %>
+      <%= f.hidden_field "crop_#{attribute}" %> <br>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit "Crop", id: "crop-button", style: "display: none" %>
+    </div>
+
+  <% end %>
+</div>

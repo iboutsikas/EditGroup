@@ -1,6 +1,6 @@
 <div id="<%= type %>-row-<%= row %>-index-<%= index %>">
   <div class="member-card">
-    <%= image_tag(member.avatar.url, class: "member-image") %>
+    <%= image_tag(member.avatar.cropped.url, class: "member-image") %>
     <a href="#/" onclick="show_member_bio('<%= type %>-row-<%= row %>-index-<%= index %>', '<%= type %>', <%= row %>, <%= index %>, <%= max_per_row %>); return false;">
       <button class="btn btn-info member-show-more-button animated bounceIn" onclick="$(window).trigger('click'); return false;"> <i class="fa fa-info info-icon" aria-hidden="true"></i> </button>
     </a>

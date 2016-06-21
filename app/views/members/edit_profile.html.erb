@@ -4,7 +4,7 @@
 <div class="member-row">
 
   <div class="member-card">
-    <%= image_tag(current_member.avatar.url, class: "member-image") %>
+    <%= image_tag(current_member.avatar.cropped.url, class: "member-image") %>
     <p class="member-name">
       <%= current_member.participant.title + " " + current_member.full_name%>
     </p>
@@ -71,7 +71,7 @@
             </div>
 
             <div class="div-save-button-member-form">
-              <%= link_to "save", "#/", onclick: "update_member('form_image')",class: "pull-right btn btn-success", id: "save-button-member-form",style: "text-transform: uppercase; font-weight: 700; font-size: 15px;" %>
+              <%= link_to "save", "#/", onclick: "$('#crop-button').trigger('click')",class: "pull-right btn btn-success", id: "save-button-member-form",style: "text-transform: uppercase; font-weight: 700; font-size: 15px;" %>
             </div>
           </div>
         </div><!--End of tab-content-->

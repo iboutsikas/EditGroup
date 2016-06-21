@@ -1,4 +1,5 @@
 $ ->
+
   @show_member_bio = (element, type, row, index, max_per_row) ->
     member_row_string = "##{type}-row-#{row}"
     members_to_hide_array = []
