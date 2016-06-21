@@ -4,7 +4,7 @@
 <div class="member-row">
 
   <div class="member-card">
-    <%= image_tag(current_member.avatar.url, class: "member-image") %>
+    <%= image_tag(current_member.avatar.cropped.url, class: "member-image") %>
     <p class="member-name">
       <%= current_member.participant.title + " " + current_member.full_name%>
     </p>

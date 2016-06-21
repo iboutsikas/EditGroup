@@ -1,0 +1,39 @@
+<%= javascript_include_tag 'invitations' %>
+
+<h1>Edit Profile</h1>
+<div class="member-row">
+
+  <div class="member-card">
+    <%= image_tag(current_member.avatar.large.url, class: "member-image") %>
+    <p class="member-name">
+      <%= current_member.participant.title + " " + current_member.full_name%>
+    </p>
+    <p class="member-position">
+      <%= current_member.participant.administrative_title %>
+    </p>
+    <div class="member-websites">
+      <% @member.personal_websites.each do |website| %>
+        <%= link_to website.url_formatted, title: website.website_name do %>
+          <%= image_tag(website.website_template.logo.url, class: "website-logo") %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+<div class="col-md-6">
+  <%= image_tag @member.avatar.large.url, id: "cropbox"%>
+
+  <%= form_for @member do |f| %>
+
+    <% %w[x y w h].each do |attribute| %>
+      <%= f.hidden_field "crop_#{attribute}" %> <br>
+    <% end %>
+
+</div>
+
+<div class="col-md-3">
+    <%= f.submit "CROP", class: "btn btn-success" %>
+  <% end %>
+</div>
+
+</div>

@@ -32,23 +32,17 @@ class Member < ActiveRecord::Base
   delegate :title, :administrative_title, :participant_email, to: :participant, allow_nil: true
 
   mount_uploader :avatar, AvatarUploader
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h
+  after_update :crop_avatar
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX, :multiline => true }
   validates :bio, presence: true
-  #
-  # def firstName
-  #   self.person.firstName
-  # end
-  #
-  # def lastName
-  #   self.person.lastName
-  # end
-  #
-  # def full_name
-  #   self.person.full_name
-  # end
+
+  def crop_avatar
+    avatar.recreate_versions! if crop_x.present?
+  end
 
   def publications_to_delete
     ####### RETURNIGN ALL PUBLIATIONS CHANGE
