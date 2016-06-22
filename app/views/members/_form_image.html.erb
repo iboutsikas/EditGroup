@@ -16,7 +16,6 @@
   <%= image_tag @member.avatar.large.url, id: "cropbox" %>
 
 
-
     <% %w[x y w h].each do |attribute| %>
       <%= f.hidden_field "crop_#{attribute}" %> <br>
     <% end %>

@@ -17,6 +17,15 @@ module Admin::DashboardHelper
     end
   end
 
+  # check if date is nut nil
+  def year_show(attribute, alternate_message="NULL")
+    if attribute
+      content_tag(:div, attribute.year, data: { tdclass: "" })
+    else
+      content_tag(:div, alternate_message, style: "color: red; font-weight: bold", data: { tdclass: "" })
+    end
+  end
+
   # generate the form containing the select box for dynamically changing the priority
   # in authors and participants
   def priority_show(attribute, form_type, action, token)

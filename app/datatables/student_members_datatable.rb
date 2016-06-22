@@ -45,8 +45,8 @@ class StudentMembersDatatable < AjaxDatatablesRails::Base
         safe_show(record.person.lastName),
         safe_show(record.participant.administrative_title),
         safe_show(record.participant.email),
-        safe_show(record.member_from.year),
-        safe_show(record.member_to.year),
+        year_show(record.member_from),
+        year_show(record.member_to),
         link_to_button_column( ("<i class='fa fa-cloud' aria-hidden='true'></i> Websites").html_safe, admin_member_personal_websites_path(record), class: "btn btn-default btn-xs websitesButton" ),
 
         link_to_button_column(("<i class='fa fa-pencil'></i> Edit").html_safe, edit_admin_member_path(record), remote: true,

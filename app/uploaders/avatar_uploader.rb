@@ -1,5 +1,4 @@
 # encoding: utf-8
-require 'pry'
 class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
@@ -47,7 +46,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   def crop
     return if model.crop_x.blank?
-    resize_to_limit(500,500)
+    #resize_to_limit(500,500)
+    resize_to_limit(model.crop_y, model.crop_x)
     manipulate! do |img|
       img.crop "#{model.crop_w.to_i}x#{model.crop_h.to_i}+#{model.crop_x.to_i}+#{model.crop_y.to_i}!"
       img

@@ -8,8 +8,21 @@
       <%= member.participant.title + " " + member.full_name%>
     </p>
     <p class="member-position">
-      <div>Membership</div>
-      <%= member.member_from.strftime("%b-%Y") %> to <%= member.member_to.strftime("%b-%Y") %>
+      <% if !member.member_from && !member.member_to%>
+        <%= member.participant.administrative_title %>
+
+      <% elsif member.member_from && member.member_to %>
+        <div>Membership</div>
+        <%= member.member_from.strftime("%Y") %> to <%= member.member_to.strftime("%Y") %>
+
+      <% elsif member.member_from %>
+        <div>Membership</div>
+        <%= member.member_from.strftime("%Y") %> to -
+
+      <% elsif member.member_to %>
+        <div>Membership</div>
+        - to <%= member.member_to.strftime("%Y") %>
+      <% end %>
     </p>
     <div class="member-websites">
       <% member.personal_websites.each do |website| %>

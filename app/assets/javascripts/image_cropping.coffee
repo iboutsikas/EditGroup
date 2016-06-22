@@ -6,6 +6,8 @@ $ ->
   reader.onloadend = () ->
     img = $('#cropbox')[0]
     img.src = reader.result
+    #img.height = 500;
+    #img.width = 500;
 
     new AvatarCropper()
     img.id = "cropbox"
@@ -25,7 +27,10 @@ class AvatarCropper
       onChange: @update
 
   update: (coords) =>
-    $('#member_crop_x').val(coords.x)
-    $('#member_crop_y').val(coords.y)
-    $('#member_crop_w').val(coords.w)
-    $('#member_crop_h').val(coords.h)
+    ratioW = $('#cropbox')[0].naturalWidth / $('#cropbox').width()
+    ratioH = $('#cropbox')[0].naturalHeight / $('#cropbox').height()
+    currentRatio = Math.min(ratioW, ratioH)
+    $('#member_crop_x').val(coords.x * currentRatio)
+    $('#member_crop_y').val(coords.y * currentRatio)
+    $('#member_crop_w').val(coords.w * currentRatio)
+    $('#member_crop_h').val(coords.h * currentRatio)

@@ -48,7 +48,11 @@ class Admin::MembersController < Admin::DashboardController
       @personal_website = @member.personal_websites.build
     end
     respond_to do |format|
-      @edit = true
+      if @member.isStudent
+        @student_member = true
+      else
+        @edit = true
+      end
       format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/form"} }
     end
   end
