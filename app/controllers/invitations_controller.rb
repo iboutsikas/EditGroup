@@ -53,7 +53,7 @@ class InvitationsController < Devise::InvitationsController
       end
     else
       respond_to do |format|
-        format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/form_invite" } }
+        format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/form_invite", javascript_to_run: "bind_student_member_selection_to_dates();" } }
       end
     end
   end

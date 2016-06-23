@@ -234,7 +234,7 @@ website_templateRG.save
 
 #Personal Website
 website_templatePW = WebsiteTemplate.new(website_name: "Personal Website")
-logo_file = File.open('public/user.svg')
+logo_file = File.open('public/websitelogos/globe.svg')
 website_templatePW.logo = logo_file
 website_templatePW.save
 

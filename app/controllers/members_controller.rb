@@ -28,7 +28,7 @@ class MembersController < ApplicationController
 
   def update
     @member.update(member_params)
-
+    binding.pry
     respond_to do |format|
 
       if member_params[:password]

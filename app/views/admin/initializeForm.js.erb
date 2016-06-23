@@ -1,6 +1,7 @@
 <%  if resource.errors.any? %>
   $(".modal .modal-body").first().html("<%= j render partial: "admin/#{form_path}", locals: { target: resource } %>");
   $('form:first *:input[type!=hidden]:first').focus();
+  <%= javascript_to_run if defined?(javascript_to_run) %>
 <% else %>
   $(".modal .modal-body").first().html("<%= j render partial: "admin/#{form_path}" %>");
 <% end %>
