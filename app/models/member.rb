@@ -46,7 +46,7 @@ class Member < ActiveRecord::Base
 
   def publications_to_delete
     ####### RETURNIGN ALL PUBLIATIONS CHANGE
-    #Publication.find_by_sql(["select distinct * from publications, authors where publications.id = authors.publication_id AND authors.person_id NOT IN (SELECT person_id FROM members WHERE NOT members.id = ?)", self.id])           
+    #Publication.find_by_sql(["select distinct * from publications, authors where publications.id = authors.publication_id AND authors.person_id NOT IN (SELECT person_id FROM members WHERE NOT members.id = ?)", self.id])
   end
 
   def resend_invitation(sender)

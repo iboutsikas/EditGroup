@@ -6,7 +6,7 @@
 ###
 @validateForm = (form) ->
   valid = true
-
+  console.log $(form).find('.required .form-control')
   inputs = $(form).find('.required .form-control')
   inputs.each (index, element) ->
     valid = false if !validateFormElement(element)

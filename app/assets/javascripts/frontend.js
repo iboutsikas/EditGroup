@@ -7,3 +7,4 @@
 //= require ahoy
 //= require cookies_eu
 //= require members
+//= require accept_invitation

@@ -12,11 +12,10 @@ $ ->
   $to_year = document.getElementById('member_member_to_1i')
   $member_to_from_div = document.getElementById('member_to_from_div')
 
-  document.getElementById('member_isStudent_false').addEventListener 'change', ->
-    $from_year.selectedIndex = -1
-    $to_year.selectedIndex = -1
-    $member_to_from_div.style.display = "none"
-
-
-  document.getElementById('member_isStudent_true').addEventListener 'change', ->
-    $member_to_from_div.style.display = "block"
+  document.getElementById('member_isStudent').addEventListener 'change', ->
+    if this.checked
+      $member_to_from_div.style.display = "block"
+    else
+      $from_year.selectedIndex = -1
+      $to_year.selectedIndex = -1
+      $member_to_from_div.style.display = "none"

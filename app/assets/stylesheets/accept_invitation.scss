@@ -1,0 +1,121 @@
+
+.header {
+  @extend .row;
+}
+
+.left-column {
+  @extend .col-md-6;
+  @extend .col-lg-6;
+  @extend .col-sm-12;
+  padding-left: 0;
+
+  .form-group {
+    padding: 0;
+  }
+  .title-first-last-name-row {
+    @extend .row;
+
+    .title {
+      @extend .col-lg-2;
+      @extend .col-md-2;
+      @extend .col-sm-12;
+      padding-right: 0;
+    }
+
+    .firstName {
+      @extend .col-lg-5;
+      @extend .col-md-5;
+      @extend .col-sm-12;
+      padding-right: 0;
+    }
+
+    .lastName {
+      @extend .col-lg-5;
+      @extend .col-md-5;
+      @extend .col-sm-12;
+    }
+  }
+
+  .administrative-title, .contact-email, .bio  {
+    @extend .col-lg-12;
+    @extend .col-md-12;
+    @extend .col-sm-12;
+  }
+
+  .authentication {
+    @extend .col-lg-12;
+    @extend .col-md-12;
+    @extend .col-sm-12;
+
+    .login-email, .password-div, .password-confirmation-div {
+      @extend .col-lg-12;
+      @extend .col-md-12;
+      @extend .col-sm-12;
+    }
+
+  } //end of authentication
+
+} // end of left-column
+
+.right-column {
+  @extend .col-md-6;
+  @extend .col-lg-6;
+  @extend .col-sm-12;
+
+  .image-upload-header, .image-upload, .personal-websites {
+    @extend .row;
+  }
+
+  .image-upload {
+    border-bottom: 1px solid #c8ccce;
+    padding-bottom: 20px;
+  }
+
+  .personal-websites-div {
+    @extend .row;
+
+    .personal-websites-header {
+      @extend .col-lg-12;
+      @extend .col-md-12;
+      @extend .col-sm-12;
+      padding-top: 20px;
+      padding-left: 0;
+    }
+  }
+}
+
+.submit {
+  @extend .col-md-12;
+  padding: 0;
+  text-align: center;
+  border-top: 1px solid #c8ccce;
+  padding-top: 15px;
+}
+
+.website-entry {
+  @extend .row;
+
+  .logo-div {
+    @extend .col-md-1;
+    @extend .col-lg-1;
+    @extend .col-sm-1;
+  }
+
+  .website-name-div {
+    @extend .col-md-2;
+    @extend .col-lg-2;
+    @extend .col-sm-2;
+  }
+
+  .url-div {
+    @extend .col-md-6;
+    @extend .col-lg-6;
+    @extend .col-sm-11;
+  }
+
+  .remove-div {
+    @extend .col-md-3;
+    @extend .col-lg-3;
+    @extend .col-sm-1;
+  }
+}

@@ -102,17 +102,6 @@
         <%= link_to_add_association 'add website', f, :personal_websites, partial: 'admin/dashboard/personal_website_fields',render_options: { locals: {f: f} } %>
       </div>
 
-      <h4>Authentication</h4>
-
-      <%= f.input :email, required: true, validate: true, error: false, label: "Login Email" %>
-      <span class='help-block client_side_error' id="<%= "#{f.object_name}[email]" %>"></span>
-
-      <%= f.input :password, required: true, validate: true, error: false, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-      <span class='help-block client_side_error' id="<%= "#{f.object_name}[password]" %>"></span>
-
-      <%= f.input :password_confirmation, required: true, validate: true,error: false %>
-      <span class='help-block client_side_error' id="<%= "#{f.object_name}[password_confirmation]" %>"></span>
-
       <%= f.hidden_field :isStudent, :value => true %>
       <%= f.hidden_field :isAdmin, :value => false %>
     </div>
