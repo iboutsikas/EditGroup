@@ -32,28 +32,32 @@ class Admin::MembersController < Admin::DashboardController
     @participant = @member.build_participant
     @person = @member.build_person
     @personal_websites = @member.personal_websites.build
-
-    if params[:type] == "student"
-      @member.isStudent = true
-      @student_member = true
-    end
+    @available_websites = WebsiteTemplate.all
 
     respond_to do |format|
-      format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/form" } }
+
+      if params[:type] == "student"
+        @member.isStudent = true
+        format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/form_student" } }
+      else
+        format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/form" } }
+      end
     end
   end
 
   def edit
-    unless @member.personal_websites.any?
-      @personal_website = @member.personal_websites.build
-    end
+    # unless @member.personal_websites.any?
+    #   @personal_website = @member.personal_websites.build
+    # end
+
+    @member.build_unused_websites
+
     respond_to do |format|
       if @member.isStudent
-        @student_member = true
+        format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/edit_student"} }
       else
-        @edit = true
+        format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/edit"} }
       end
-      format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/form"} }
     end
   end
 
@@ -61,7 +65,7 @@ class Admin::MembersController < Admin::DashboardController
   def change_password
     respond_to do |format|
       @change_password = true
-      format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/form" } }
+      format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/form_change_password" } }
     end
   end
 
@@ -106,13 +110,15 @@ class Admin::MembersController < Admin::DashboardController
   end
 
   def update
+    require 'pry'
+    binding.pry
     respond_to do |format|
       if @member.update(member_params)
         format.js { render js: "hide_and_redraw();
                                 showNotification(type = 'info', title = 'Edit Successful', text = 'Edited #{@member.full_name}' );" }
       else
         unless member_params[:person_attributes]
-          @change_password = true
+          format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/form_change_password" } }
         end
         format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/form" } }
       end

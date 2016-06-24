@@ -14,7 +14,7 @@
           <%= render 'admin/dashboard/participant_fields', part: part %>
       <% end %>
 
-      <%= f.input :bio, validate: true, error: false %>
+      <%= f.input :bio, validate: true, error: false, input_html: {style: "min-height: 200px;"} %>
       <span class='help-block client_side_error' id="<%= "#{f.object_name}[bio]" %>"></span>
 
     </div>

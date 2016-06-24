@@ -26,6 +26,7 @@ class Member < ActiveRecord::Base
   accepts_nested_attributes_for :participant
   accepts_nested_attributes_for :person
   accepts_nested_attributes_for :personal_websites, allow_destroy: true
+  attr_accessor :personal_websites_attributes
   accepts_nested_attributes_for :website_templates
 
   delegate :firstName, :lastName, :full_name, to: :person, allow_nil: true
@@ -64,5 +65,12 @@ class Member < ActiveRecord::Base
 
   def auth_mail
     self.email
+  end
+
+  def build_unused_websites
+    all_templates = WebsiteTemplate.all
+    used = self.personal_websites.map { |p| p.website_template }
+    available_websites = all_templates - used
+    available_websites.each { |w| self.personal_websites.build( website_template_id: w.id) }
   end
 end

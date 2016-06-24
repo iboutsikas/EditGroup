@@ -1,17 +1,17 @@
-<%= javascript_include_tag 'invitations' %>
-
-<div id="accept_invitation">
-  <div class="header-accept-invitation">
-    <h1>Welcome! Please set up your account...</h1>
-
-    <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put,id: "accept_invitation_form" } do |f| %>
-
-    <%= render partial: 'admin/dashboard/errors',locals: {resource: @member} %>
-  </div> <!--end header-->
+<div class="container-fluid">
 
   <div class="row">
     <div class="left-column">
+      <%= simple_form_for([:admin,@member], remote: true, html: { multipart: true, id: "form_main" }) do |f| %>
+
+      <%= render partial: 'admin/dashboard/errors',locals: {resource: @member} %>
         <%= f.hidden_field :invitation_token %>
+
+        <div class="form-inline">
+          <%= f.input :member_from, as: :date, start_year: 1990, end_year: Date.today.year + 10, discard_day: true, discard_month: true, error: false %>
+
+          <%= f.input :member_to, as: :date, start_year: 1990, end_year: Date.today.year + 10, discard_day: true, discard_month: true,error: false %>
+        </div>
 
         <h4>Personal Information</h4>
 
@@ -108,7 +108,7 @@
         </div>
         <div class="websites">
         <%#= link_to_add_association 'add website', f, :personal_websites, partial: 'admin/dashboard/personal_website_fields',render_options: { locals: {f: f} } %>
-          <% unless resource.errors.any? %>
+          <% unless @member.errors.any? %>
             <% @available_websites.each_with_index do |website,value| %>
               <div class="website-entry">
                 <%= f.fields_for :personal_websites do |w| %>
@@ -149,6 +149,10 @@
             <% end %>
 
           <% end %>
+
+          <%= f.hidden_field :isStudent, :value => true %>
+          <%= f.hidden_field :isAdmin, :value => false %>
+
         </div>
       </div>
 
@@ -156,15 +160,5 @@
 
   </div> <!--end row-->
 
-  <div class="row">
-
-    <div class="submit" style="">
-      <%= button_tag "SUBMIT", type: "button", onclick: "validate_accept_invitations_form();",style: "width: 150px; font-weight: bolder;", class: "btn btn-success" %>
-    </div>
-
-    <div class="col-md-5">
-    </div>
-  </div>
-
-<% end %>
-</div> <!--end of accept_invitation-->
+  <% end %> <!--end of form-->
+</div> <!--end of container-fluid-->

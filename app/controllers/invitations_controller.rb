@@ -14,6 +14,8 @@ class InvitationsController < Devise::InvitationsController
 
   # PUT /resource/invitation
   def update
+    require 'pry'
+    binding.pry
     raw_invitation_token = update_resource_params[:invitation_token]
 
     unless update_resource_params["personal_websites_attributes"].nil?
@@ -37,10 +39,7 @@ class InvitationsController < Devise::InvitationsController
         respond_with resource, :location => new_session_path(resource_name)
       end
     else
-      all_templates = WebsiteTemplate.all
-      used = resource.personal_websites.map { |p| p.website_template }
-      available_websites = all_templates - used
-      available_websites.each { |w| resource.personal_websites << PersonalWebsite.new(member_id: resource.id, website_template_id: w.id) }
+      resource.build_unused_websites
 
       resource.invitation_token = raw_invitation_token
       respond_with_navigational(resource){ render 'members/invitations/edit' }
