@@ -19,16 +19,33 @@ class MembersController < ApplicationController
   end
 
   def edit
-    unless @member.personal_websites.any?
-      @personal_website = @member.personal_websites.build
-    end
+    # unless @member.personal_websites.any?
+    #   @personal_website = @member.personal_websites.build
+    # end
+    @member.build_unused_websites
     @authenticity_token  = form_authenticity_token
     render "members/edit_profile"
   end
 
   def update
     @member.update(member_params)
-    binding.pry
+
+    # find new websites created
+    if member_params[:personal_websites_attributes]
+      member_params[:personal_websites_attributes].each do |key, website|
+
+        if !website[:id] && !website[:url].empty? # create the new websites
+          @member.personal_websites << PersonalWebsite.new(website)
+
+        elsif website[:id] && !website[:url].empty? # update existing websites
+          @member.personal_websites.find(website[:id]).update( website.except(:id) )
+
+        elsif website[:id] && website[:url].empty? # delete existing websites that have no url
+          PersonalWebsite.find(website[:id]).destroy
+        end
+      end
+    end
+
     respond_to do |format|
 
       if member_params[:password]

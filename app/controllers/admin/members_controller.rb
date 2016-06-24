@@ -49,7 +49,6 @@ class Admin::MembersController < Admin::DashboardController
     # unless @member.personal_websites.any?
     #   @personal_website = @member.personal_websites.build
     # end
-
     @member.build_unused_websites
 
     respond_to do |format|
@@ -110,8 +109,6 @@ class Admin::MembersController < Admin::DashboardController
   end
 
   def update
-    require 'pry'
-    binding.pry
     respond_to do |format|
       if @member.update(member_params)
         format.js { render js: "hide_and_redraw();

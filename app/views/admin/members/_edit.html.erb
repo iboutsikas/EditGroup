@@ -68,10 +68,29 @@
         <%= f.file_field :avatar %>
       </div>
 
-          <%= f.hidden_field :isStudent, value: false %>
+      <div class="form-inputs">
 
-        </div>
+        <%= f.fields_for :personal_websites do |w| %>
+          <div class="website-entry">
+            <div class="logo-div">
+              <%= image_tag w.object.website_template.logo.url , style: "width: 34px; height: 34px;"%>
+              <%= w.association :website_template, input_html: {style: "display: none"}, label: false, selected: w.object.website_template.id, label_method: :website_name, value_method: :id, required: false, error: false %>
+            </div>
+
+            <div class="website-name-div">
+              <%= w.object.website_template.website_name %>
+            </div>
+
+            <div class="url-div">
+              <%= w.input :url, label: false, required: false, validate: false, error: false %>
+              <span class='help-block client_side_error' id="<%= "#{w.object_name}[url]" %>"></span>
+            </div>
+          </div>
+        <% end %>
+
       </div>
+      
+      <%= f.hidden_field :isStudent, value: false %>
 
     </div> <!--end of right-column-->
 
