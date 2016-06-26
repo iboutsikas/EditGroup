@@ -8,7 +8,7 @@ class PersonalWebsite < ActiveRecord::Base
   has_many :personal_websites, foreign_key: "id"
 
   accepts_nested_attributes_for :website_template
-  accepts_nested_attributes_for :personal_websites
+  #accepts_nested_attributes_for :personal_websites
 
   validates :url, presence: true
   validates :website_template, presence: true

@@ -1,162 +1,138 @@
-<% if @change_password %>
+<div class="container-fluid">
+
+  <%= simple_form_for([:admin,@member], remote: true, html: { multipart: true, id: "form_main" }) do |f| %>
+
+  <%= render partial: 'admin/dashboard/errors',locals: {resource: @member} %>
 
 
-<% else %>
-  <div class="container-fluid">
+  <div class="row">
+    <div class="left-column">
 
-    <div class="row">
-      <div class="left-column">
-        <%= simple_form_for([:admin,@member], remote: true, html: { multipart: true, id: "form_main" }) do |f| %>
+        <h4>Administrator? </h4>
+        <%= f.input :isAdmin, label: "Admin?"%>
 
-        <%= render partial: 'admin/dashboard/errors',locals: {resource: @member} %>
-          <%= f.hidden_field :invitation_token %>
+        <h4>Personal Information</h4>
 
-          <h4>Personal Information</h4>
+        <div class="title-first-last-name-row">
 
-          <div class="title-first-last-name-row">
-
-            <div class="title">
-              <%= f.simple_fields_for :participant do |part| %>
-                <%= part.input :title, validate: true, error: false %>
-                <span class='help-block client_side_error' id="<%= "#{part.object_name}[title]" %>"></span>
-              <% end %>
-            </div> <!--end of title-->
-
-            <div class="firstName">
-              <%= f.simple_fields_for :person do |p| %>
-                <%= p.input :firstName, validate: true, error: false %>
-                <span class='help-block client_side_error ' id="<%= "#{p.object_name}[firstName]" %>"></span>
-              <% end %>
-            </div>
-
-            <div class="lastName">
-              <%= f.simple_fields_for :person do |p| %>
-                <%= p.input :lastName, validate: true, error: false %>
-                <span class='help-block client_side_error' id="<%= "#{p.object_name}[lastName]" %>"></span>
-              <% end %>
-            </div>
-
-          </div> <!--end of title-first-last-name-->
-
-          <div class="row">
-            <div class="administrative-title">
-              <%= f.simple_fields_for :participant do |part| %>
-                <%= part.input :administrative_title, validate: true, error: false %>
-                <span class='help-block client_side_error' id="<%= "#{part.object_name}[administrative_title]" %>"></span>
-              <% end %>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="contact-email">
-              <%= f.simple_fields_for :participant do |part| %>
-                <%= part.input :email, validate: true, error: false, label: "Contact Email" %>
-                <span class='help-block client_side_error' id="<%= "#{part.object_name}[email]" %>"></span>
-              <% end %>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="bio">
-              <%= f.input :bio, validate: true, error: false, input_html: {style: "min-height: 150px"} %>
-              <span class='help-block client_side_error' id="<%= "#{f.object_name}[bio]" %>"></span>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="authentication">
-              <h4>Authentication</h4>
-
-              <div class="row">
-                <div class="login-email">
-                  <%= f.input :email, required: true, error: false %>
-                  <span class='help-block client_side_error' id="<%= "#{f.object_name}[email]" %>"></span>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="password-div">
-                  <%= f.input :password, required: true, validate: true, error: false, style: "padding: 0",hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-                  <span class='help-block client_side_error' id="<%= "#{f.object_name}[password]" %>"></span>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="password-confirmation-div">
-                  <%= f.input :password_confirmation, required: true, validate: true,error: false %>
-                  <span class='help-block client_side_error' id="<%= "#{f.object_name}[password_confirmation]" %>"></span>
-                </div>
-              </div>
-            </div> <!--end of authentication-->
-          </div> <!--end of row-->
-
-      </div> <!--end of left-column-->
-
-      <div class="right-column">
-        <div class="image-upload-header">
-          <h4>Upload your Avatar</h4>
-        </div>
-        <div class="image-upload">
-          <%= f.file_field :avatar %>
-        </div>
-
-        <div class="personal-websites-div">
-          <div class="personal-websites-header">
-            <h4>Social Buttons Links</h4>
-          </div>
-          <div class="websites">
-          <%#= link_to_add_association 'add website', f, :personal_websites, partial: 'admin/dashboard/personal_website_fields',render_options: { locals: {f: f} } %>
-            <% unless @member.errors.any? %>
-              <% @available_websites.each_with_index do |website,value| %>
-                <div class="website-entry">
-                  <%= f.fields_for :personal_websites do |w| %>
-                    <div class="logo-div">
-                      <%= image_tag website.logo.url , style: "width: 34px; height: 34px;"%>
-                      <%= w.association :website_template, input_html: {style: "display: none"}, label: false, selected: website.id, label_method: :website_name, value_method: :id, required: false, error: false %>
-                    </div>
-
-                    <div class="website-name-div">
-                      <%= website.website_name %>
-                    </div>
-
-                    <div class="url-div">
-                      <%= w.input :url, label: false, error: false %>
-                      <span class='help-block client_side_error' id="<%= "#{w.object_name}[url]" %>"></span>
-                    </div>
-                  <% end %>
-                </div>
-              <% end %>
-            <% else %>
-
-              <%= f.fields_for :personal_websites do |w| %>
-                <div class="website-entry">
-                  <div class="logo-div">
-                    <%= image_tag w.object.website_template.logo.url , style: "width: 34px; height: 34px;"%>
-                    <%= w.association :website_template, input_html: {style: "display: none"}, label: false, selected: w.object.website_template.id, label_method: :website_name, value_method: :id, required: false, error: false %>
-                  </div>
-
-                  <div class="website-name-div">
-                    <%= w.object.website_template.website_name %>
-                  </div>
-
-                  <div class="url-div">
-                    <%= w.input :url, label: false, required: false, validate: false, error: false %>
-                    <span class='help-block client_side_error' id="<%= "#{w.object_name}[url]" %>"></span>
-                  </div>
-                </div>
-              <% end %>
-
+          <div class="title">
+            <%= f.simple_fields_for :participant do |part| %>
+              <%= part.input :title, validate: true, error: false %>
+              <span class='help-block client_side_error' id="<%= "#{part.object_name}[title]" %>"></span>
             <% end %>
+          </div> <!--end of title-->
 
-            <%= f.hidden_field :isStudent, value: false %>
+          <div class="firstName">
+            <%= f.simple_fields_for :person do |p| %>
+              <%= p.input :firstName, validate: true, error: false %>
+              <span class='help-block client_side_error ' id="<%= "#{p.object_name}[firstName]" %>"></span>
+            <% end %>
+          </div>
 
+          <div class="lastName">
+            <%= f.simple_fields_for :person do |p| %>
+              <%= p.input :lastName, validate: true, error: false %>
+              <span class='help-block client_side_error' id="<%= "#{p.object_name}[lastName]" %>"></span>
+            <% end %>
+          </div>
+
+        </div> <!--end of title-first-last-name-->
+
+        <div class="row">
+          <div class="administrative-title">
+            <%= f.simple_fields_for :participant do |part| %>
+              <%= part.input :administrative_title, validate: true, error: false %>
+              <span class='help-block client_side_error' id="<%= "#{part.object_name}[administrative_title]" %>"></span>
+            <% end %>
           </div>
         </div>
 
-      </div> <!--end of right-column-->
+        <div class="row">
+          <div class="contact-email">
+            <%= f.simple_fields_for :participant do |part| %>
+              <%= part.input :email, validate: true, error: false, label: "Contact Email" %>
+              <span class='help-block client_side_error' id="<%= "#{part.object_name}[email]" %>"></span>
+            <% end %>
+          </div>
+        </div>
 
-    </div> <!--end row-->
+        <div class="row">
+          <div class="bio">
+            <%= f.input :bio, validate: true, error: false, input_html: {style: "min-height: 150px"} %>
+            <span class='help-block client_side_error' id="<%= "#{f.object_name}[bio]" %>"></span>
+          </div>
+        </div>
 
-    <% end %> <!--end of form-->
-  </div> <!--end of container-fluid-->
-<% end %>
+        <div class="row">
+          <div class="authentication">
+            <h4>Authentication</h4>
+
+            <div class="row">
+              <div class="login-email">
+                <%= f.input :email, required: true, error: false %>
+                <span class='help-block client_side_error' id="<%= "#{f.object_name}[email]" %>"></span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="password-div">
+                <%= f.input :password, required: true, validate: true, error: false, style: "padding: 0",hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+                <span class='help-block client_side_error' id="<%= "#{f.object_name}[password]" %>"></span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="password-confirmation-div">
+                <%= f.input :password_confirmation, required: true, validate: true,error: false %>
+                <span class='help-block client_side_error' id="<%= "#{f.object_name}[password_confirmation]" %>"></span>
+              </div>
+            </div>
+          </div> <!--end of authentication-->
+        </div> <!--end of row-->
+
+    </div> <!--end of left-column-->
+
+    <div class="right-column">
+
+      <div class="personal-websites-div">
+        <div class="personal-websites-header">
+          <h4>Social Buttons Links</h4>
+        </div>
+        <div class="websites">
+
+          <%= f.fields_for :personal_websites do |w| %>
+            <div class="website-entry">
+              <div class="logo-div">
+                <%= image_tag w.object.website_template.logo.url , style: "width: 34px; height: 34px;"%>
+                <%= w.association :website_template, input_html: {style: "display: none"}, label: false, selected: w.object.website_template.id, label_method: :website_name, value_method: :id, required: false, error: false %>
+              </div>
+
+              <div class="website-name-div">
+                <%= w.object.website_template.website_name %>
+              </div>
+
+              <div class="url-div">
+                <%= w.input :url, label: false, required: false, validate: false, error: false %>
+                <span class='help-block client_side_error' id="<%= "#{w.object_name}[url]" %>"></span>
+              </div>
+            </div>
+          <% end %>
+
+        </div> <!-- end of websites-->
+      </div> <!-- end of personal-websites-div -->
+
+      <div class="image-upload-header">
+        <h4>Upload your Avatar</h4>
+      </div>
+      <div class="image-upload">
+        <%= f.file_field :avatar  %>
+      </div>
+
+      <%= f.hidden_field :isStudent, value: false %>
+
+    </div> <!--end of right-column-->
+
+  </div> <!--end row-->
+
+  <% end %> <!--end of form-->
+</div> <!--end of container-fluid-->

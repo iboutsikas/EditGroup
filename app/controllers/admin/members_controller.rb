@@ -31,13 +31,12 @@ class Admin::MembersController < Admin::DashboardController
     @member = Member.new
     @participant = @member.build_participant
     @person = @member.build_person
-    @personal_websites = @member.personal_websites.build
-    @available_websites = WebsiteTemplate.all
+
+    @member.build_unused_websites
 
     respond_to do |format|
 
       if params[:type] == "student"
-        @member.isStudent = true
         format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/form_student" } }
       else
         format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/form" } }
@@ -46,9 +45,6 @@ class Admin::MembersController < Admin::DashboardController
   end
 
   def edit
-    # unless @member.personal_websites.any?
-    #   @personal_website = @member.personal_websites.build
-    # end
     @member.build_unused_websites
 
     respond_to do |format|
@@ -78,11 +74,17 @@ class Admin::MembersController < Admin::DashboardController
       if @member.save
         @member.participant.person_id = @member.person_id
         @member.participant.save
+        @member.update(member_params.slice(:personal_websites_attributes))
 
         format.js { render js: "hide_and_redraw();
                                 showNotification(type = 'success', title = 'Member Created!', text = 'Created #{@member.full_name}' );"  }
       else
-        format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/form" } }
+        @member.build_unused_websites
+        if @member.isStudent
+          format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/form_student" } }
+        else
+          format.js { render 'admin/initializeForm', locals: {resource: @member, form_path: "members/form" } }
+        end
       end
     end
   end
@@ -172,7 +174,7 @@ class Admin::MembersController < Admin::DashboardController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params.require(:member).permit(:bio, :avatar, :id,:email, :password, :password_confirmation, :isAdmin, :isStudent, :member_from, :member_to, :participant_id, :person_id, :invited_by_type,
+      params.require(:member).permit(:crop_x, :crop_y, :crop_w, :crop_h, :bio, :avatar, :id,:email, :password, :password_confirmation, :isAdmin, :isStudent, :member_from, :member_to, :participant_id, :person_id, :invited_by_type,
                                      participant_attributes:[:id,:title,:administrative_title,:email],
                                      person_attributes: [:id,:firstName, :lastName],
                                      personal_websites_attributes: [ :id, :url, :website_template_id, :_destroy] )
