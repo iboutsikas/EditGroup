@@ -5,8 +5,9 @@ class InvitationsController < Devise::InvitationsController
 
     @participant = resource.build_participant
     @person = resource.build_person
-    @personal_websites = resource.personal_websites.build
+    #@personal_websites = resource.personal_websites.build
     @available_websites = WebsiteTemplate.all
+    resource.build_unused_websites
     resource.invitation_token = params[:invitation_token]
 
     render 'members/invitations/edit'
@@ -14,16 +15,12 @@ class InvitationsController < Devise::InvitationsController
 
   # PUT /resource/invitation
   def update
-    require 'pry'
-    binding.pry
     raw_invitation_token = update_resource_params[:invitation_token]
-
-    unless update_resource_params["personal_websites_attributes"].nil?
-      update_resource_params["personal_websites_attributes"].each_with_index { |w, index| params["member"]["personal_websites_attributes"].delete("#{index}") if w[1]["url"].empty? }
-    end
 
     self.resource = resource_class.accept_invitation!(update_resource_params)
     invitation_accepted = resource.errors.empty?
+
+    resource.update(update_resource_params.slice(:personal_websites_attributes))
 
     yield resource if block_given?
 

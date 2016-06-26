@@ -4,8 +4,6 @@ class MembersController < ApplicationController
   before_filter :allow_if_current_member, only: [:edit_profile,:edit, :update]
 
   def index
-    # @members = Member.includes(:personal_websites,:participant,:person).where("members.person_id is not null and members.participant_id is not null")
-
     @members = Member.extended.where("members.person_id IS NOT NULL AND members.participant_id IS NOT NULL")
     @staff = []
     @students =[]
@@ -19,9 +17,6 @@ class MembersController < ApplicationController
   end
 
   def edit
-    # unless @member.personal_websites.any?
-    #   @personal_website = @member.personal_websites.build
-    # end
     @member.build_unused_websites
     @authenticity_token  = form_authenticity_token
     render "members/edit_profile"
@@ -29,22 +24,6 @@ class MembersController < ApplicationController
 
   def update
     @member.update(member_params)
-
-    # find new websites created
-    if member_params[:personal_websites_attributes]
-      member_params[:personal_websites_attributes].each do |key, website|
-
-        if !website[:id] && !website[:url].empty? # create the new websites
-          @member.personal_websites << PersonalWebsite.new(website)
-
-        elsif website[:id] && !website[:url].empty? # update existing websites
-          @member.personal_websites.find(website[:id]).update( website.except(:id) )
-
-        elsif website[:id] && website[:url].empty? # delete existing websites that have no url
-          PersonalWebsite.find(website[:id]).destroy
-        end
-      end
-    end
 
     respond_to do |format|
 

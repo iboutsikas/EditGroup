@@ -6,9 +6,6 @@
   reader.onloadend = () ->
     img.src = reader.result
     hiddenimg = new Image()
-    hiddenimg.onload = () ->
-      console.log this.width
-      console.log this.height
     hiddenimg.src = reader.result
 
     canvas = document.createElement('canvas')

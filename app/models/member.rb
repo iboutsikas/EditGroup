@@ -41,6 +41,12 @@ class Member < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX, :multiline => true }
   validates :bio, presence: true
 
+  # override update to update websites
+  def update(member_params)
+    super(member_params)
+    update_websites(member_params[:personal_websites_attributes]) if member_params[:personal_websites_attributes]
+  end
+
   def crop_avatar
     avatar.recreate_versions! if crop_x.present?
   end
@@ -73,4 +79,25 @@ class Member < ActiveRecord::Base
     available_websites = all_templates - used
     available_websites.each { |w| self.personal_websites.build( website_template_id: w.id) }
   end
+
+private
+
+  def update_websites(personal_websites_attributes)
+    # find new websites created
+    if personal_websites_attributes
+      personal_websites_attributes.each do |key, website|
+
+        if !website[:id] && !website[:url].empty? # create the new websites
+          self.personal_websites << PersonalWebsite.new(website)
+
+        elsif website[:id] && !website[:url].empty? # update existing websites
+          self.personal_websites.find(website[:id]).update( website.except(:id) )
+
+        elsif website[:id] && website[:url].empty? # delete existing websites that have no url
+          PersonalWebsite.find(website[:id]).destroy
+        end
+      end
+    end
+  end
+
 end

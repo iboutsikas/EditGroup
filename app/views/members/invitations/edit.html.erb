@@ -2,7 +2,7 @@
 
 <div id="accept_invitation">
   <div class="header-accept-invitation">
-    <h1>Welcome! Please set up your account...</h1>
+    <h1>Please set up your account</h1>
 
     <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put,id: "accept_invitation_form" } do |f| %>
 
@@ -95,40 +95,13 @@
     </div> <!--end of left-column-->
 
     <div class="right-column">
-      <div class="image-upload-header">
-        <h4>Upload your Avatar</h4>
-      </div>
-      <div class="image-upload">
-        <%= f.file_field :avatar %>
-      </div>
 
       <div class="personal-websites-div">
         <div class="personal-websites-header">
           <h4>Social Buttons Links</h4>
         </div>
         <div class="websites">
-        <%#= link_to_add_association 'add website', f, :personal_websites, partial: 'admin/dashboard/personal_website_fields',render_options: { locals: {f: f} } %>
-          <% unless resource.errors.any? %>
-            <% @available_websites.each_with_index do |website,value| %>
-              <div class="website-entry">
-                <%= f.fields_for :personal_websites do |w| %>
-                  <div class="logo-div">
-                    <%= image_tag website.logo.url , style: "width: 34px; height: 34px;"%>
-                    <%= w.association :website_template, input_html: {style: "display: none"}, label: false, selected: website.id, label_method: :website_name, value_method: :id, required: false, error: false %>
-                  </div>
 
-                  <div class="website-name-div">
-                    <%= website.website_name %>
-                  </div>
-
-                  <div class="url-div">
-                    <%= w.input :url, label: false, error: false %>
-                    <span class='help-block client_side_error' id="<%= "#{w.object_name}[url]" %>"></span>
-                  </div>
-                <% end %>
-              </div>
-            <% end %>
-          <% else %>
 
             <%= f.fields_for :personal_websites do |w| %>
               <div class="website-entry">
@@ -148,13 +121,26 @@
               </div>
             <% end %>
 
-          <% end %>
-        </div>
+          <%# end %>
+        </div> <!-- end of websites-->
+      </div> <!-- end of personal-websites-div -->
+
+      <div class="image-upload-header">
+        <h4>Upload your Avatar</h4>
+      </div>
+      <div class="image-upload">
+        <%= f.file_field :avatar, id: "edit_member_avatar", onchange: "loadFile(event)"  %>
+
+        <img id="cropbox">
+
+        <% %w[x y w h].each do |attribute| %>
+          <%= f.hidden_field "crop_#{attribute}" %>
+        <% end %>
       </div>
 
-    </div> <!--end of right-column-->
+    </div> <!-- end of right-column -->
 
-  </div> <!--end row-->
+  </div> <!-- end row -->
 
   <div class="row">
 
