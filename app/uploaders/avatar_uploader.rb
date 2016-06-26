@@ -30,24 +30,20 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  version :large do
-    resize_to_limit(500,500)
-  end
 
   version :thumb do
     process :crop
-    process resize_to_fit: [70, 70]
+    process resize_to_fill: [70, 70]
   end
 
   version :cropped do
     process :crop
-    process resize_to_fit: [400,400]
+    process resize_to_fill: [400,400]
   end
 
   def crop
     return if model.crop_x.blank?
-    #resize_to_limit(500,500)
-    resize_to_limit(model.crop_y, model.crop_x)
+    resize_to_limit(600,600)
     manipulate! do |img|
       img.crop "#{model.crop_w.to_i}x#{model.crop_h.to_i}+#{model.crop_x.to_i}+#{model.crop_y.to_i}!"
       img
