@@ -13,6 +13,8 @@ class Publication < ActiveRecord::Base
 
   validates :title, presence: true
 
+  attr_reader :bibtex_entry
+
   require 'citeproc'
   require 'csl/styles'
 
@@ -77,39 +79,6 @@ class Publication < ActiveRecord::Base
     end
     return entry
   end
-
-  # def cite(style)
-  #   array = []
-  #   # sort the authors by priority
-  #   authors_sorted = self.authors.sort { |a,b| a.priority <=> b.priority }
-  #
-  #   # format the authors in the appropriate style
-  #   authors_sorted.each do |au|
-  #     array << "#{au.person.lastName}, #{au.person.firstName}"
-  #   end
-  #   authors = array.join(" and ")
-  #
-  #   cp = CiteProc::Processor.new style: "#{style}", format: 'text'
-  #   bib = BibTeX::Bibliography.new
-  #
-  #   # add the conference or journal attributes
-  #   if self.conference
-  #     bib << self.conference.cite(authors)
-  #   else
-  #     bib << self.journal.cite(authors)
-  #   end
-  #
-  #   # add the standard publication attributes
-  #   bib[0][:title] = self.title
-  #   bib[0][:pages] = self.pages
-  #   bib[0][:date]  = self.date
-  #
-  #
-  #   cp.import bib.to_citeproc
-  #   ref = cp.bibliography.references[0].to_s
-  #   ref = ref[3..-1] if ref.start_with?('[')
-  #   ref
-  # end
 
   def self.search(params)
     params.select { |k, v| v.present?}.reduce(all) do |scope, (key, value)|

@@ -19,6 +19,14 @@ class Admin::PublicationsController < Admin::DashboardController
     end
   end
 
+  def new_from_bibtex
+    @publication = Publication.new
+
+    respond_to do |format|
+      format.js { render 'add_from_bibtex' }
+    end
+  end
+
   # GET /publications/1/edit
   def edit
     respond_to do |format|
@@ -37,6 +45,16 @@ class Admin::PublicationsController < Admin::DashboardController
       else
         format.js { render 'admin/initializeForm', locals: {resource: @publication, form_path: "publications/form" } }
       end
+    end
+  end
+
+  def create_from_bibtex
+    @pub = BibTeX.parse publication_params[:bibtex_entry]
+    require 'pry'
+    binding.pry
+
+    respond_to do |format|
+      format.js { render js: "alert('yo man');" }
     end
   end
 
@@ -87,7 +105,7 @@ class Admin::PublicationsController < Admin::DashboardController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def publication_params
-      params.require(:publication).permit(:id,:title, :date, :pages, :abstract, :doi, author_attributes: [:publication_id,:person_id],
+      params.require(:publication).permit(:bibtex_entry, :id,:title, :date, :pages, :abstract, :doi, author_attributes: [:publication_id,:person_id],
                                           people_attributes: [ person:[:id, :firstName, :lastName, :_destroy]])
     end
 end

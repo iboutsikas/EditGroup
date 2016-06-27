@@ -44,6 +44,8 @@ Rails.application.routes.draw do
       #patch 'authors/:id/edit_priority', to: 'authors#edit_priority'
       resources :authors, except: :create
     end
+    get 'publication/new_from_bibtex', to: 'publications#new_from_bibtex'
+    post 'publication/create_from_bibtex', to: 'publications#create_from_bibtex'
 
     resources :conferences, except: [:destroy] do
       resources :authors

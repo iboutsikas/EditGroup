@@ -1,6 +1,6 @@
 <div class="row">
 
-  <div class="col-md-8">
+  <div class="col-md-7">
     <h1>Publications</h1>
   </div>
 
@@ -15,6 +15,12 @@
     <div class="allNewButtons">
       <%= link_to ("<i class='fa fa-plus'></i> Add Journal").html_safe, new_admin_journal_path, remote: true,
                   class: "btn btn-success", id: "newBtn", onclick: 'newButtonPressed("Journal")' %>
+    </div>
+  </div>
+
+  <div class="col-md-1">
+    <div class="allNewButtons">
+      <%= link_to "BibTeX", admin_publication_new_from_bibtex_path, remote: true, class: "btn btn-success", onclick: 'bibtexModalInit();' %>
     </div>
   </div>
 
@@ -53,6 +59,7 @@
           <h4 class="modal-title" id="myModalLabel"></h4>
         </div>
         <div class="modal-body">
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -77,6 +84,27 @@
 
           <div id="modal_confirmation_buttons">
           </div>
+        </div>
+      </div>
+    </div>
+  </div> <!--end of delete confirmation modal-->
+
+  <!-- Bibtex Modal -->
+  <div class="modal fade" id="bibtex-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document" id="dialog-div">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Add BibTeX entry</h4>
+        </div>
+        <div class="modal-body" id="bibtex-modal-body">
+
+
+
+        </div> <!-- end of modal body-->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="saveBibtexModalBtn">Save changes</button>
         </div>
       </div>
     </div>
