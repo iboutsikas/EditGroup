@@ -87,7 +87,7 @@ class Publication < ActiveRecord::Base
         scope.where(["publications.title LIKE ?", "%#{value}%"])
       when :author
         # scope.where(author.person.full_name: "LIKE ?","%#{value}%")
-        scope.joins(:people).where("(lastName LIKE :name) OR (firstName LIKE :name)", name: "%#{value}%")
+        scope.joins(:people).where(["(people.lastName LIKE ?) OR (people.firstName LIKE ?)", "%#{value}%", "%#{value}%"])
       when :year
         if Rails.env.production?
           #this will NOT work on SQLite
