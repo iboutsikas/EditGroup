@@ -1,9 +1,8 @@
-<div class="row" style="font-size: 30px"> UNDER CONSTRUCTION</div>
 <div class="container-fluid">
 
-  <%= simple_form_for([:admin,@publication], url: admin_publication_create_from_bibtex_path, method: "POST", remote: true, html: { id: "bibtex-form" }, authenticity_token: true) do |f| %>
+  <%= simple_form_for([:admin,@publication], url: admin_publication_create_from_bibtex_path, method: "POST", remote: true, dataType: "script",html: { id: "bibtex-form" }, authenticity_token: true) do |f| %>
 
-    <%= render partial: 'admin/dashboard/errors',locals: {resource: @publication} %>
+    <%= render partial: 'admin/dashboard/errors', locals: {resource: @publication} %>
 
     <div class="row">
       <div class="left-column">
@@ -18,20 +17,122 @@
         <div class="row">
           <div class="col-md-12">
             <h4> Preview</h4>
+
             <div id="journal-fields" style="display: none">
-              <div class="row">title: <div id="preview-journal-title"> </div> </div>
-              <div class="row">journal: <div id="preview-journal-name"> </div> </div>
-              <div class="row"> volume: <div id="preview-journal-volume"> </div></div>
-              <div class="row">issue: <div id="preview-journal-issue"> </div> </div>
-              <div class="row"> pages: <div id="preview-journal-pages"> </did></div>
-              <div class="row"> year: <div id="preview-journal-year"> </div></div>
-              <div class="row"> authors: <div id="preview-journal-authors"></div></div>
-            </div>
-          </div>
-        </div>
+
+              <div class="row">
+                <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
+                  Title:
+                </div>
+                <div class="col-md-10 col-sm-10 col-lg-10 col-xs-10">
+                  <span id="preview-journal-title"> </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
+                  Journal:
+                </div>
+                <div class="col-md-10 col-sm-10 col-lg-10 col-xs-10">
+                  <span id="preview-journal-name"> </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
+                  Volume:
+                </div>
+                <div class="col-md-10 col-sm-10 col-lg-10 col-xs-10">
+                  <span id="preview-journal-volume"> </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
+                  Issue:
+                </div>
+                <div class="col-md-10 col-sm-10 col-lg-10 col-xs-10">
+                  <span id="preview-journal-issue"> </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
+                  Pages:
+                </div>
+                <div class="col-md-10 col-sm-10 col-lg-10 col-xs-10">
+                  <span id="preview-journal-pages"> </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
+                  Year:
+                </div>
+                <div class="col-md-10 col-sm-10 col-lg-10 col-xs-10">
+                  <span id="preview-journal-year"> </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
+                  Authors:
+                </div>
+                <div class="col-md-10 col-sm-10 col-lg-10 col-xs-10">
+                  <span id="preview-journal-authors"></span>
+                </div>
+              </div>
+
+            </div> <!--end of journal ffields-->
+
+            <div id="conference-fields" style="display: none">
+
+              <div class="row">
+                <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
+                  Title:
+                </div>
+                <div class="col-md-10 col-sm-10 col-lg-10 col-xs-10">
+                  <span id="preview-conference-title"> </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
+                  Conf:
+                </div>
+                <div class="col-md-10 col-sm-10 col-lg-10 col-xs-10">
+                  <span id="preview-conference-name"> </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
+                  Pages:
+                </div>
+                <div class="col-md-10 col-sm-10 col-lg-10 col-xs-10">
+                  <span id="preview-conference-pages"> </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
+                  Year:
+                </div>
+                <div class="col-md-10 col-sm-10 col-lg-10 col-xs-10">
+                  <span id="preview-conference-year"> </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
+                  Authors:
+                </div>
+                <div class="col-md-10 col-sm-10 col-lg-10 col-xs-10">
+                  <span id="preview-conference-authors"></span>
+                </div>
+              </div>
+
+            </div> <!--end of conference ffields-->
+
+          </div> <!--end of col-dm 12-->
+        </div> <!--end of row-->
       </div> <!--end of right-column-->
 
     </div> <!--end row-->
-
+    <div class="row">
+      <div class="col-md-2 col-sm-2 col-ls-2 col-xs-2">
+        <span id="bibtex-fail-message" style="display: none; color: red; font-size: 16px;"> Invalid Input </span>
+      </div>
+    </div>
   <% end %> <!--end of form-->
 </div> <!--end of container-fluid-->

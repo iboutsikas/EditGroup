@@ -80,6 +80,32 @@ class Publication < ActiveRecord::Base
     return entry
   end
 
+  def create_from_bibtex(bibtex_entry)
+    entry = BibTeX.parse bibtex_entry
+
+    ActiveRecord::Base.transaction do
+      self.title = entry[0].title
+      self.pages = entry[0].pages
+      dateNew = Date.strptime(entry[0].year, '%Y')
+      self.date = dateNew
+
+      if entry[0].journal
+        self.journal = Journal.new(title: entry[0].journal, volume: entry[0].volume, issue: entry[0].number)
+      else
+        self.conference = Conference.new(name: entry[0].booktitle)
+        self.conference.publisher  = entry[0].publisher if entry[0].publisher
+      end
+
+      self.save
+
+      entry[0].author.each_with_index do |a, index|
+        person = Person.create(firstName: a.first, lastName: a.last)
+        self.authors << Author.new(person_id: person.id, priority: index + 1)
+      end
+    end
+
+  end
+
   def self.search(params)
     params.select { |k, v| v.present?}.reduce(all) do |scope, (key, value)|
       case key.to_sym

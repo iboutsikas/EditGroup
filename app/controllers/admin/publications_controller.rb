@@ -49,12 +49,12 @@ class Admin::PublicationsController < Admin::DashboardController
   end
 
   def create_from_bibtex
-    @pub = BibTeX.parse publication_params[:bibtex_entry]
-    require 'pry'
-    binding.pry
+    @publication = Publication.new
+    @publication.create_from_bibtex(publication_params[:bibtex_entry])
 
     respond_to do |format|
-      format.js { render js: "alert('yo man');" }
+      format.js { render js: "hide_and_redraw();
+                              showNotification(type = 'success', title = 'Created from BibTeX!', text = 'Created #{@publication.title}}' );" }
     end
   end
 
