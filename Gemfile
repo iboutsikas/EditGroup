@@ -45,7 +45,7 @@ gem 'judge-simple_form', '~> 1.0'
 
 gem 'select2-rails', '~> 4.0', '>= 4.0.1.1'
 
-gem 'carrierwave', '~> 0.11.0'
+gem 'carrierwave', '~> 1.3.2'
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 
 gem 'remotipart', '~> 1.2', '>= 1.2.1'
