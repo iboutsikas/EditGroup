@@ -154,7 +154,7 @@ GEM
       hash-deep-merge
     letter_opener (1.4.1)
       launchy (~> 2.2)
-    loofah (2.19.0)
+    loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
